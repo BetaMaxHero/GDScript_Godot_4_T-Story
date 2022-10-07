@@ -834,7 +834,7 @@ func LoadAboutScreenTexts():
 
 		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, 22, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
 
-	Texts.TextImage[AboutTextsEndIndex-2].rect_global_position.y+=(ScreenHeight/2)
-	Texts.TextImage[AboutTextsEndIndex-1].rect_global_position.y+=(ScreenHeight/2)
+#	Texts.TextImage[AboutTextsEndIndex-2].rect_global_position.y+=(ScreenHeight/2)
+#	Texts.TextImage[AboutTextsEndIndex-1].rect_global_position.y+=(ScreenHeight/2)
 
 	pass

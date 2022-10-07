@@ -354,20 +354,20 @@ func DisplayTitleScreen():
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 
-	var _value
-	if (ItchBuild == false):
-		if InterfaceCore.ThisIconWasPressed(1, -1) == true:
-			if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
-				_value = OS.shell_open("https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory")
-			elif OperatingSys == OSHTMLFive:
-				JavaScript.eval("window.location.replace('https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory');")
-		if InterfaceCore.ThisIconWasPressed(2, -1) == true:
-			if OperatingSys == OSAndroid:
-				_value = OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
-			elif OperatingSys == OSDesktop:
-				_value = OS.shell_open("https://github.com/SLNTHERO/TetriStory_110Percent")
-			else:
-				JavaScript.eval("window.location.replace('https://github.com/SLNTHERO/TetriStory_110Percent');")
+#	var _value
+#	if (ItchBuild == false):
+#		if InterfaceCore.ThisIconWasPressed(1, -1) == true:
+#			if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
+#				_value = OS.shell_open("https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory")
+#			elif OperatingSys == OSHTMLFive:
+#				JavaScript.eval("window.location.replace('https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory');")
+#		if InterfaceCore.ThisIconWasPressed(2, -1) == true:
+#			if OperatingSys == OSAndroid:
+#				_value = OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
+#			elif OperatingSys == OSDesktop:
+#				_value = OS.shell_open("https://github.com/SLNTHERO/TetriStory_110Percent")
+#			else:
+#				JavaScript.eval("window.location.replace('https://github.com/SLNTHERO/TetriStory_110Percent');")
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		CutSceneScene = 1
@@ -396,8 +396,8 @@ func DisplayTitleScreen():
 		DataCore.SaveOptionsAndHighScores()
 		if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
 			get_tree().quit()
-		elif OperatingSys == OSHTMLFive:
-			JavaScript.eval("window.location.replace('https://fallenangelsoftware.com');")
+#		elif OperatingSys == OSHTMLFive:
+#			JavaScript.eval("window.location.replace('https://fallenangelsoftware.com');")
 
 	if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
 		if InterfaceCore.ThisButtonWasPressed(6) == true:
@@ -1125,7 +1125,7 @@ func DisplayAboutScreen():
 			videoplayer.play()
 
 		VisualsCore.LoadAboutScreenTexts()
-		TS1ScreenY = (VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y + 390)
+#		TS1ScreenY = (VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y + 390)
 		StaffScreenTSOneScale = 1.0
 
 	var textScrollSpeed = 0.925
@@ -1143,21 +1143,23 @@ func DisplayAboutScreen():
 				VisualsCore.Texts.TextImage[index].rect_global_position.y-=20.0
 			TS1ScreenY-=20.0
 
-	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
-		if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true || InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed)):
-			ScreenFadeStatus = FadingToBlack
+#	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
+#		if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true || InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed)):
+#			ScreenFadeStatus = FadingToBlack
 			
-			if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true || InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed):  AudioCore.PlayEffect(1)
-			InputCore.DelayAllUserInput = 30
-		elif (TS1ScreenY <= (VisualsCore.ScreenHeight/2)): #VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45):
-			StaffScreenTSOneScale-=0.05
+	if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true || InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed): 
+		AudioCore.PlayEffect(1)
+		InputCore.DelayAllUserInput = 30
+		ScreenFadeStatus = FadingToBlack
+#		elif (TS1ScreenY <= (VisualsCore.ScreenHeight/2)): #VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45):
+#			StaffScreenTSOneScale-=0.05
 
-			if (StaffScreenTSOneScale < 0):
-				ScreenFadeStatus = FadingToBlack
-				
-				InputCore.DelayAllUserInput = 30
+#			if (StaffScreenTSOneScale < 0):
+#				ScreenFadeStatus = FadingToBlack
+#				
+#				InputCore.DelayAllUserInput = 30
 
-	VisualsCore.DrawSprite(23, VisualsCore.ScreenWidth/2, TS1ScreenY, StaffScreenTSOneScale, StaffScreenTSOneScale, 0, 1.0, 1.0, 1.0, 1.0)
+#	VisualsCore.DrawSprite(23, VisualsCore.ScreenWidth/2, TS1ScreenY, StaffScreenTSOneScale, StaffScreenTSOneScale, 0, 1.0, 1.0, 1.0, 1.0)
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		if (LogicCore.GameWon == true && DataCore.NewHighScoreRank < 999):
