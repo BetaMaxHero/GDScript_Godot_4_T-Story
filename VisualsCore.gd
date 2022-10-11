@@ -477,10 +477,8 @@ func DeleteAllTexts():
 
 #----------------------------------------------------------------------------------------
 func DrawnTextChangeScaleRotation(index, scaleX, scaleY, rotation):
-	return
-
-	Texts.TextImage[index].rect_scale = Vector2(scaleX, scaleY)
-	Texts.TextImage[index].rect_rotation = rotation
+	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
+	Texts.TextImage[index].rotation = rotation
 
 	pass
 
@@ -502,42 +500,44 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	elif fontSize == 22:
 		fontToUseIndex = 4
 
-	return
+	Texts.TextImage[index].clip_contents = false
 
-	Texts.TextImage[index].rect_clip_content = false
-
-	Texts.TextImage[index].add_font_override("normal_font", FontTTF[fontToUseIndex])
-	# Need code to set font size - it should be set to: "fontSize"
-
-	Texts.TextImage[index].default_color = Color(red, green, blue, alpha)#modulate = Color(red, green, blue, alpha)
+	Texts.TextImage[index].add_theme_font_override("normal_font", FontTTF[fontToUseIndex])
 	
-	FontTTF[fontToUseIndex].outline_size = 3.0
-	FontTTF[fontToUseIndex].outline_color = Color(outlineRed, outlineGreen, outlineBlue, alpha)
+	Texts.TextImage[index].add_theme_font_size_override("normal_font_size", fontSize)
+
+	Texts.TextImage[index].add_theme_color_override("default_color", Color(red, green, blue, alpha))
+	
+	Texts.TextImage[index].add_theme_constant_override("outline_size", 3.0)
+	
+	Texts.TextImage[index].add_theme_color_override("font_outline_color", Color(outlineRed, outlineGreen, outlineBlue, alpha))
 
 	Texts.TextImage[index].text = text
 
-	var textWidth = Texts.TextImage[index].get_font("normal_font").get_string_size(Texts.TextImage[index].text).x
-	var textHeight = Texts.TextImage[index].get_font("normal_font").get_string_size(Texts.TextImage[index].text).y
+# Something wrong below
+	var textWidth = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).x
+	var textHeight = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).y
+# Something wrong above
 
-	Texts.TextImage[index].rect_global_position.x = x
-	Texts.TextImage[index].rect_global_position.y = (y - (textHeight / 2))
+	Texts.TextImage[index].global_position.x = x
+	Texts.TextImage[index].global_position.y = (y - (textHeight / 2))
 
 	Texts.TextImage[index].set_size(Vector2(ScreenWidth, ScreenHeight), false)
 
-	Texts.TextImage[index].rect_pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
+	Texts.TextImage[index].pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
 
-	Texts.TextImage[index].rect_scale = Vector2(scaleX, scaleY)
+	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
 
-	Texts.TextImage[index].rect_rotation = rotation
+	Texts.TextImage[index].rotation = rotation
 
 	if horizontalJustification == 0:
-		Texts.TextImage[index].rect_global_position.x = x
-	elif horizontalJustification == 1:
-		Texts.TextImage[index].rect_global_position.x = ((VisualsCore.ScreenWidth/2) - (textWidth / 2))
+		Texts.TextImage[index].global_position.x = x
+	elif horizontalJustification == 1: # Center text horizonatally on screen (NOT working properly?)
+		Texts.TextImage[index].global_position.x = ((VisualsCore.ScreenWidth/2) - (textWidth/2))
 	elif horizontalJustification == 2:
-		Texts.TextImage[index].rect_global_position.x = (VisualsCore.ScreenWidth - x - (textWidth))
+		Texts.TextImage[index].global_position.x = (VisualsCore.ScreenWidth - x - (textWidth))
 	elif horizontalJustification == 4:
-		Texts.TextImage[index].rect_global_position.x = (x - (textWidth / 2))
+		Texts.TextImage[index].global_position.x = (x - (textWidth / 2))
 
 	Texts.TextIndex.append(index)
 	Texts.TextScreenX.append(x)
