@@ -35,7 +35,7 @@ func ConvertLinearToDB(volume):
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	MusicVolume = 0#0.5
+	MusicVolume = 0.5
 	EffectsVolume = 0.5
 
 	MusicPlayer = AudioStreamPlayer.new()
