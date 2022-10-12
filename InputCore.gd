@@ -1,4 +1,4 @@
-# Copyright 2023 "BetaMax Hero"
+# Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -245,7 +245,7 @@ func GetJoystickInputForMapping(index, _buttons):
 
 	return(-1)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func _process(_delta):
@@ -381,11 +381,11 @@ func _unhandled_input(event):
 			var screenX = event.position.x
 			for index in range(0, 2):
 				if event.get_index() == index:
-					if (screenX < VisualsCore.ScreenWidth/2):# Touch One
+					if (screenX < VisualsCore.ScreenWidth/2.0):# Touch One
 						MouseButtonLeftPressed = true
 						MouseScreenX = event.position.x
 						MouseScreenY = event.position.y
-					elif (screenX > (VisualsCore.ScreenWidth/2)-1):# Touch Two
+					elif (screenX > (VisualsCore.ScreenWidth/2.0)-1):# Touch Two
 						TouchTwoPressed = true
 						TouchTwoScreenX = event.position.x
 						TouchTwoScreenY = event.position.y
@@ -394,11 +394,11 @@ func _unhandled_input(event):
 				var screenX = event.position.x
 				for index in range(0, 2):
 					if event.get_index() == index:
-						if (screenX < VisualsCore.ScreenWidth/2):# Touch One
+						if (screenX < VisualsCore.ScreenWidth/2.0):# Touch One
 							MouseButtonLeftPressed = true
 							MouseScreenX = event.position.x
 							MouseScreenY = event.position.y
-						elif (screenX > (VisualsCore.ScreenWidth/2)-1):# Touch Two
+						elif (screenX > (VisualsCore.ScreenWidth/2.0)-1.0):# Touch Two
 							TouchTwoPressed = true
 							TouchTwoScreenX = event.position.x
 							TouchTwoScreenY = event.position.y
@@ -477,12 +477,12 @@ func _input(event):
 			var screenX = event.position.x
 			for index in range(0, 2):
 				if event.get_index() == index:
-					if (LogicCore.Player == 1 && screenX < VisualsCore.ScreenWidth/2):# Touch One
+					if (LogicCore.Player == 1 && screenX < VisualsCore.ScreenWidth/2.0):# Touch One
 						MouseButtonLeftPressed = true
 						MouseScreenX = event.position.x
 						MouseScreenY = event.position.y
 
-					if (LogicCore.Player == 2 && screenX > (VisualsCore.ScreenWidth/2)-1):# Touch Two
+					if (LogicCore.Player == 2 && screenX > (VisualsCore.ScreenWidth/2.0)-1.0):# Touch Two
 						TouchTwoPressed = true
 						TouchTwoScreenX = event.position.x
 						TouchTwoScreenY = event.position.y
@@ -491,12 +491,12 @@ func _input(event):
 				var screenX = event.position.x
 				for index in range(0, 2):
 					if event.get_index() == index:
-						if (LogicCore.Player == 1 && screenX < VisualsCore.ScreenWidth/2):# Touch One
+						if (LogicCore.Player == 1 && screenX < VisualsCore.ScreenWidth/2.0):# Touch One
 							MouseButtonLeftPressed = true
 							MouseScreenX = event.position.x
 							MouseScreenY = event.position.y
 
-						if (LogicCore.Player == 2 && screenX > (VisualsCore.ScreenWidth/2)-1):# Touch Two
+						if (LogicCore.Player == 2 && screenX > (VisualsCore.ScreenWidth/2.0)-1.0):# Touch Two
 							TouchTwoPressed = true
 							TouchTwoScreenX = event.position.x
 							TouchTwoScreenY = event.position.y

@@ -1,4 +1,4 @@
-# Copyright 2023 "BetaMax Hero"
+# Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------------------------
 #                              Cross-Platform / M.I.T. Open-Source
-#             "Grand National GNX" v2 Alpha1 Godot Engine 4.x 2D Video Game Framework
+#             "Grand National GNX" v2 Alpha2 Godot Engine 4.x 2D Video Game Framework
 # ------------------------------------------------------------------------------------------------
 #                                 "Fight To Win, Win For Love!"
 #  ___________     __         .__  _________ __                         ____ ___________  _   /\TM
@@ -30,7 +30,7 @@
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
-#                                (C)opyright 2023 - "BetaMax Hero"
+#                               (C)opyright 2023 - "BetaMax Heroes"
 # ------------------------------------------------------------------------------------------------
 
 #- [DONE!] Perfect single player game [DONE!] -

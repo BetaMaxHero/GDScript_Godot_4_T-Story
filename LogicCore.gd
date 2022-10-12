@@ -1,4 +1,4 @@
-# Copyright 2023 "BetaMax Hero"
+# Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -155,14 +155,14 @@ func InitializePieceData():
 	for piece in range(8):
 		PieceData[piece] = []
 		PieceData[piece].resize(5)
-		for rotation in range(5):
-			PieceData[piece][rotation] = []
-			PieceData[piece][rotation].resize(17)
+		for rotations in range(5):
+			PieceData[piece][rotations] = []
+			PieceData[piece][rotations].resize(17)
 	
 	for piece in range(8):
-		for rotation in range(5):
+		for rotations in range(5):
 			for box in range(17):
-				PieceData[piece][rotation][box] = 0
+				PieceData[piece][rotations][box] = 0
 
 	# RED "S" Piece
 	PieceData [1] [1] [10] = 1 # 01 02 03 04
@@ -414,7 +414,7 @@ func PieceCollision(player):
 
 	return(returnValue)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func PieceCollisionDown(player):
@@ -446,7 +446,7 @@ func PieceCollisionDown(player):
 
 	return(returnValue)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func PieceCollisionLeft(player):
@@ -478,7 +478,7 @@ func PieceCollisionLeft(player):
 
 	return(returnValue)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func PieceCollisionRight(player):
@@ -510,7 +510,7 @@ func PieceCollisionRight(player):
 
 	return(returnValue)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func RotatePieceCounterClockwise(player):
@@ -533,7 +533,7 @@ func RotatePieceCounterClockwise(player):
 
 	return(false)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func RotatePieceClockwise(player):
@@ -556,7 +556,7 @@ func RotatePieceClockwise(player):
 
 	return(false)
 
-	pass
+#	pass
 
 #----------------------------------------------------------------------------------------
 func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):

@@ -1,4 +1,4 @@
-# Copyright 2023 "BetaMax Hero"
+# Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -16,7 +16,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # "VisualsCore.gd"
-#extends Node
 extends Node2D
 
 var DEBUG = true
@@ -350,64 +349,36 @@ func _ready():
 			if (index > 18999 && index < 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
 
-
-
-#	var font = load("res://media/fonts/Font_01.ttf")
-#	$"Label".set("custom_fonts/font", font)
-#	$"Label".set("custom_fonts/font_size", 25)
-
-	FontTTF.append(-1)#DynamicFont.new())
+	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
 
-	FontTTF.append(-1)#DynamicFont.new())
+	FontTTF.append(-1)
 	FontTTF[1] = load("res://media/fonts/Font_01.ttf")
 
-	FontTTF.append(-1)#DynamicFont.new())
+	FontTTF.append(-1)
 	FontTTF[2] = load("res://media/fonts/Font_01.ttf")
 
-	FontTTF.append(-1)#DynamicFont.new())
+	FontTTF.append(-1)
 	FontTTF[3] = load("res://media/fonts/Font_01.ttf")
 
-	FontTTF.append(-1)#DynamicFont.new())
+	FontTTF.append(-1)
 	FontTTF[4] = load("res://media/fonts/Font_01.ttf")
-
-#	FontTTF[0].size = 250
-#	FontTTF.append(DynamicFont.new())
-#	FontTTF[1].font_data = load("res://media/fonts/Font_01.ttf")
-#	FontTTF[1].size = 60
-#	FontTTF.append(DynamicFont.new())
-#	FontTTF[2].font_data = load("res://media/fonts/Font_01.ttf")
-#	FontTTF[2].size = 34
-#	FontTTF.append(DynamicFont.new())
-#	FontTTF[3].font_data = load("res://media/fonts/Font_02.ttf")
-#	FontTTF[3].size = 16
-#	FontTTF.append(DynamicFont.new())
-#	FontTTF[4].font_data = load("res://media/fonts/Font_01.ttf")
-#	FontTTF[4].size = 24
 
 	TextCurrentIndex = 0
 
 	AboutTextsStartIndex = 0
 	AboutTextsEndIndex = 0
 
-#	RenderingServer
-#	var xform = Transform2D().scaled(Vector2(2.845, 1.0))
 	RenderingServer.canvas_item_set_transform(Sprites.ci_rid[60], Transform2D().scaled(Vector2(2.845, 1.0)))#xform)
-# Invalid argument for "canvas_item_set_transform()" function: argument 2 should be Transform2D but is null.
 
 	RenderingServer.canvas_item_set_modulate(Sprites.ci_rid[60], Color(1.0, 1.0, 1.0, 0.4))
 
 	var sprite_size = Sprites.SpriteImage[60].get_size()
 	RenderingServer.canvas_item_set_transform(Sprites.ci_rid[60], Transform2D().translated(Vector2(-99999 - sprite_size.x / 2.0, -99999 - sprite_size.y / 2.0)))
 
-# Function "CanvasModulate()" not found in base self.
-
-#	Sprites.SpriteImage[60].modulate = Color(1.0, 1.0, 1.0, 0.4)
-
 	RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[60], 1000)
 	
-	DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-#	Sprites.SpriteImage[0].set_z_index(1000)
+	DrawSprite(0, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 #	FramesPerSecondText = RichTextLabel.new()
 #	add_child(FramesPerSecondText)
@@ -432,18 +403,17 @@ func _ready():
 func MoveAllActiveSpritesOffScreen():
 	for index in range(1, 20000):
 		if Sprites.SpriteActive[index] == true:
-#			Sprites.SpriteImage[index].global_position = Vector2(-9999, -9999)
 			var sprite_size = Sprites.SpriteImage[index].get_size()
 			RenderingServer.canvas_item_set_transform(Sprites.ci_rid[index], Transform2D().translated(Vector2(-99999 - sprite_size.x / 2.0, -99999 - sprite_size.y / 2.0)))
 
 	pass
 
 #----------------------------------------------------------------------------------------
-func DrawSprite(index, x, y, scaleX, scaleY, rotation, red, green, blue, alpha):
+func DrawSprite(index, x, y, scaleX, scaleY, rotations, red, green, blue, alpha):
 	var sprite_size = Sprites.SpriteImage[index].get_size()
 	sprite_size.x = sprite_size.x * scaleX
 	sprite_size.y = sprite_size.y * scaleY
-	var rot = rotation * (180/PI)
+	var rot = rotations * (180/PI)
 	RenderingServer.canvas_item_set_transform(Sprites.ci_rid[index], Transform2D(rot, Vector2(scaleX, scaleY), 0.0, Vector2(x - (sprite_size.x / 2.0), y - (sprite_size.y / 2.0))))
 	RenderingServer.canvas_item_set_modulate(Sprites.ci_rid[index], Color(red, green, blue, alpha))
 
@@ -452,7 +422,7 @@ func DrawSprite(index, x, y, scaleX, scaleY, rotation, red, green, blue, alpha):
 	Sprites.SpriteScreenY[index] = y
 	Sprites.SpriteScaleX[index] = scaleX
 	Sprites.SpriteScaleY[index] = scaleY
-	Sprites.SpriteRotation[index] = rotation
+	Sprites.SpriteRotation[index] = rotations
 	Sprites.SpriteColorRed[index] = red
 	Sprites.SpriteColorGreen[index] = green
 	Sprites.SpriteColorBlue[index] = blue
@@ -462,37 +432,37 @@ func DrawSprite(index, x, y, scaleX, scaleY, rotation, red, green, blue, alpha):
 
 #----------------------------------------------------------------------------------------
 func DeleteAllTexts():
-#	return
-	
-	var size = Texts.TextImage.size()
-	size-=1
+	var size = (TextCurrentIndex - 1)
 
 	for index in range(size, 9, -1):
 		remove_child(Texts.TextImage[index])
-#		Texts.TextImage.remove(index)
 
 	TextCurrentIndex = 10
 
 	pass
 
 #----------------------------------------------------------------------------------------
-func DrawnTextChangeScaleRotation(index, scaleX, scaleY, rotation):
+func DrawnTextChangeScaleRotation(index, scaleX, scaleY, rotations):
 	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
-	Texts.TextImage[index].rotation = rotation
+	Texts.TextImage[index].rotation = rotations
 
 	pass
 
 #----------------------------------------------------------------------------------------
-func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scaleY, rotation, red, green, blue, alpha, outlineRed, outlineGreen, outlineBlue):
+# Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic"(Not 100%-I'll finish it):
+func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scaleY, rotations, red, green, blue, alpha, outlineRed, outlineGreen, outlineBlue):
 	if ( index > (TextCurrentIndex-1) ):
 		Texts.TextImage.append(RichTextLabel.new())
 		add_child(Texts.TextImage[index])
 
+	var newTextDrawingOffsetY = 0
 	var fontToUseIndex = 0
 	if fontSize == 25:
 		fontToUseIndex = 0
+		newTextDrawingOffsetY = 15.0
 	elif fontSize == 60:
 		fontToUseIndex = 1
+		newTextDrawingOffsetY = 36.0
 	elif fontSize == 35:
 		fontToUseIndex = 2
 	elif fontSize == 12:
@@ -500,44 +470,31 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	elif fontSize == 22:
 		fontToUseIndex = 4
 
+	if horizontalJustification == 0:
+		Texts.TextImage[index].text = text
+		Texts.TextImage[index].set_use_bbcode(false)
+	elif horizontalJustification == 1:
+		Texts.TextImage[index].text = "[center]"+text+"[/center]"
+		Texts.TextImage[index].set_use_bbcode(true)
+	elif horizontalJustification == 2:
+		Texts.TextImage[index].text = "[right]"+text+"[/right]"
+		Texts.TextImage[index].set_use_bbcode(true)
+
 	Texts.TextImage[index].clip_contents = false
-
 	Texts.TextImage[index].add_theme_font_override("normal_font", FontTTF[fontToUseIndex])
-	
 	Texts.TextImage[index].add_theme_font_size_override("normal_font_size", fontSize)
-
 	Texts.TextImage[index].add_theme_color_override("default_color", Color(red, green, blue, alpha))
-	
-	Texts.TextImage[index].add_theme_constant_override("outline_size", 3.0)
-	
-	Texts.TextImage[index].add_theme_color_override("font_outline_color", Color(outlineRed, outlineGreen, outlineBlue, alpha))
+	Texts.TextImage[index].add_theme_constant_override("outline_size", 10.0)
+	Texts.TextImage[index].add_theme_color_override("font_outline_color", Color(outlineRed, outlineGreen, outlineBlue, alpha)) 
 
-	Texts.TextImage[index].text = text
-
-# Something wrong below
-	var textWidth = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).x
 	var textHeight = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).y
-# Something wrong above
 
 	Texts.TextImage[index].global_position.x = x
-	Texts.TextImage[index].global_position.y = (y - (textHeight / 2))
-
-	Texts.TextImage[index].set_size(Vector2(ScreenWidth, ScreenHeight), false)
-
-	Texts.TextImage[index].pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
-
+	Texts.TextImage[index].global_position.y = (y - newTextDrawingOffsetY)
+	Texts.TextImage[index].set_size(Vector2(VisualsCore.ScreenWidth, VisualsCore.ScreenHeight), false)
+	Texts.TextImage[index].pivot_offset = Vector2((VisualsCore.ScreenWidth / 2.0), (textHeight / 2.0))
 	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
-
-	Texts.TextImage[index].rotation = rotation
-
-	if horizontalJustification == 0:
-		Texts.TextImage[index].global_position.x = x
-	elif horizontalJustification == 1: # Center text horizonatally on screen (NOT working properly?)
-		Texts.TextImage[index].global_position.x = ((VisualsCore.ScreenWidth/2) - (textWidth/2))
-	elif horizontalJustification == 2:
-		Texts.TextImage[index].global_position.x = (VisualsCore.ScreenWidth - x - (textWidth))
-	elif horizontalJustification == 4:
-		Texts.TextImage[index].global_position.x = (x - (textWidth / 2))
+	Texts.TextImage[index].rotation = rotations
 
 	Texts.TextIndex.append(index)
 	Texts.TextScreenX.append(x)
@@ -546,7 +503,7 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	Texts.TextSize.append(fontSize)
 	Texts.TextScaleX.append(scaleX)
 	Texts.TextScaleY.append(scaleY)
-	Texts.TextRotation.append(rotation)
+	Texts.TextRotation.append(rotations)
 	Texts.TextColorRed.append(red)
 	Texts.TextColorGreen.append(green)
 	Texts.TextColorBlue.append(blue)
@@ -559,8 +516,7 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 
 	return(TextCurrentIndex-1)
 
-	pass
-
+#    Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic"(Not 100%-I'll finish it)
 #----------------------------------------------------------------------------------------
 func AddAboutScreenText(text, blue):
 	AboutTexts.AboutTextsText.append(text)
@@ -577,13 +533,15 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("TM", 0.0)
 
+	AddAboutScreenText(" ", 0.0)
+
 	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 		AddAboutScreenText("''TetriStory 110%™''", 0.0)
 	elif (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
 		AddAboutScreenText("''T-Story 110%™''", 0.0)
 
-	AddAboutScreenText("Copyright 2022 By:", 1.0)
-	AddAboutScreenText("Team ''Fallen Angel Software''", 1.0)
+	AddAboutScreenText("Copyright 2023 By:", 1.0)
+	AddAboutScreenText("Team ''BetaMax Heroes''", 1.0)
 
 	AddAboutScreenText("Original Concept By:", 0.0)
 	AddAboutScreenText("Alexey Pajitnov", 1.0)
@@ -594,14 +552,15 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
+	AddAboutScreenText("Version 4.0 Beta 2+", 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
 	AddAboutScreenText("''Yuri S.''", 1.0)
 
 	AddAboutScreenText("Game Built On:", 0.0)
-	AddAboutScreenText("Genuine ''Manjaro KDE 64Bit'' Linux", 1.0)
-	AddAboutScreenText("[www.Manjaro.org]", 1.0)
+	AddAboutScreenText("Genuine ''Linux Mint 21 Cinnamon 64Bit'' Linux OS", 1.0)
+	AddAboutScreenText("[www.LinuxMint.com]", 1.0)
 	AddAboutScreenText("Real Programmers Use Linux!", 1.0)
 
 	AddAboutScreenText("Project Produced By:", 0.0)
@@ -611,7 +570,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
 	AddAboutScreenText("Godot 2-D Game Engine Framework:", 0.0)
-	AddAboutScreenText("The ''Grand National GNX'' Engine By:", 1.0)
+	AddAboutScreenText("The ''Grand National GNX'' v2 Engine By:", 1.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
 	AddAboutScreenText("Original Cooperative Story Mode Created By:", 0.0)
@@ -622,6 +581,9 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Lead Game Programmer:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Text Drawing Godot v3.5 To v4.0 Beta 2+ Ported By:", 0.0)
+	AddAboutScreenText("''flairetic''", 1.0)
 
 	AddAboutScreenText("Lead Game Tester:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
@@ -635,6 +597,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("[32,000+ Average Lines Per Game!]", 1.0)
 
 	AddAboutScreenText("Support Game Programmers:", 0.0)
+	AddAboutScreenText("''flairetic''", 1.0)
 	AddAboutScreenText("''Daotheman''", 1.0)
 	AddAboutScreenText("''theweirdn8''", 1.0)
 	AddAboutScreenText("''mattmatteh''", 1.0)
@@ -745,36 +708,42 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Game Created On A:", 0.0)
 	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
-	AddAboutScreenText("Desktop Code Name: ''Optimus Prime''", 1.0)
-	AddAboutScreenText("Genuine ''Manjaro KDE 64Bit'' Linux", 1.0)
-	AddAboutScreenText("Corsair® 750watt Modular Power Supply", 1.0)
-	AddAboutScreenText("GIGABYTE® GA-970A-DS3P 2.0 AM3+ Motherboard", 1.0)
-	AddAboutScreenText("AMD® FX 3.5GHz[4GHz Turbo] 8-Core CPU", 1.0)
-	AddAboutScreenText("Corsair® 32GB DDR3 RAM Memory", 1.0)
-	AddAboutScreenText("nVidia® GeForce GTX 970TT 4GB GDDR5 GPU", 1.0)
-	AddAboutScreenText("ADATA® 1TB SSD Hard Drive[OS/Apps]", 1.0)
-	AddAboutScreenText("Western Digital® 1TB HDD Hard Drive[Data]", 1.0)
-#	AddAboutScreenText("Game Created On A:", 0.0)
-#	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
-#	AddAboutScreenText("Desktop Code Name: ''JetFire''", 1.0)
-#	AddAboutScreenText("Genuine ''openSUSE Tumbleweed K.D.E. 64Bit'' Linux", 1.0)
-#	AddAboutScreenText("Thermaltake 500watt Power Supply", 1.0)
-#	AddAboutScreenText("Gigabye B85M-HD3 Mid-Range Motherboard", 1.0)
-#	AddAboutScreenText("Intel Core i5 3.0GHz(3.2GHz Turbo) 4-Core CPU", 1.0)
-#	AddAboutScreenText("Corsair 16GB DDR3 RAM Memory", 1.0)
-#	AddAboutScreenText("nVidia GeForce GTX 1050 Ti 4GB GDDR5 GPU", 1.0)
-#	AddAboutScreenText("ADATA 1TB SSD Hard Drive(OS/Apps)", 1.0)
-#	AddAboutScreenText("Western Digital 1TB HDD Hard Drive(Personal Data)", 1.0)
+
+	AddAboutScreenText("Desktop Code Name: ''Megatron''", 1.0)
+	AddAboutScreenText("Build Date: June 11th, 2022", 1.0)
+	AddAboutScreenText("Genuine ''Linux Mint 21 Cinnamon 64Bit'' Linux OS", 1.0)
+	AddAboutScreenText("Silverstone Tek ATX Mid Tower Case", 1.0)
+	AddAboutScreenText("EVGA Supernova 650 GT 80 Plus Gold 650W Power Supply", 1.0)
+	AddAboutScreenText("ASUS AM4 TUF Gaming X570-Plus [Wi-Fi] Motherboard", 1.0)
+	AddAboutScreenText("AMD Ryzen 7 5800X[4.7GHz Turbo] 8-Core CPU", 1.0)
+	AddAboutScreenText("Noctua NH-U12S chromax.Black 120mm CPU Cooler", 1.0)
+	AddAboutScreenText("Corsair Vengeance LPX 32GB[2X16GB] DDR4 3200MHz RAM Memory", 1.0)
+	AddAboutScreenText("MSI Gaming nVidia GeForce RTX 3060 12GB GDDR6 OC GPU", 1.0)
+	AddAboutScreenText("SAMSUNG 980 PRO 2TB PCIe NVMe Gen 4 M.2 Drive", 1.0)
+	AddAboutScreenText("Seagate FireCuda 4TB 3.5 Inch Hard Drive", 1.0)
+
+
+	AddAboutScreenText("Game Tested On A:", 0.0)
+	AddAboutScreenText("SFF Thin Client Desktop", 1.0)
+	AddAboutScreenText("Desktop Code Name: ''Bumblebee''", 1.0)
+	AddAboutScreenText("Genuine Windows 11 Pro 64Bit OS", 1.0)
+	AddAboutScreenText("Proprietary SFF Case", 1.0)
+	AddAboutScreenText("Proprietary 65W Power Supply", 1.0)
+	AddAboutScreenText("Proprietary AMD Motherboard", 1.0)
+	AddAboutScreenText("AMD Ryzen 5 5600U[4.2Ghz Turbo] 6-Core CPU", 1.0)
+	AddAboutScreenText("Proprietary CPU Cooler", 1.0)
+	AddAboutScreenText("Crucial 32GB[2x16GB] DDR4L 3200MHz RAM Memory", 1.0)
+	AddAboutScreenText("AMD Radeon RX Vega 7 8GB DDR4L GPU", 1.0)
+	AddAboutScreenText("500GB PCIe NVMe Gen 3 M.2 Drive", 1.0)
 
 	AddAboutScreenText("HTML5 Version Tested On:", 0.0)
-	AddAboutScreenText("Genuine Windows® 10 Pro 64Bit", 1.0)
-	AddAboutScreenText("Edge", 1.0)
-	AddAboutScreenText("Firefox", 1.0)
-	AddAboutScreenText("Chrome", 1.0)
+	AddAboutScreenText("Microsoft Edge", 1.0)
+	AddAboutScreenText("Mozilla Firefox", 1.0)
+	AddAboutScreenText("Google Chrome", 1.0)
 	AddAboutScreenText("Opera", 1.0)
 
-	AddAboutScreenText("HTML5 Version Tested On macOS Safari By:", 0.0)
-	AddAboutScreenText("''EvanR''", 1.0)
+#	AddAboutScreenText("HTML5 Version Tested On macOS Safari By:", 0.0)
+#	AddAboutScreenText("''EvanR''", 1.0)
 
 	AddAboutScreenText("Android Version Tested On:", 0.0)
 	AddAboutScreenText("Samsung® Galaxy A51 Smartphone", 1.0)
@@ -818,10 +787,10 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
 
-	AddAboutScreenText("''A 110% By Team Fallen Angel Software!''", 0.0)
-	AddAboutScreenText(" ", 1.0)#[www.FallenAngelSoftware.com]", 1.0)
+	AddAboutScreenText("''A 110% By Team BetaMax Heroes!''", 0.0)
+	AddAboutScreenText(" ", 1.0)
 
-	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex-10], ((ScreenWidth/2)+100), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)
+	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex], ((ScreenWidth/2.0)+100.0), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)
 
 	var screenY = ScreenHeight+25
 	for index in range(AboutTextsStartIndex+1, AboutTextsEndIndex):
@@ -834,7 +803,7 @@ func LoadAboutScreenTexts():
 
 		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, 22, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
 
-#	Texts.TextImage[AboutTextsEndIndex-2].rect_global_position.y+=(ScreenHeight/2)
-#	Texts.TextImage[AboutTextsEndIndex-1].rect_global_position.y+=(ScreenHeight/2)
+	Texts.TextImage[AboutTextsEndIndex-2].global_position.y+=(ScreenHeight/2.0)
+	Texts.TextImage[AboutTextsEndIndex-1].global_position.y+=(ScreenHeight/2.0)
 
 	pass

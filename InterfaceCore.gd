@@ -1,4 +1,4 @@
-# Copyright 2023 "BetaMax Hero"
+# Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -164,7 +164,7 @@ func DrawAllButtons():
 
 	for index in range(0, NumberOfButtonsOnScreen):
 		if Buttons.ButtonIndex[index] > -1:
-			var textWidth
+#			var textWidth
 
 #			if Buttons.ButtonAnimationTimer[index] == 1:
 #				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(0.9, 0.9)
@@ -180,8 +180,8 @@ func DrawAllButtons():
 			VisualsCore.DrawSprite(40+index, Buttons.ButtonScreenX[index], Buttons.ButtonScreenY[index], Buttons.ButtonScale[index], Buttons.ButtonScale[index], 0.0, 1.0, 1.0, 1.0, 1.0)
 
 			if (index == ButtonSelectedByKeyboard && NumberOfButtonsOnScreen > 1 && ScreensCore.OperatingSys != ScreensCore.OSAndroid):
-				VisualsCore.DrawSprite(50, (VisualsCore.ScreenWidth/2)-154, Buttons.ButtonScreenY[index], 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0)
-				VisualsCore.DrawSprite(51, (VisualsCore.ScreenWidth/2)+154, Buttons.ButtonScreenY[index], 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0)
+				VisualsCore.DrawSprite(50, (VisualsCore.ScreenWidth/2.0)-154.0, Buttons.ButtonScreenY[index], 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0)
+				VisualsCore.DrawSprite(51, (VisualsCore.ScreenWidth/2.0)+154.0, Buttons.ButtonScreenY[index], 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0)
 
 
 #			var textHeight = VisualsCore.Texts.TextImage[index].get_font("normal_font").get_string_size(VisualsCore.Texts.TextImage[index].text).y
@@ -284,32 +284,32 @@ func DrawAllArrowSets():
 
 	return
 
-	for index in range(0, NumberOfArrowSetsOnScreen):
-		if ArrowSets.ArrowSetIndex[index] > -1:
-			VisualsCore.Sprites.SpriteImage[80+(index*2)].global_position = Vector2((VisualsCore.ScreenWidth-30), ArrowSets.ArrowSetScreenY[index])
-			VisualsCore.Sprites.SpriteImage[81+(index*2)].global_position = Vector2((30), ArrowSets.ArrowSetScreenY[index])
-
-			if ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 3:
-				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.85, 0.85)
-			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 2:
-				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.90, 0.90)
-			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 1:
-				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.95, 0.95)
-			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 0:
-				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(1.0, 1.0)
-
-			if ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 3:
-				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.85, 0.85)
-			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 2:
-				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.90, 0.90)
-			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 1:
-				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.95, 0.95)
-			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 0:
-				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(1.0, 1.0)
-
-	VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
-
-	pass
+#	for index in range(0, NumberOfArrowSetsOnScreen):
+#		if ArrowSets.ArrowSetIndex[index] > -1:
+#			VisualsCore.Sprites.SpriteImage[80+(index*2)].global_position = Vector2((VisualsCore.ScreenWidth-30), ArrowSets.ArrowSetScreenY[index])
+#			VisualsCore.Sprites.SpriteImage[81+(index*2)].global_position = Vector2((30), ArrowSets.ArrowSetScreenY[index])
+#
+#			if ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 3:
+#				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.85, 0.85)
+#			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 2:
+#				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.90, 0.90)
+#			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 1:
+#				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.95, 0.95)
+#			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 0:
+#				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(1.0, 1.0)
+#
+#			if ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 3:
+#				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.85, 0.85)
+#			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 2:
+#				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.90, 0.90)
+#			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 1:
+#				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.95, 0.95)
+#			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 0:
+#				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(1.0, 1.0)
+#
+#	VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+#
+#	pass
 
 #----------------------------------------------------------------------------------------
 func ThisArrowWasPressed(arrowToCheck):
@@ -359,7 +359,7 @@ func ThisArrowWasPressed(arrowToCheck):
 			ArrowSetSelectedByKeyboard-=1
 		else:  ArrowSetSelectedByKeyboard = (NumberOfArrowSetsOnScreen-1)
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
-		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2.0), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
 		AudioCore.PlayEffect(0)
 		InputCore.DelayAllUserInput = 15
 	elif InputCore.JoystickDirection[InputCore.InputAny] == InputCore.JoyDown && NumberOfArrowSetsOnScreen > 1:
@@ -367,7 +367,7 @@ func ThisArrowWasPressed(arrowToCheck):
 			ArrowSetSelectedByKeyboard+=1
 		else:  ArrowSetSelectedByKeyboard = 0
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
-		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2.0), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
 		AudioCore.PlayEffect(0)
 		InputCore.DelayAllUserInput = 15
 	pass
@@ -394,175 +394,175 @@ func DrawAllIcons():
 	
 	return
 	
-	for index in range (0, NumberOfIconsOnScreen):
-#		VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].global_position = Vector2(Icons.IconScreenX[index], Icons.IconScreenY[index])
-
-		if Icons.IconAnimationTimer[index] == 3:
-			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.85, 0.85)
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.85, 0.85, 0)
-		elif Icons.IconAnimationTimer[index] == 2:
-			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.90, 0.90)
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.90, 0.90, 0)
-		elif Icons.IconAnimationTimer[index] == 1:
-			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.95, 0.95)
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.95, 0.95, 0)
-		elif Icons.IconAnimationTimer[index] == 0:
-			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 1.0, 1.0, 0)
-
-	pass
+#	for index in range (0, NumberOfIconsOnScreen):
+##		VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].global_position = Vector2(Icons.IconScreenX[index], Icons.IconScreenY[index])
+#
+#		if Icons.IconAnimationTimer[index] == 3:
+#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.85, 0.85)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.85, 0.85, 0)
+#		elif Icons.IconAnimationTimer[index] == 2:
+#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.90, 0.90)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.90, 0.90, 0)
+#		elif Icons.IconAnimationTimer[index] == 1:
+#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.95, 0.95)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.95, 0.95, 0)
+#		elif Icons.IconAnimationTimer[index] == 0:
+#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 1.0, 1.0, 0)
+#
+#	pass
 
 #----------------------------------------------------------------------------------------
-func ThisIconWasPressed(iconToCheck, player):
+func ThisIconWasPressed(_iconToCheck, _player):
 	if NumberOfIconsOnScreen == 0:  return false
 
 	return
 
-	if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen && InputCore.DelayAllUserInput > -1):
-		for index in range (0, NumberOfIconsOnScreen):
-			Icons.IconAnimationTimer[index] = -1
-			Icons.IconScale[index] = 1.0
-			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
-		return false
-
-	var iconIndex = 4
-	if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
-		iconIndex = 8
-
-	if Icons.IconAnimationTimer[iconToCheck] == 3:
-		Icons.IconAnimationTimer[iconToCheck]-=1
-
-		if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen):
-			if (iconToCheck != iconIndex):
-				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
-				return true
-			else:
-				Icons.IconAnimationTimer[iconToCheck] = -1
-				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
-	elif Icons.IconAnimationTimer[iconToCheck] == 2:
-		Icons.IconAnimationTimer[iconToCheck]-=1
-	elif Icons.IconAnimationTimer[iconToCheck] == 1:
-		Icons.IconAnimationTimer[iconToCheck]-=1
-	elif Icons.IconAnimationTimer[iconToCheck] == 0:
-		Icons.IconAnimationTimer[iconToCheck] = -1
-
-		if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-			return true
-
-	if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-		if InputCore.DelayAllUserInput > 0:  return false
-
-	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
-		if InputCore.MouseButtonLeftPressed == true:
-			var sprH = VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[iconToCheck]]
-			var sprW = VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[iconToCheck]]
-
-			if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-				if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-					Icons.IconAnimationTimer[iconToCheck] = 3
-					if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):
-						AudioCore.PlayEffect(0)
-
-					InputCore.DelayAllUserInput = 5
-				elif (iconToCheck != iconIndex):
-					Icons.IconAnimationTimer[iconToCheck] = 3
-					return true
-				else:
-					Icons.IconAnimationTimer[iconToCheck] = 3
-					return true
-	elif (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
-		if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-			if InputCore.MouseButtonLeftPressed == true:
-				var sprH
-				var sprW
-				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
-				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
-
-				if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						AudioCore.PlayEffect(0)
-						InputCore.DelayAllUserInput = 5
-					elif (iconToCheck != iconIndex):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-					else:
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-		else:
-			if player == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.TouchTwoPressed == true):
-				var sprH
-				var sprW
-				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
-				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
-
-				if InputCore.MouseButtonLeftPressed == true:
-					if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-						if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							AudioCore.PlayEffect(0)
-							InputCore.DelayAllUserInput = 30
-						elif (iconToCheck != iconIndex):
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							return true
-						else:
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							return true
-
-				if InputCore.TouchTwoPressed == true:
-					if (InputCore.TouchTwoScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.TouchTwoScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.TouchTwoScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.TouchTwoScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-						if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							AudioCore.PlayEffect(0)
-							InputCore.DelayAllUserInput = 30
-						elif (iconToCheck != iconIndex):
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							return true
-						else:
-							Icons.IconAnimationTimer[iconToCheck] = 3
-							return true
-			elif player == 1 && (InputCore.MouseButtonLeftPressed == true):
-				var sprH
-				var sprW
-				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
-				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
-
-				if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						AudioCore.PlayEffect(0)
-						InputCore.DelayAllUserInput = 30
-					elif (iconToCheck != iconIndex):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-					else:
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-			elif player == 2 && (InputCore.TouchTwoPressed == true):
-				var sprH
-				var sprW
-				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
-				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
-
-				if (InputCore.TouchTwoScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.TouchTwoScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.TouchTwoScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.TouchTwoScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
-					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						AudioCore.PlayEffect(0)
-						InputCore.DelayAllUserInput = 30
-					elif (iconToCheck != iconIndex):
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-					else:
-						Icons.IconAnimationTimer[iconToCheck] = 3
-						return true
-
-	return false
-
-	pass
+#	if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen && InputCore.DelayAllUserInput > -1):
+#		for index in range (0, NumberOfIconsOnScreen):
+#			Icons.IconAnimationTimer[index] = -1
+#			Icons.IconScale[index] = 1.0
+#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
+#		return false
+#
+#	var iconIndex = 4
+#	if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
+#		iconIndex = 8
+#
+#	if Icons.IconAnimationTimer[iconToCheck] == 3:
+#		Icons.IconAnimationTimer[iconToCheck]-=1
+#
+#		if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen):
+#			if (iconToCheck != iconIndex):
+#				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
+#				return true
+#			else:
+#				Icons.IconAnimationTimer[iconToCheck] = -1
+#				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
+#	elif Icons.IconAnimationTimer[iconToCheck] == 2:
+#		Icons.IconAnimationTimer[iconToCheck]-=1
+#	elif Icons.IconAnimationTimer[iconToCheck] == 1:
+#		Icons.IconAnimationTimer[iconToCheck]-=1
+#	elif Icons.IconAnimationTimer[iconToCheck] == 0:
+#		Icons.IconAnimationTimer[iconToCheck] = -1
+#
+#		if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#			return true
+#
+#	if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#		if InputCore.DelayAllUserInput > 0:  return false
+#
+#	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
+#		if InputCore.MouseButtonLeftPressed == true:
+#			var sprH = VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[iconToCheck]]
+#			var sprW = VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[iconToCheck]]
+#
+#			if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#				if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#					Icons.IconAnimationTimer[iconToCheck] = 3
+#					if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):
+#						AudioCore.PlayEffect(0)
+#
+#					InputCore.DelayAllUserInput = 5
+#				elif (iconToCheck != iconIndex):
+#					Icons.IconAnimationTimer[iconToCheck] = 3
+#					return true
+#				else:
+#					Icons.IconAnimationTimer[iconToCheck] = 3
+#					return true
+#	elif (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
+#		if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#			if InputCore.MouseButtonLeftPressed == true:
+#				var sprH
+#				var sprW
+#				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
+#				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
+#
+#				if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						AudioCore.PlayEffect(0)
+#						InputCore.DelayAllUserInput = 5
+#					elif (iconToCheck != iconIndex):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#					else:
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#		else:
+#			if player == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.TouchTwoPressed == true):
+#				var sprH
+#				var sprW
+#				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
+#				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
+#
+#				if InputCore.MouseButtonLeftPressed == true:
+#					if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#						if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							AudioCore.PlayEffect(0)
+#							InputCore.DelayAllUserInput = 30
+#						elif (iconToCheck != iconIndex):
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							return true
+#						else:
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							return true
+#
+#				if InputCore.TouchTwoPressed == true:
+#					if (InputCore.TouchTwoScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.TouchTwoScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.TouchTwoScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.TouchTwoScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#						if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							AudioCore.PlayEffect(0)
+#							InputCore.DelayAllUserInput = 30
+#						elif (iconToCheck != iconIndex):
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							return true
+#						else:
+#							Icons.IconAnimationTimer[iconToCheck] = 3
+#							return true
+#			elif player == 1 && (InputCore.MouseButtonLeftPressed == true):
+#				var sprH
+#				var sprW
+#				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
+#				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
+#
+#				if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						AudioCore.PlayEffect(0)
+#						InputCore.DelayAllUserInput = 30
+#					elif (iconToCheck != iconIndex):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#					else:
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#			elif player == 2 && (InputCore.TouchTwoPressed == true):
+#				var sprH
+#				var sprW
+#				sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
+#				sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
+#
+#				if (InputCore.TouchTwoScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.TouchTwoScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.TouchTwoScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.TouchTwoScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+#					if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						AudioCore.PlayEffect(0)
+#						InputCore.DelayAllUserInput = 30
+#					elif (iconToCheck != iconIndex):
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#					else:
+#						Icons.IconAnimationTimer[iconToCheck] = 3
+#						return true
+#
+#	return false
+#
+#	pass
 
 #----------------------------------------------------------------------------------------
 func DeleteAllGUI():
