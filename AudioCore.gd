@@ -35,7 +35,7 @@ func ConvertLinearToDB(volume):
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	MusicVolume = 0.5
+	MusicVolume = 0.5#0.0#.5
 	EffectsVolume = 0.5
 
 	MusicPlayer = AudioStreamPlayer.new()
@@ -73,16 +73,16 @@ func PlayMusic(index):
 	
 	MusicCurrentlyPlaying = index
 
-	if index == 0:  MusicPlayer.stream = load("res://media/music/TitleBGM.ogg") # Final
-	elif index == 1:  MusicPlayer.stream = load("res://media/music/InGame1BGM.ogg") # Final
+	if index == 0:  MusicPlayer.stream = load("res://media/music/TitleBGM.ogg")
+	elif index == 1:  MusicPlayer.stream = load("res://media/music/InGame1BGM.ogg")
 	elif index == 2:  MusicPlayer.stream = load("res://media/music/InGame2BGM.ogg")
 	elif index == 3:  MusicPlayer.stream = load("res://media/music/InGame3BGM.ogg")
 	elif index == 4:  MusicPlayer.stream = load("res://media/music/InGame4BGM.ogg")
-	elif index == 5:  MusicPlayer.stream = load("res://media/music/InGame5BGM.ogg") # Final
+	elif index == 5:  MusicPlayer.stream = load("res://media/music/InGame5BGM.ogg")
 	elif index == 6:  MusicPlayer.stream = load("res://media/music/InGame6BGM.ogg")
 	elif index == 7:  MusicPlayer.stream = load("res://media/music/InGame7BGM.ogg")
-	elif index == 8:  MusicPlayer.stream = load("res://media/music/InGame8BGM.ogg") # Final
-	elif index == 9:  MusicPlayer.stream = load("res://media/music/InGame9BGM.ogg") # Final
+	elif index == 8:  MusicPlayer.stream = load("res://media/music/InGame8BGM.ogg")
+	elif index == 9:  MusicPlayer.stream = load("res://media/music/InGame9BGM.ogg")
 	elif index == 10:  MusicPlayer.stream = load("res://media/music/WonBGM.ogg")
 
 

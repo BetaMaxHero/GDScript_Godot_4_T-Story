@@ -25,7 +25,7 @@ var HighScoreScore = []
 var PlayerWithHighestScore
 var NewHighScoreRank
 
-const FILE_NAME = "user://TetriStory-3_0_0_4e-game-data.json"
+const FILE_NAME = "user://TetriStory-3_0_0_5-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func CheckForNewHighScore():
@@ -63,15 +63,15 @@ func CheckForNewHighScore():
 func ClearHighScores():
 	for mode in range(0, 6):
 		HighScoreName[mode][0] = "JeZxLee"
-		HighScoreName[mode][1] = "Daotheman"
-		HighScoreName[mode][2] = "theweirdn8"
-		HighScoreName[mode][3] = "mattmatteh"
-		HighScoreName[mode][4] = "Oshi Bobo"
-		HighScoreName[mode][5] = "D.J. Fading Twilight"
-		HighScoreName[mode][6] = "Godot Engine"
-		HighScoreName[mode][7] = "You"
-		HighScoreName[mode][8] = "Them"
-		HighScoreName[mode][9] = "Us"
+		HighScoreName[mode][1] = "flairetic"
+		HighScoreName[mode][2] = "EvanR"
+		HighScoreName[mode][3] = "Daotheman"
+		HighScoreName[mode][4] = "theweirdn8"
+		HighScoreName[mode][5] = "mattmatteh"
+		HighScoreName[mode][6] = "Oshi Bobo"
+		HighScoreName[mode][7] = "D.J. Fading Twilight"
+		HighScoreName[mode][8] = "Godot Engine Version 4.x"
+		HighScoreName[mode][9] = "You!"
 
 		HighScoreLevel[mode][0] = 10
 		HighScoreLevel[mode][1] = 9

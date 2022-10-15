@@ -186,7 +186,6 @@ func ApplyScreenFadeTransition():
 
 			ScreenToDisplay = ScreenToDisplayNext
 
-#	VisualsCore.Sprites.SpriteImage[0].modulate = Color(1.0, 1.0, 1.0, ScreenFadeTransparency)
 	RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[0], Color(1.0, 1.0, 1.0, ScreenFadeTransparency))
 
 	pass
@@ -196,6 +195,8 @@ func DisplayGodotScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta #2+", 445, 185, 0, 46, 1.0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0)
 
 		ScreenDisplayTimer = (200*2)
 
@@ -433,28 +434,14 @@ func DisplayOptionsScreen():
 		if (JoystickSetupIndex == JoySetupNotStarted):
 #			VisualsCore.DrawSprite(19999, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.8)
 			VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
-			
-			
-			
-			
-			
-			
-			
+	
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "O  P  T  I  O  N  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2.0, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, " ", 0, 0, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
-
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Music Volume:", 75, 65, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			
-			
-			
-			
-			
-			
-			
+	
 			InterfaceCore.CreateArrowSet(0, 65)
 			if AudioCore.MusicVolume == 1.0:
 				OptionsTextMusicVol = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100% Volume", -75, 65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -815,10 +802,10 @@ func DisplayOptionsScreen():
 				VisualsCore.KeepAspectRatio-=1
 			else:  VisualsCore.KeepAspectRatio = 1
 
-			if (VisualsCore.KeepAspectRatio == 1):
-				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
-			elif (VisualsCore.KeepAspectRatio == 0):
-				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
+#			if (VisualsCore.KeepAspectRatio == 1):
+#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
+#			elif (VisualsCore.KeepAspectRatio == 0):
+#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
 
 			if (VisualsCore.KeepAspectRatio == 1):
 				VisualsCore.DrawText(OptionsTextAspectRatio, "On", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -832,10 +819,10 @@ func DisplayOptionsScreen():
 				VisualsCore.KeepAspectRatio+=1
 			else:  VisualsCore.KeepAspectRatio = 0
 
-			if (VisualsCore.KeepAspectRatio == 1):
-				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
-			elif (VisualsCore.KeepAspectRatio == 0):
-				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
+#			if (VisualsCore.KeepAspectRatio == 1):
+#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
+#			elif (VisualsCore.KeepAspectRatio == 0):
+#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
 
 			if (VisualsCore.KeepAspectRatio == 1):
 				VisualsCore.DrawText(OptionsTextAspectRatio, "On", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -999,26 +986,20 @@ func DisplayHowToPlayScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, " ", 0, 0, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Pieces will fall from the top.", 0, 70, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Pieces will fall from the top.", 0, 30, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Move/rotate the falling pieces", 0, 70+20+60, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Move/rotate the falling pieces", 0, 30+20+60, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "to create complete lines.", 0, 70+20+60+60, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "to create complete lines.", 0, 30+20+60+60, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Complete lines will be cleared.", 0, 70+20+60+60+60, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Complete lines will be cleared.", 0, 30+20+60+60+60, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "When the boxes reach the top,", 0, 70+20+20+60+60+60+60, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "When the boxes reach the top,", 0, 30+20+20+60+60+60+60, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "the game will be over.", 0, 70+20+20+60+60+60+60+60, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "the game will be over.", 0, 30+20+20+60+60+60+60+60, 1, 57, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		DemoTextIndex = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Do You Have The Skill To Win?", 0, 500, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 2.0, 2.0, 0)
+		DemoTextIndex = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Do You Have The Skill To Win?", 0, 470, 1, 55, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2.0), VisualsCore.ScreenHeight-25.0)
 
@@ -1612,7 +1593,6 @@ func DisplayPlayingGameScreen():
 			for index in range (0, maxIndex):
 				VisualsCore.DrawSprite(indexStart+index, -9999, -9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 				if (indexStart == 19700):
-#					VisualsCore.Sprites.SpriteImage[19700+index].modulate = Color(1.0, 1.0, 1.0, 0.5)
 					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[index], Color(1.0, 1.0, 1.0, 0.5))
 				else:
 					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[index], Color(1.0, 1.0, 1.0, 1.0))
@@ -1688,7 +1668,6 @@ func DisplayPlayingGameScreen():
 		for indexStart in range(10000, 18000, 1000):
 			for index in range (0, 624):
 				if (VisualsCore.Sprites.SpriteActive[indexStart+index] == true):
-#					VisualsCore.Sprites.SpriteImage[indexStart+index].global_position = Vector2(-9999, -9999)
 					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
 
 	if LogicCore.DrawEverything == true:
@@ -1704,7 +1683,6 @@ func DisplayPlayingGameScreen():
 						adjustedBox-=10
 						startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
 
-#						VisualsCore.Sprites.SpriteImage[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]].global_position = Vector2(screenX, screenY)
 						var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 						VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
@@ -1715,7 +1693,6 @@ func DisplayPlayingGameScreen():
 
 						var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 
-#						VisualsCore.Sprites.SpriteImage[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]].global_position = Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))
 						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 
 #						print("DrawEverything")
@@ -1747,7 +1724,6 @@ func DisplayPlayingGameScreen():
 	var maxIndex = (4*3*2)
 	for indexStart in range(19000, 19800, 100):
 		for index in range (0, maxIndex):
-#			VisualsCore.Sprites.SpriteImage[indexStart+index].global_position = Vector2(-9999, -9999)
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
 
 	var screenX = 135
@@ -1762,7 +1738,6 @@ func DisplayPlayingGameScreen():
 					adjustedBox-=1000
 					startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
 
-#					VisualsCore.Sprites.SpriteImage[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]].global_position = Vector2(screenX, screenY)
 					var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 					VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
@@ -1772,13 +1747,12 @@ func DisplayPlayingGameScreen():
 					startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
 
 					if (y > 4):
-#						VisualsCore.Sprites.SpriteImage[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]].modulate = Color(1.0, 1.0, 1.0, 1.0)#LogicCore.PlayfieldAlpha)
+
 						var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 						RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Color(1.0, 1.0, 1.0, 1.0))
 					VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
 				elif (LogicCore.Playfield[x][y] == 2000):
-#					VisualsCore.Sprites.SpriteImage[19700+VisualsCore.PieceSpriteCurrentIndex[8]].global_position = Vector2(screenX, screenY)
 					var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))

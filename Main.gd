@@ -1,3 +1,6 @@
+# Beta 2 Until Beta 4:
+# "target_fps" to "max_fps"
+
 # Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -17,7 +20,7 @@
 #
 # ------------------------------------------------------------------------------------------------
 #                              Cross-Platform / M.I.T. Open-Source
-#             "Grand National GNX" v2 Alpha2 Godot Engine 4.x 2D Video Game Framework
+#              "Grand National GNX" v2 Godot Engine 4.x 2D Video Game Framework
 # ------------------------------------------------------------------------------------------------
 #                                 "Fight To Win, Win For Love!"
 #  ___________     __         .__  _________ __                         ____ ___________  _   /\TM
@@ -26,11 +29,11 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                          Pre-Beta1of3
+#                             Version 3.0.0.5 Alpha3 Of Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
-#                               (C)opyright 2023 - "BetaMax Heroes"
+#                             (C)opyright 2023 - Team "BetaMax Heroes"
 # ------------------------------------------------------------------------------------------------
 
 #- [DONE!] Perfect single player game [DONE!] -
@@ -74,4 +77,4 @@ func _process(_delta):
 
 	pass
 
-# "A 110% By "BetaMax Hero"!
+# "A 110% By Team "BetaMax Heroes"!

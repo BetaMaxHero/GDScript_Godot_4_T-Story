@@ -340,29 +340,20 @@ func _ready():
 			var xform = Transform2D().translated(Vector2(-99999 - sprite_size.x / 2.0, -99999 - sprite_size.y / 2.0))
 			RenderingServer.canvas_item_set_transform(Sprites.ci_rid[index], xform)
 
-			if (index > 39 && index < 129):
+			if (index == 10):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -15)
+			elif (index > 39 && index < 49):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
+			elif (index > 49 && index < 129):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 500)
-
-			if (index > 139 && index < 150):
+			elif (index > 139 && index < 150):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 50)
-
-			if (index > 18999 && index < 19980):
+			elif (index > 18999 && index < 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
+
 
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
-
-	FontTTF.append(-1)
-	FontTTF[1] = load("res://media/fonts/Font_01.ttf")
-
-	FontTTF.append(-1)
-	FontTTF[2] = load("res://media/fonts/Font_01.ttf")
-
-	FontTTF.append(-1)
-	FontTTF[3] = load("res://media/fonts/Font_01.ttf")
-
-	FontTTF.append(-1)
-	FontTTF[4] = load("res://media/fonts/Font_01.ttf")
 
 	TextCurrentIndex = 0
 
@@ -461,14 +452,14 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 		fontToUseIndex = 0
 		newTextDrawingOffsetY = 15.0
 	elif fontSize == 60:
-		fontToUseIndex = 1
+		fontToUseIndex = 0
 		newTextDrawingOffsetY = 36.0
 	elif fontSize == 35:
-		fontToUseIndex = 2
+		fontToUseIndex = 0
 	elif fontSize == 12:
-		fontToUseIndex = 3
+		fontToUseIndex = 0
 	elif fontSize == 22:
-		fontToUseIndex = 4
+		fontToUseIndex = 0
 
 	if horizontalJustification == 0:
 		Texts.TextImage[index].text = text
@@ -484,7 +475,7 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	Texts.TextImage[index].add_theme_font_override("normal_font", FontTTF[fontToUseIndex])
 	Texts.TextImage[index].add_theme_font_size_override("normal_font_size", fontSize)
 	Texts.TextImage[index].add_theme_color_override("default_color", Color(red, green, blue, alpha))
-	Texts.TextImage[index].add_theme_constant_override("outline_size", 10.0)
+	Texts.TextImage[index].add_theme_constant_override("outline_size", 15.0)
 	Texts.TextImage[index].add_theme_color_override("font_outline_color", Color(outlineRed, outlineGreen, outlineBlue, alpha)) 
 
 	var textHeight = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).y
@@ -598,6 +589,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Support Game Programmers:", 0.0)
 	AddAboutScreenText("''flairetic''", 1.0)
+	AddAboutScreenText("''EvanR''", 1.0)
 	AddAboutScreenText("''Daotheman''", 1.0)
 	AddAboutScreenText("''theweirdn8''", 1.0)
 	AddAboutScreenText("''mattmatteh''", 1.0)
