@@ -964,11 +964,11 @@ func DisplayOptionsScreen():
 			ScreenToDisplayNext = TitleScreen
 			ScreenFadeStatus = FadingToBlack
 
-#	LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
-#	if (LogicCore.SecretCodeCombined == 2777 || LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889):
-#		VisualsCore.FramesPerSecondText.rect_global_position.x = (10)
-#	else:
-#		VisualsCore.FramesPerSecondText.rect_global_position.x = -9999
+	LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
+	if (LogicCore.SecretCodeCombined == 2777 || LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889):
+		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = 10
+	else:
+		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = -9999
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
@@ -1133,7 +1133,7 @@ func DisplayAboutScreen():
 			videoplayer.modulate = Color(1.0, 1.0, 1.0, 0.6)
 			videoplayer.play()
 
-	var textScrollSpeed = 0.925
+	var textScrollSpeed = 1.2
 	if (LogicCore.GameWon == false):
 		textScrollSpeed = 2
 
@@ -1203,69 +1203,69 @@ func DisplayMusicTestScreen():
 		InterfaceCore.CreateArrowSet( 0, (VisualsCore.ScreenHeight/4.0) )
 		if AudioCore.MusicCurrentlyPlaying == 0:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Title", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Farewell''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "MaxKoMusic", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Farewell''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "MaxKoMusic", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 1:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 1", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Spirit''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Alexander Nakarada", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Spirit''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Alexander Nakarada", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 2:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 2", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''You're Welcome[Instrumental]''", 0, 275, 1, 35, 1.7, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "RYYZN", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''You're Welcome[Instrumental]''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "RYYZN", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 3:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 3", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Voyage''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "LEMMiNO", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Voyage''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "LEMMiNO", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 4:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 4", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Deja Vu''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "RYYZN", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Deja Vu''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "RYYZN", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 5:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 5", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Dragon Slayer''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Makai Symphony", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Dragon Slayer''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Makai Symphony", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 6:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 6", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Eyes_and_See''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PEOPLE OF THE PARALLEL", 0, 475, 1, 35, 1.7, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Eyes_and_See''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PEOPLE OF THE PARALLEL", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 7:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 7", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''My Heart Blows Up [Explosions]''", 0, 275, 1, 35, 1.6, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "ANTON LEUBA", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''My Heart Blows Up [Explosions]''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "ANTON LEUBA", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 8:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 8", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Absolution''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Scott Buckley", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Absolution''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Scott Buckley", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 9:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Level # 9", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Warrior''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "yoitrax", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Warrior''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "yoitrax", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[Final]", 0, 530, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicCurrentlyPlaying == 10:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Won", 0, (VisualsCore.ScreenHeight/4.0), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''UPBEAT 2''", 0, 275, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Aries Beats", 0, 475, 1, 35, 2.0, 2.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''UPBEAT 2''", 0, 275, 1, 100, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "By:", 0, 375, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Aries Beats", 0, 475, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2.0, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2.0), VisualsCore.ScreenHeight-25.0)
@@ -2124,38 +2124,38 @@ func ProcessScreenToDisplay():
 
 	ApplyScreenFadeTransition()
 
-#	if (LogicCore.SecretCodeCombined == 2777 || LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889):
-#		VisualsCore.FramesPerSecondText.rect_global_position.x = (10)
-#
-#		var fps = "60"
-#		if (ScreenToDisplay == PlayingGameScreen):
-#			if LogicCore.GameMode == LogicCore.ChildMode:
-#				fps = "30"
-#			elif LogicCore.GameMode == LogicCore.TeenMode:
-#				fps = "60"
-#			elif LogicCore.GameMode == LogicCore.AdultMode:
-#				fps = "45"
-#
-#		var _realMouseScreenX = -1
-#		if (InputCore.MouseScreenX != null):
-#			_realMouseScreenX = floor(InputCore.MouseScreenX)
-#		var _realMouseScreenY = -1
-#		if (InputCore.MouseScreenY != null):
-#			_realMouseScreenY = floor(InputCore.MouseScreenY)
-#
-#		var _realTouchTwoScreenX = -1
-#		if (InputCore.TouchTwoScreenX != null):
-#			_realTouchTwoScreenX = floor(InputCore.TouchTwoScreenX)
-#		var _realTouchTwoScreenY = -1
-#		if (InputCore.TouchTwoScreenY != null):
-#			_realTouchTwoScreenY = floor(InputCore.TouchTwoScreenY)
-#
+	if (LogicCore.SecretCodeCombined == 2777 || LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889):
+		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = (10)
+
+		var fps = "60"
+		if (ScreenToDisplay == PlayingGameScreen):
+			if LogicCore.GameMode == LogicCore.ChildMode:
+				fps = "30"
+			elif LogicCore.GameMode == LogicCore.TeenMode:
+				fps = "60"
+			elif LogicCore.GameMode == LogicCore.AdultMode:
+				fps = "45"
+
+		var _realMouseScreenX = -1
+		if (InputCore.MouseScreenX != null):
+			_realMouseScreenX = floor(InputCore.MouseScreenX)
+		var _realMouseScreenY = -1
+		if (InputCore.MouseScreenY != null):
+			_realMouseScreenY = floor(InputCore.MouseScreenY)
+
+		var _realTouchTwoScreenX = -1
+		if (InputCore.TouchTwoScreenX != null):
+			_realTouchTwoScreenX = floor(InputCore.TouchTwoScreenX)
+		var _realTouchTwoScreenY = -1
+		if (InputCore.TouchTwoScreenY != null):
+			_realTouchTwoScreenY = floor(InputCore.TouchTwoScreenY)
+
 #		if (ScreensCore.ScreenToDisplay != ScreensCore.PlayingGameScreen):
-#			VisualsCore.FramesPerSecondText.text = (" "+str(Engine.get_frames_per_second())+"/"+fps)
+		VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(Engine.get_frames_per_second())+"/"+fps)
 #		elif (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen):
-#			VisualsCore.FramesPerSecondText.text = (" "+str(Engine.get_frames_per_second())+"/"+fps)
- #			VisualsCore.FramesPerSecondText.text = (" "+str(Engine.get_frames_per_second())+"/"+fps+" / MX:"+str(realMouseScreenX)+" MY:"+str(realMouseScreenY)+"/TX:"+str(realTouchTwoScreenX)+" TY:"+str(realTouchTwoScreenY)+" / Mouse:"+str(InputCore.MouseButtonLeftPressed)+" / Touch:"+str(InputCore.TouchTwoPressed))
-#	else:
-#		VisualsCore.FramesPerSecondText.rect_global_position.x = -9999
+#			VisualsCore.FramesPerSecondText.TextImage[0] = (" "+str(Engine.get_frames_per_second())+"/"+fps)
+##			VisualsCore.FramesPerSecondText.text = (" "+str(Engine.get_frames_per_second())+"/"+fps+" / MX:"+str(realMouseScreenX)+" MY:"+str(realMouseScreenY)+"/TX:"+str(realTouchTwoScreenX)+" TY:"+str(realTouchTwoScreenY)+" / Mouse:"+str(InputCore.MouseButtonLeftPressed)+" / Touch:"+str(InputCore.TouchTwoPressed))
+	else:
+		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = -9999
 
 	pass

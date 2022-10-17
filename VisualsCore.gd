@@ -19,7 +19,25 @@
 extends Node2D
 
 var DEBUG = true
-var FramesPerSecondText
+#var FramesPerSecondText
+class FPSClass:
+	var TextImage = []
+	var TextIndex = []
+	var TextScreenX = []
+	var TextScreenY = []
+	var TextHorizontalJustification = []
+	var TextSize = []
+	var TextScaleX = []
+	var TextScaleY = []
+	var TextRotation = []
+	var TextColorRed  = []
+	var TextColorGreen = []
+	var TextColorBlue = []
+	var TextColorAlpha = []
+	var TextOutlineRed = []
+	var TextOutlineGreen = []
+	var TextOutlineBlue = []
+var FramesPerSecondText = FPSClass.new()
 
 var ScreenWidth = 1024
 var ScreenHeight = 640
@@ -354,7 +372,8 @@ func _ready():
 
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
-
+	FontTTF.append(-1)
+	FontTTF[1] = load("res://media/fonts/Font_02.ttf")
 	TextCurrentIndex = 0
 
 	AboutTextsStartIndex = 0
@@ -370,6 +389,41 @@ func _ready():
 	RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[60], 1000)
 	
 	DrawSprite(0, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+
+
+#		Texts.TextImage.append(RichTextLabel.new())
+#		add_child(Texts.TextImage[index])
+
+#Texts.TextImage.append(RichTextLabel.new())
+	FramesPerSecondText.TextImage.append(RichTextLabel.new())
+#	add_child(FramesPerSecondText.TextImage)
+	add_child(FramesPerSecondText.TextImage[0])
+	var fontToUseIndex = 1
+	var fontSize = 26
+
+	var newTextDrawingOffsetY = 0
+
+	FramesPerSecondText.TextImage[0].text = "60/60"
+	FramesPerSecondText.TextImage[0].set_use_bbcode(false)
+
+	FramesPerSecondText.TextImage[0].clip_contents = false
+	FramesPerSecondText.TextImage[0].add_theme_font_override("normal_font", FontTTF[fontToUseIndex])
+	FramesPerSecondText.TextImage[0].add_theme_font_size_override("normal_font_size", fontSize)
+	FramesPerSecondText.TextImage[0].add_theme_color_override("default_color", Color(1.0, 1.0, 1.0, 1.0))
+	FramesPerSecondText.TextImage[0].add_theme_constant_override("outline_size", 15.0)
+	FramesPerSecondText.TextImage[0].add_theme_color_override("font_outline_color", Color(0.2, 0.2, 0.2, 1.0))
+
+	var textHeight = FramesPerSecondText.TextImage[0].get_theme_font("normal_font").get_string_size(FramesPerSecondText.TextImage[0].text).y
+
+	FramesPerSecondText.TextImage[0].global_position.x = 5
+	FramesPerSecondText.TextImage[0].global_position.y = 610
+	FramesPerSecondText.TextImage[0].set_size(Vector2(VisualsCore.ScreenWidth, VisualsCore.ScreenHeight), false)
+	FramesPerSecondText.TextImage[0].pivot_offset = Vector2((VisualsCore.ScreenWidth / 2.0), (textHeight / 2.0))
+	FramesPerSecondText.TextImage[0].scale = Vector2(1.0, 1.0)
+	FramesPerSecondText.TextImage[0].rotation = 0.0
+
+
+
 
 #	FramesPerSecondText = RichTextLabel.new()
 #	add_child(FramesPerSecondText)
@@ -426,7 +480,9 @@ func DeleteAllTexts():
 	var size = (TextCurrentIndex - 1)
 
 	for index in range(size, 9, -1):
-		remove_child(Texts.TextImage[index])
+		if ( is_instance_valid(Texts.TextImage[index]) == true ):
+			remove_child(Texts.TextImage[index])
+#		Texts.TextImage[index].free()
 
 	TextCurrentIndex = 10
 
@@ -460,6 +516,16 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 		fontToUseIndex = 0
 	elif fontSize == 22:
 		fontToUseIndex = 0
+	elif fontSize == 34:
+		fontToUseIndex = 1
+		fontSize = 35
+	elif fontSize == 23:
+		fontToUseIndex = 1
+		fontSize = 26
+	elif fontSize == 100:
+		fontToUseIndex = 0
+		fontSize = 65
+		newTextDrawingOffsetY = 80.0
 
 	if horizontalJustification == 0:
 		Texts.TextImage[index].text = text
@@ -585,7 +651,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("''Gift Of Sight'' Artificial Intelligence Programmer:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
-	AddAboutScreenText("[32,000+ Average Lines Per Game!]", 1.0)
+	AddAboutScreenText("[400,000+ Average Lines Per Game!]", 1.0)
 
 	AddAboutScreenText("Support Game Programmers:", 0.0)
 	AddAboutScreenText("''flairetic''", 1.0)
@@ -624,7 +690,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("https://creativecommons.org/licenses/by/4.0/", 1.0)
 
 	AddAboutScreenText("Playing Level # 2 Music:", 0.0)
-	AddAboutScreenText("You're Welcome[Instrumental] by RYYZN", 1.0)
+	AddAboutScreenText("You're Welcome [Instrumental] by RYYZN", 1.0)
 	AddAboutScreenText("Music promoted by https://www.youtube.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 3 Music:", 0.0)
@@ -729,10 +795,11 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("500GB PCIe NVMe Gen 3 M.2 Drive", 1.0)
 
 	AddAboutScreenText("HTML5 Version Tested On:", 0.0)
-	AddAboutScreenText("Microsoft Edge", 1.0)
 	AddAboutScreenText("Mozilla Firefox", 1.0)
 	AddAboutScreenText("Google Chrome", 1.0)
 	AddAboutScreenText("Opera", 1.0)
+	AddAboutScreenText("Microsoft Edge", 1.0)
+	AddAboutScreenText("[?Working?]Apple macOS Safari[?Working?]", 1.0)
 
 #	AddAboutScreenText("HTML5 Version Tested On macOS Safari By:", 0.0)
 #	AddAboutScreenText("''EvanR''", 1.0)
@@ -787,13 +854,30 @@ func LoadAboutScreenTexts():
 	var screenY = ScreenHeight+25
 	for index in range(AboutTextsStartIndex+1, AboutTextsEndIndex):
 		if (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
-			screenY+=40
+			screenY+=50
 		elif (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 1.0):
-			screenY+=40
+			screenY+=50
 		else:
-			screenY+=140
+			screenY+=180
 
-		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, 22, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
+		var fontSize = 23
+
+
+	#AddAboutScreenText("Farewell by MaxKoMusic | https://maxkomusic.com/", 1.0)
+	#AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
+	#AddAboutScreenText("Creative Commons Attribution-ShareAlike 3.0 Unported", 1.0)
+	#AddAboutScreenText("https://creativecommons.org/licenses/by-sa/3.0/deed.en_US", 1.0)
+
+#		if (AboutTexts.AboutTextsText[index-10] == "Farewell by MaxKoMusic | https://maxkomusic.com/" ):
+#			fontSize = 23
+#		elif (AboutTexts.AboutTextsText[index-10] == "Music promoted by https://www.free-stock-music.com" ):
+#			fontSize = 23
+#		elif (AboutTexts.AboutTextsText[index-10] == "Creative Commons Attribution-ShareAlike 3.0 Unported" ):
+#			fontSize = 23
+#		elif (AboutTexts.AboutTextsText[index-10] == "https://creativecommons.org/licenses/by-sa/3.0/deed.en_US" ):
+#			fontSize = 23
+
+		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, fontSize, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
 
 	Texts.TextImage[AboutTextsEndIndex-2].global_position.y+=(ScreenHeight/2.0)
 	Texts.TextImage[AboutTextsEndIndex-1].global_position.y+=(ScreenHeight/2.0)

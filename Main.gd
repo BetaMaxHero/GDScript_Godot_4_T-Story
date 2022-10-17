@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                             Version 3.0.0.5 Alpha3 Of Pre-Beta1of3
+#                             Version 3.0.0.6 Alpha4 Of Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -74,6 +74,8 @@ func _ready():
 func _process(_delta):
 
 	ScreensCore.ProcessScreenToDisplay()
+
+#	print(str(Engine.get_frames_per_second())+"/60")
 
 	pass
 
