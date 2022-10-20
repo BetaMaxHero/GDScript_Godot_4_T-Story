@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                    Version 3.0.0.7 AlphaF5
+#                                    Version 3.0.0.7 AlphaF6
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -79,4 +79,4 @@ func _process(_delta):
 
 	pass
 
-# "A 110% By Team "BetaMax Heroes"!
+# A 110% By Team "BetaMax Heroes"!

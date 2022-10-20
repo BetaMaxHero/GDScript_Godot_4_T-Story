@@ -122,6 +122,7 @@ func LoadOptionsAndHighScores():
 	InputCore.JoyButtonOneMapped = config.get_value("Options", "JoyButtonOneMapped")
 	InputCore.JoyButtonTwoMapped = config.get_value("Options", "JoyButtonTwoMapped")
 
+	LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
 
 	pass
 

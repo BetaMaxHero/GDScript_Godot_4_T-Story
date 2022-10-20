@@ -1,2 +1,4 @@
 res://Main.tscn
+res://InterfaceCore.gd
+res://DataCore.gd
 res://Main.gd

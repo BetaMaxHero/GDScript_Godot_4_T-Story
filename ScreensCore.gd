@@ -349,18 +349,20 @@ func DisplayTitleScreen():
 		if (AudioCore.MusicVolume == 0.0 && AudioCore.EffectsVolume == 0.0):
 			AudioCore.MusicVolume = 1.0
 			AudioCore.EffectsVolume = 1.0
-			VisualsCore.Sprites.SpriteImage[110].global_position = Vector2(-99999, -99999)
+#			VisualsCore.Sprites.SpriteImage[110].global_position = Vector2(-99999, -99999)
+			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[110], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(-99999, -99999)))
 			InterfaceCore.Icons.IconSprite[0]  = 111
 		else:
 			AudioCore.MusicVolume = 0.0
 			AudioCore.EffectsVolume = 0.0
-			VisualsCore.Sprites.SpriteImage[111].global_position = Vector2(-99999, -99999)
+#			VisualsCore.Sprites.SpriteImage[111].global_position = Vector2(-99999, -99999)
+			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[111], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(-99999, -99999)))
 			InterfaceCore.Icons.IconSprite[0]  = 110
 
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 
-#	var _value
+	var _value
 #	if (ItchBuild == false):
 #		if InterfaceCore.ThisIconWasPressed(1, -1) == true:
 #			if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
@@ -1180,7 +1182,7 @@ func DisplayAboutScreen():
 
 			LogicCore.GameWon = false
 
-			ScreenToDisplayNext = HighScoresScreen#NewHighScoreScreen
+			ScreenToDisplayNext = NewHighScoreScreen
 		elif (LogicCore.GameWon == true):
 			LogicCore.GameWon = false
 
@@ -1871,10 +1873,10 @@ func DisplayPlayingGameScreen():
 		
 		if (LogicCore.StillPlaying == false):
 			DataCore.CheckForNewHighScore()
-			if (LogicCore.GameWon == true):# && DataCore.NewHighScoreRank < 999):
-				ScreenToDisplayNext = WonGameScreen#AboutScreen
+			if (LogicCore.GameWon == true && DataCore.NewHighScoreRank < 999):
+				ScreenToDisplayNext = AboutScreen
 			elif (DataCore.NewHighScoreRank < 999):
-				ScreenToDisplayNext = HighScoresScreen#NewHighScoreScreen
+				ScreenToDisplayNext = NewHighScoreScreen
 			elif (DataCore.NewHighScoreRank == 999):
 				ScreenToDisplayNext = HighScoresScreen
 			
@@ -1889,7 +1891,8 @@ func DisplayNewHighScoreScreen():
 		NewHighScoreNameInputJoyX = 0
 		NewHighScoreNameInputJoyY = 0
 
-		NewHighScoreString.erase(NewHighScoreString.length() - 1, 1)
+		NewHighScoreString = NewHighScoreString.left(-1) #(NewHighScoreString.length() - 1, 1)
+#		NewHighScoreString = " "
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
@@ -1898,7 +1901,7 @@ func DisplayNewHighScoreScreen():
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, " ", 0, 0, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "You Achieved A New High Score! Please Enter Your Name:", 0, 70, 1, 25, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "You Achieved A New High Score! Please Enter Your Name:", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		var screenY = 230
 		var screenX = 68
@@ -1943,7 +1946,7 @@ func DisplayNewHighScoreScreen():
 		spriteIndex+=1
 		InterfaceCore.CreateIcon( 200+(spriteIndex), screenX+75+75, screenY, char(60) )
 
-		var _lastIndex = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		var _lastIndex = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (5, (VisualsCore.ScreenWidth/2.0), VisualsCore.ScreenHeight-25.0)
@@ -1973,23 +1976,32 @@ func DisplayNewHighScoreScreen():
 		InputCore.DelayAllUserInput = 5
 
 	for index in range(0, 100):
-		VisualsCore.Sprites.SpriteImage[200+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+index], Color(1.0, 1.0, 1.0, 1.0))
+
 
 	for index in range(0, 10):
-		VisualsCore.Sprites.SpriteImage[40+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[40+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[40+index], Color(1.0, 1.0, 1.0, 1.0))
 
 	if (NewHighScoreNameInputJoyY == 0):
-		VisualsCore.Sprites.SpriteImage[200+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+NewHighScoreNameInputJoyX], Color(0.0, 1.0, 1.0, 1.0))
 	elif (NewHighScoreNameInputJoyY == 1):
-		VisualsCore.Sprites.SpriteImage[200+13+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+13+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+13+NewHighScoreNameInputJoyX], Color(0.0, 1.0, 1.0, 1.0))
 	elif (NewHighScoreNameInputJoyY == 2):
-		VisualsCore.Sprites.SpriteImage[200+26+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+26+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+26+NewHighScoreNameInputJoyX], Color(0.0, 1.0, 1.0, 1.0))
 	elif (NewHighScoreNameInputJoyY == 3):
-		VisualsCore.Sprites.SpriteImage[200+39+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+39+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+39+NewHighScoreNameInputJoyX], Color(0.0, 1.0, 1.0, 1.0))
 	elif (NewHighScoreNameInputJoyY == 4):
-		VisualsCore.Sprites.SpriteImage[200+52+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[200+52+NewHighScoreNameInputJoyX].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+52+NewHighScoreNameInputJoyX], Color(0.0, 1.0, 1.0, 1.0))
 	elif (NewHighScoreNameInputJoyY == 5):
-		VisualsCore.Sprites.SpriteImage[40].modulate = Color(0.0, 1.0, 0.0, 1.0)
+#		VisualsCore.Sprites.SpriteImage[40].modulate = Color(0.0, 1.0, 0.0, 1.0)
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[40], Color(0.0, 1.0, 1.0, 1.0))
 
 	if (InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed):
 		InputCore.DelayAllUserInput = 5
@@ -2012,9 +2024,10 @@ func DisplayNewHighScoreScreen():
 		AudioCore.PlayEffect(1)
 
 		if (NewHighScoreStringIndex > 0):
-			NewHighScoreString.erase(NewHighScoreString.length() - 1, 1)
+#			NewHighScoreString.erase(NewHighScoreString.length() - 1, 1)
+			NewHighScoreString = NewHighScoreString.left(-1)
 			NewHighScoreStringIndex-=1
-			VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 	if (InputCore.JoystickDirection[InputCore.InputAny] == InputCore.JoyUp):
 		InputCore.DelayAllUserInput = 5
@@ -2052,20 +2065,21 @@ func DisplayNewHighScoreScreen():
 				NewHighScoreStringIndex+=1
 				if (InputCore.MouseButtonLeftPressed == true || InputCore.TouchTwoPressed == true):  InputCore.DelayAllUserInput = 10
 				AudioCore.PlayEffect(0)
-				VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+				VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			elif (index == 63 && NewHighScoreStringIndex < 20):
 				NewHighScoreString+=" "
 				NewHighScoreStringIndex+=1
 				if (InputCore.MouseButtonLeftPressed == true || InputCore.TouchTwoPressed == true):  InputCore.DelayAllUserInput = 10
 				AudioCore.PlayEffect(0)
-				VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+				VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			elif (index == 64):
 				if (NewHighScoreStringIndex > 0):
-					NewHighScoreString.erase(NewHighScoreString.length() - 1, 1)
+#					NewHighScoreString.erase(NewHighScoreString.length() - 1, 1)
+					NewHighScoreString = NewHighScoreString.left(-1)
 					NewHighScoreStringIndex-=1
 					if (InputCore.MouseButtonLeftPressed == true || InputCore.TouchTwoPressed == true):  InputCore.DelayAllUserInput = 10
 					AudioCore.PlayEffect(0)
-					VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+					VisualsCore.DrawText(highScoreNameTextIndex, NewHighScoreString, 0, 70+55, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenFadeStatus = FadingToBlack
@@ -2079,10 +2093,12 @@ func DisplayNewHighScoreScreen():
 		DataCore.HighScoreName[LogicCore.GameMode][DataCore.NewHighScoreRank] = NewHighScoreString
 
 		for index in range(0, 100):
-			VisualsCore.Sprites.SpriteImage[200+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+#			VisualsCore.Sprites.SpriteImage[200+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+			RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[200+index], Color(1.0, 1.0, 1.0, 1.0))
 
 		for index in range(0, 10):
-			VisualsCore.Sprites.SpriteImage[40+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+#			VisualsCore.Sprites.SpriteImage[40+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
+			RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[40+index], Color(1.0, 1.0, 1.0, 1.0))
 
 	pass
 
