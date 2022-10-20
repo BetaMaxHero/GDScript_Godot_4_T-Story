@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.6 - Alpha4 Of Pre-Beta1of3"
+var Version = "Version 3.0.0.7 - Alpha Final"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -780,7 +780,6 @@ func SetupNewPiece(player):
 	BestMoveX[player] = -1
 	BestRotation[player] = -1
 
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -876,7 +875,7 @@ func CheckForCompletedLines(player):
 		if (numberOfCompletedLines == 1):
 			Score[player] += (40 * (Level+1))
 			TotalLines+=1
-#            TotalOneLines++;
+#           TotalOneLines++;
 		elif (numberOfCompletedLines == 2):
 			Score[player] += (100 * (Level+1))
 			TotalLines+=2
@@ -889,7 +888,6 @@ func CheckForCompletedLines(player):
 			Score[player] += (1200 * (Level+1))
 			TotalLines+=4
 #            TotalFourLines++;
-#			audio->PlayDigitalSoundFX(7, 0);
 			AudioCore.PlayEffect(6)
 		ScoreChanged = true
 
@@ -960,7 +958,7 @@ func MovePieceLeft(player):
 		if (PieceCollision(player) == CollisionWithPlayfield || PieceCollision(player) == CollisionWithPiece):
 			PiecePlayfieldX[player]+=1
 	elif (PlayerInput[player] != InputCore.InputCPU):
-		if (AndroidMovePieceLeftDelay[player] == 1 || AndroidMovePieceLeftDelay[player] == 10 || AndroidMovePieceLeftDelay[player] == 16 || AndroidMovePieceLeftDelay[player] == 19 || AndroidMovePieceLeftDelay[player] > 20):
+		if (AndroidMovePieceLeftDelay[player] == 1 || AndroidMovePieceLeftDelay[player] == 1+5 || AndroidMovePieceLeftDelay[player] == 6+4 || AndroidMovePieceLeftDelay[player] == 10+3 || AndroidMovePieceLeftDelay[player] > 10+4):
 			PiecePlayfieldX[player]-=1
 
 		if (PieceCollision(player) == CollisionWithPlayfield || PieceCollision(player) == CollisionWithPiece):
@@ -984,7 +982,8 @@ func MovePieceRight(player):
 		if (PieceCollision(player) == CollisionWithPlayfield || PieceCollision(player) == CollisionWithPiece):
 			PiecePlayfieldX[player]-=1
 	elif (PlayerInput[player] != InputCore.InputCPU):
-		if (AndroidMovePieceRightDelay[player] == 1 || AndroidMovePieceRightDelay[player] == 10 || AndroidMovePieceRightDelay[player] == 16 || AndroidMovePieceRightDelay[player] == 19 || AndroidMovePieceRightDelay[player] > 20):
+		if (AndroidMovePieceRightDelay[player] == 1 || AndroidMovePieceRightDelay[player] == 1+5 || AndroidMovePieceRightDelay[player] == 6+4 || AndroidMovePieceRightDelay[player] == 10+3 || AndroidMovePieceRightDelay[player] > 10+4):
+#		if (AndroidMovePieceRightDelay[player] == 1 || AndroidMovePieceRightDelay[player] == 10 || AndroidMovePieceRightDelay[player] == 16 || AndroidMovePieceRightDelay[player] == 19 || AndroidMovePieceRightDelay[player] > 20):
 			PiecePlayfieldX[player]+=1
 
 		if (PieceCollision(player) == CollisionWithPlayfield || PieceCollision(player) == CollisionWithPiece):
@@ -999,11 +998,11 @@ func MovePieceRight(player):
 #----------------------------------------------------------------------------------------
 func SetupForNewGame():
 	if GameMode == ChildMode:
-		Engine.target_fps = 30
+		Engine.target_fps = 15
 	elif GameMode == TeenMode:
-		Engine.target_fps = 60
+		Engine.target_fps = 30
 	elif GameMode == AdultMode:
-		Engine.target_fps = 45
+		Engine.target_fps = 25
 
 	ClearPlayfieldWithCollisionDetection()
 
@@ -1161,11 +1160,11 @@ func SetupForNewLevel():
 		return
 	
 	if GameMode == ChildMode:
-		Engine.target_fps = 30
+		Engine.target_fps = 15
 	elif GameMode == TeenMode:
-		Engine.target_fps = 60
+		Engine.target_fps = 30
 	elif GameMode == AdultMode:
-		Engine.target_fps = 45
+		Engine.target_fps = 25
 
 	ClearPlayfieldWithCollisionDetection()
 
@@ -1439,6 +1438,8 @@ func ComputeComputerPlayerMove(player):
 
 #----------------------------------------------------------------------------------------
 func AddRandomBlocksToBottom():
+	DrawEverything = true
+
 	var thereWillBeNoDownwardCollisions = true
 	if (PlayerStatus[0] == PieceFalling):
 		if (PieceCollisionDown(0) != CollisionNotTrue):
@@ -1472,8 +1473,6 @@ func AddRandomBlocksToBottom():
 			boxCount+=1
 
 	AudioCore.PlayEffect(7)
-
-	DrawEverything = true
 
 	pass
 
@@ -1529,7 +1528,7 @@ func RunTetriGameEngine():
 				if (piecesAreFalling == true):
 					AddRandomBlocksToBottomTimer+=1
 
-					var timeForCrisis = 375
+					var timeForCrisis = 375+(100*2)
 					if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
 						timeForCrisis+=175
 
@@ -1799,7 +1798,7 @@ func RunTetriGameEngine():
 						SecretCodeCombined = (SecretCode[0]*1000)+(SecretCode[1]*100)+(SecretCode[2]*10)+(SecretCode[3]*1)
 
 				if (PlayerStatus[0] == GameOver && PlayerStatus[1] == GameOver && PlayerStatus[2] == GameOver):
-					Engine.target_fps = 60
+					Engine.target_fps = 30
 					AudioCore.PlayMusic(0)
 
 					StillPlaying = false

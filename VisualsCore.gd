@@ -199,8 +199,10 @@ func _ready():
 	Sprites.SpriteImage[128] = load("res://media/images/gui/IconRotate.png")
 	Sprites.SpriteActive[128] = true
 
-	Sprites.SpriteImage[130] = load("res://media/images/playing/Board3Player.png")
+	Sprites.SpriteImage[130] = load("res://media/images/playing/Board3PlayerNew.png")
 	Sprites.SpriteActive[130] = true
+	Sprites.SpriteImage[131] = load("res://media/images/playing/Board3PlayerNewBG.png")
+	Sprites.SpriteActive[131] = true
 
 	Sprites.SpriteImage[141] = load("res://media/images/story/BG_Story-1.png")
 	Sprites.SpriteActive[141] = true
@@ -269,7 +271,7 @@ func _ready():
 		Sprites.SpriteImage[200+index] = load("res://media/images/gui/NameInputButton2.png")
 		Sprites.SpriteActive[200+index] = true
 
-	var maxIndex = 624
+	var maxIndex = 999
 	for index in range(10000, 10000+maxIndex):
 		Sprites.SpriteImage[index] = load("res://media/images/playing/BoxRed1.png")
 		Sprites.SpriteActive[index] = true
@@ -358,17 +360,30 @@ func _ready():
 			var xform = Transform2D().translated(Vector2(-99999 - sprite_size.x / 2.0, -99999 - sprite_size.y / 2.0))
 			RenderingServer.canvas_item_set_transform(Sprites.ci_rid[index], xform)
 
-			if (index == 10):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -15)
-			elif (index > 39 && index < 49):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
-			elif (index > 49 && index < 129):
+			if (index == 0):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 500)
+			elif (index == 10):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -25)
+			elif (index == 130):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -100)
+			elif (index > 39 && index < 49):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -10)
+			elif (index > 49 && index < 129):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
 			elif (index > 139 && index < 150):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 50)
-			elif (index > 18999 && index < 19980):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
-
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
+			elif (index == 170):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -20)
+			elif (index == 171):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -15)
+			elif (index == 172):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -10)
+			elif (index == 173):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
+#			elif (index > 18999 && index < 19980):
+#				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
+			elif (index > 9999 && index < 19980):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
 
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
@@ -389,21 +404,14 @@ func _ready():
 	RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[60], 1000)
 	
 	DrawSprite(0, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-
-
-#		Texts.TextImage.append(RichTextLabel.new())
-#		add_child(Texts.TextImage[index])
-
-#Texts.TextImage.append(RichTextLabel.new())
 	FramesPerSecondText.TextImage.append(RichTextLabel.new())
-#	add_child(FramesPerSecondText.TextImage)
 	add_child(FramesPerSecondText.TextImage[0])
 	var fontToUseIndex = 1
 	var fontSize = 26
 
 	var newTextDrawingOffsetY = 0
 
-	FramesPerSecondText.TextImage[0].text = "60/60"
+	FramesPerSecondText.TextImage[0].text = "30/30"
 	FramesPerSecondText.TextImage[0].set_use_bbcode(false)
 
 	FramesPerSecondText.TextImage[0].clip_contents = false
@@ -421,26 +429,6 @@ func _ready():
 	FramesPerSecondText.TextImage[0].pivot_offset = Vector2((VisualsCore.ScreenWidth / 2.0), (textHeight / 2.0))
 	FramesPerSecondText.TextImage[0].scale = Vector2(1.0, 1.0)
 	FramesPerSecondText.TextImage[0].rotation = 0.0
-
-
-
-
-#	FramesPerSecondText = RichTextLabel.new()
-#	add_child(FramesPerSecondText)
-#	FramesPerSecondText.rect_clip_content = false
-#	FramesPerSecondText.add_font_override("normal_font", FontTTF[3])
-#	FramesPerSecondText.modulate = Color(1, 1, 1, 1)
-#	FontTTF[0].outline_size = 3
-#	FontTTF[0].outline_color = Color(0, 0, 0, 1)
-#	FramesPerSecondText.text = ("FPS="+str(Engine.get_frames_per_second()))
-#	var textWidth = FramesPerSecondText.get_font("normal_font").get_string_size(FramesPerSecondText.text).x
-#	var textHeight = FramesPerSecondText.get_font("normal_font").get_string_size(FramesPerSecondText.text).y
-#	FramesPerSecondText.rect_global_position.x = (5)
-#	FramesPerSecondText.rect_global_position.y = (ScreenHeight-21)
-#	FramesPerSecondText.set_size(Vector2(ScreenWidth, ScreenHeight), false)
-#	FramesPerSecondText.rect_pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
-#	FramesPerSecondText.rect_scale = Vector2(1.0, 1.0)
-#	FramesPerSecondText.rect_rotation = 0.0
 
 	pass
 
@@ -527,6 +515,8 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 		fontSize = 65
 		newTextDrawingOffsetY = 80.0
 
+	var xValue = x
+
 	if horizontalJustification == 0:
 		Texts.TextImage[index].text = text
 		Texts.TextImage[index].set_use_bbcode(false)
@@ -536,6 +526,12 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	elif horizontalJustification == 2:
 		Texts.TextImage[index].text = "[right]"+text+"[/right]"
 		Texts.TextImage[index].set_use_bbcode(true)
+	elif horizontalJustification == 4:
+		Texts.TextImage[index].text = text
+		Texts.TextImage[index].set_use_bbcode(false)
+
+		var textWidth = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).x
+		xValue = x - (textWidth/2)
 
 	Texts.TextImage[index].clip_contents = false
 	Texts.TextImage[index].add_theme_font_override("normal_font", FontTTF[fontToUseIndex])
@@ -546,7 +542,7 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 
 	var textHeight = Texts.TextImage[index].get_theme_font("normal_font").get_string_size(Texts.TextImage[index].text).y
 
-	Texts.TextImage[index].global_position.x = x
+	Texts.TextImage[index].global_position.x = xValue#x
 	Texts.TextImage[index].global_position.y = (y - newTextDrawingOffsetY)
 	Texts.TextImage[index].set_size(Vector2(VisualsCore.ScreenWidth, VisualsCore.ScreenHeight), false)
 	Texts.TextImage[index].pivot_offset = Vector2((VisualsCore.ScreenWidth / 2.0), (textHeight / 2.0))
@@ -639,7 +635,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Lead Game Programmer:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
-	AddAboutScreenText("Text Drawing Godot v3.5 To v4.0 Beta 2+ Ported By:", 0.0)
+	AddAboutScreenText("TTF Text String Drawing v3.5 To v4.0 Beta 2+ Porter Programmer:", 0.0)
 	AddAboutScreenText("''flairetic''", 1.0)
 
 	AddAboutScreenText("Lead Game Tester:", 0.0)
@@ -780,7 +776,6 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("SAMSUNG 980 PRO 2TB PCIe NVMe Gen 4 M.2 Drive", 1.0)
 	AddAboutScreenText("Seagate FireCuda 4TB 3.5 Inch Hard Drive", 1.0)
 
-
 	AddAboutScreenText("Game Tested On A:", 0.0)
 	AddAboutScreenText("SFF Thin Client Desktop", 1.0)
 	AddAboutScreenText("Desktop Code Name: ''Bumblebee''", 1.0)
@@ -861,21 +856,6 @@ func LoadAboutScreenTexts():
 			screenY+=180
 
 		var fontSize = 23
-
-
-	#AddAboutScreenText("Farewell by MaxKoMusic | https://maxkomusic.com/", 1.0)
-	#AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
-	#AddAboutScreenText("Creative Commons Attribution-ShareAlike 3.0 Unported", 1.0)
-	#AddAboutScreenText("https://creativecommons.org/licenses/by-sa/3.0/deed.en_US", 1.0)
-
-#		if (AboutTexts.AboutTextsText[index-10] == "Farewell by MaxKoMusic | https://maxkomusic.com/" ):
-#			fontSize = 23
-#		elif (AboutTexts.AboutTextsText[index-10] == "Music promoted by https://www.free-stock-music.com" ):
-#			fontSize = 23
-#		elif (AboutTexts.AboutTextsText[index-10] == "Creative Commons Attribution-ShareAlike 3.0 Unported" ):
-#			fontSize = 23
-#		elif (AboutTexts.AboutTextsText[index-10] == "https://creativecommons.org/licenses/by-sa/3.0/deed.en_US" ):
-#			fontSize = 23
 
 		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, fontSize, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
 

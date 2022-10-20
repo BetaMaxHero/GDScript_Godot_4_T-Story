@@ -25,7 +25,7 @@ var HighScoreScore = []
 var PlayerWithHighestScore
 var NewHighScoreRank
 
-const FILE_NAME = "user://TetriStory-3_0_0_5-game-data.json"
+const FILE_NAME = "user://TetriStory-3_0_0_7-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func CheckForNewHighScore():
@@ -98,68 +98,56 @@ func ClearHighScores():
 
 #----------------------------------------------------------------------------------------
 func LoadOptionsAndHighScores():
-#	var player
-#	var file = File.new()
-#	if file.file_exists(FILE_NAME):
-#		file.open(FILE_NAME, File.READ)
-#		var data = parse_json(file.get_as_text())
-#		file.close()
-#		if typeof(data) == TYPE_DICTIONARY:
-#			player = data
-#		else:
-#			printerr("Corrupted data!")
-#			return false
-#	else:
-#		printerr("No saved data!")
-#		return false
-#
-#	AudioCore.MusicVolume = player.MusicVolumeValue
-#	AudioCore.EffectsVolume = player.EffectsVolumeValue
-#	LogicCore.GameMode = player.GameModeValue
-#	LogicCore.AllowComputerPlayers = player.AllowComputerPlayers
-#	LogicCore.GameSpeed = player.GameSpeedValue
-#	HighScoreName = player.HighscoreNameValue
-#	HighScoreLevel = player.HighScoreLevelValue
-#	HighScoreScore = player.HighScoreScoreValue
-#	LogicCore.SecretCode = player.SecretCode
-#	VisualsCore.KeepAspectRatio = player.KeepAspectRatio
-#	InputCore.JoyUpMapped = player.JoyUpMapped
-#	InputCore.JoyDownMapped = player.JoyDownMapped
-#	InputCore.JoyLeftMapped = player.JoyLeftMapped
-#	InputCore.JoyRightMapped = player.JoyRightMapped
-#	InputCore.JoyButtonOneMapped = player.JoyButtonOneMapped
-#	InputCore.JoyButtonTwoMapped = player.JoyButtonTwoMapped
-#
-#	LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
+	var config = ConfigFile.new()
+
+	var err = config.load(FILE_NAME)
+
+	if err != OK:
+		return
+
+	AudioCore.MusicVolume = config.get_value("Options", "MusicVolume")
+	AudioCore.EffectsVolume = config.get_value("Options", "EffectsVolume")
+	VisualsCore.KeepAspectRatio = config.get_value("Options", "KeepAspectRatio")
+	LogicCore.GameMode = config.get_value("Options", "GameMode")
+	LogicCore.AllowComputerPlayers = config.get_value("Options", "AllowComputerPlayers")
+	LogicCore.SecretCode = config.get_value("Options", "SecretCode")
+	HighScoreName = config.get_value("HighScores", "HighScoreName")
+	HighScoreLevel = config.get_value("HighScores", "HighScoreLevel")
+	HighScoreScore = config.get_value("HighScores", "HighScoreScore")
+
+	InputCore.JoyUpMapped = config.get_value("Options", "JoyUpMapped")
+	InputCore.JoyDownMapped = config.get_value("Options", "JoyDownMapped")
+	InputCore.JoyLeftMapped = config.get_value("Options", "JoyLeftMapped")
+	InputCore.JoyRightMapped = config.get_value("Options", "JoyRightMapped")
+	InputCore.JoyButtonOneMapped = config.get_value("Options", "JoyButtonOneMapped")
+	InputCore.JoyButtonTwoMapped = config.get_value("Options", "JoyButtonTwoMapped")
+
 
 	pass
 
 #----------------------------------------------------------------------------------------
 func SaveOptionsAndHighScores():
-#	var player = {
-#		"MusicVolumeValue": AudioCore.MusicVolume,
-#		"EffectsVolumeValue": AudioCore.EffectsVolume,
-#		"GameModeValue": LogicCore.GameMode,
-#		"AllowComputerPlayers": LogicCore.AllowComputerPlayers,
-#		"GameSpeedValue": LogicCore.GameSpeed,
-#		"HighscoreNameValue": HighScoreName,
-#		"HighScoreLevelValue": HighScoreLevel,
-#		"HighScoreScoreValue": HighScoreScore,
-#		"SecretCode": LogicCore.SecretCode,
-#		"KeepAspectRatio": VisualsCore.KeepAspectRatio,
-#		"JoyUpMapped": InputCore.JoyUpMapped,
-#		"JoyDownMapped": InputCore.JoyDownMapped,
-#		"JoyLeftMapped": InputCore.JoyLeftMapped,
-#		"JoyRightMapped": InputCore.JoyRightMapped,
-#		"JoyButtonOneMapped": InputCore.JoyButtonOneMapped,
-#		"JoyButtonTwoMapped": InputCore.JoyButtonTwoMapped
-#		
-#	}
-#
-#	var file = File.new()
-#	file.open(FILE_NAME, File.WRITE)
-#	file.store_string(to_json(player))
-#	file.close()
+	var config = ConfigFile.new()
+
+	config.set_value("Options", "MusicVolume", AudioCore.MusicVolume)
+	config.set_value("Options", "EffectsVolume", AudioCore.EffectsVolume)
+	config.set_value("Options", "KeepAspectRatio", VisualsCore.KeepAspectRatio)
+	config.set_value("Options", "GameMode", LogicCore.GameMode)
+	config.set_value("Options", "AllowComputerPlayers", LogicCore.AllowComputerPlayers)
+	config.set_value("Options", "SecretCode", LogicCore.SecretCode)
+	config.set_value("HighScores", "HighScoreName", HighScoreName)
+	config.set_value("HighScores", "HighScoreLevel", HighScoreLevel)
+	config.set_value("HighScores", "HighScoreScore", HighScoreScore)
+
+	config.set_value("Options", "JoyUpMapped", InputCore.JoyUpMapped)
+	config.set_value("Options", "JoyDownMapped", InputCore.JoyDownMapped)
+	config.set_value("Options", "JoyLeftMapped", InputCore.JoyLeftMapped)
+	config.set_value("Options", "JoyRightMapped", InputCore.JoyRightMapped)
+	config.set_value("Options", "JoyButtonOneMapped", InputCore.JoyButtonOneMapped)
+	config.set_value("Options", "JoyButtonTwoMapped", InputCore.JoyButtonTwoMapped)
+
+	config.save(FILE_NAME)
+
 
 	pass
 

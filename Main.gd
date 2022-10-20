@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                             Version 3.0.0.6 Alpha4 Of Pre-Beta1of3
+#                                    Version 3.0.0.7 AlphaF5
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -39,9 +39,9 @@
 #- [DONE!] Perfect single player game [DONE!] -
 #- [DONE!] Level progression [DONE!] -
 #- [DONE!] Cut scenes [DONE!] -
-#- [DONE?] Perfect multi player game [DONE?] -
+#- Perfect multi player game -
 #- Perfect computer A.I. player[s] -
-#- [DONE!] New high score name input [DONE!] -
+#- New high score name input -
 #- [DONE!] Full music soundtrack [DONE!] -
 #- [DONE!] Ending [DONE!] -
 #- Thorough testing of final beta version -
@@ -51,20 +51,22 @@ extends Node2D
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	Engine.target_fps = 60
+	Engine.target_fps = 30
 
 	if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
 		VisualsCore.KeepAspectRatio = 0
 	else:
 		VisualsCore.KeepAspectRatio = 1
 
-
 	DataCore.LoadOptionsAndHighScores()
 
-#	if (VisualsCore.KeepAspectRatio == 1):
-#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
-#	elif (VisualsCore.KeepAspectRatio == 0):
-#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
+#	# Invalid get index 'CONTENT_SCALE_MODE_VIEWPORT' (on base: 'SceneTree').
+#	get_tree().set_content_scale_mode(SceneTree.CONTENT_SCALE_MODE_VIEWPORT)
+#	if (VisualsCore.KeepAspectRatio == 0):
+#		get_tree().set_content_scale_aspect(SceneTree.CONTENT_SCALE_ASPECT_KEEP_WIDTH)
+#	elif (VisualsCore.KeepAspectRatio == 1):
+#		# Invalid get index 'CONTENT_SCALE_ASPECT_IGNORE' (on base: 'SceneTree').		
+#		get_tree().set_content_scale_aspect(SceneTree.CONTENT_SCALE_ASPECT_IGNORE)
 
 	randomize()
 
@@ -74,8 +76,6 @@ func _ready():
 func _process(_delta):
 
 	ScreensCore.ProcessScreenToDisplay()
-
-#	print(str(Engine.get_frames_per_second())+"/60")
 
 	pass
 

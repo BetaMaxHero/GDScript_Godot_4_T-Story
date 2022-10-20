@@ -34,6 +34,7 @@ LogicCore="*res://LogicCore.gd"
 window/size/viewport_width=1024
 window/size/viewport_height=640
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/size/height=640
 window/vsync/use_vsync=false
 
