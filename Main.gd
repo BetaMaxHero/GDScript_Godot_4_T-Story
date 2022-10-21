@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                    Version 3.0.0.7 AlphaF6
+#                                   Version 3.0.0.7 Alpha Final
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -41,7 +41,7 @@
 #- [DONE!] Cut scenes [DONE!] -
 #- Perfect multi player game -
 #- Perfect computer A.I. player[s] -
-#- New high score name input -
+#- [DONE!] New high score name input [DONE!] -
 #- [DONE!] Full music soundtrack [DONE!] -
 #- [DONE!] Ending [DONE!] -
 #- Thorough testing of final beta version -
@@ -60,13 +60,7 @@ func _ready():
 
 	DataCore.LoadOptionsAndHighScores()
 
-#	# Invalid get index 'CONTENT_SCALE_MODE_VIEWPORT' (on base: 'SceneTree').
-#	get_tree().set_content_scale_mode(SceneTree.CONTENT_SCALE_MODE_VIEWPORT)
-#	if (VisualsCore.KeepAspectRatio == 0):
-#		get_tree().set_content_scale_aspect(SceneTree.CONTENT_SCALE_ASPECT_KEEP_WIDTH)
-#	elif (VisualsCore.KeepAspectRatio == 1):
-#		# Invalid get index 'CONTENT_SCALE_ASPECT_IGNORE' (on base: 'SceneTree').		
-#		get_tree().set_content_scale_aspect(SceneTree.CONTENT_SCALE_ASPECT_IGNORE)
+	VisualsCore.SetScreenStretchMode()
 
 	randomize()
 

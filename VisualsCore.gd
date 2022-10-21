@@ -433,6 +433,18 @@ func _ready():
 	pass
 
 #----------------------------------------------------------------------------------------
+# Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic":
+func SetScreenStretchMode():
+	var window = get_tree().root 
+	window.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
+	if (VisualsCore.KeepAspectRatio == 1):
+		window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP_WIDTH
+	elif (VisualsCore.KeepAspectRatio == 0):
+		window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
+
+	pass
+#                             Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic"
+#----------------------------------------------------------------------------------------
 func MoveAllActiveSpritesOffScreen():
 	for index in range(1, 20000):
 		if Sprites.SpriteActive[index] == true:

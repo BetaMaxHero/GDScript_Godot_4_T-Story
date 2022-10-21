@@ -253,7 +253,7 @@ func DisplayFASScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Cut scenes [DONE!] -", 0, 16+(30*12), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect multi player game -", 0, 16+(30*13), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect computer A.I. players -", 0, 16+(30*14), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- New high score name input -", 0, 16+(30*15), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] New high score name input [DONE!] -", 0, 16+(30*15), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Full music soundtrack [DONE!] -", 0, 16+(30*16), 1, 25, 1.0, 1.0, 0, 0.0, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Ending [DONE!] -", 0, 16+(30*17), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Thorough testing of final beta version -", 0, 16+(30*18), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
@@ -809,10 +809,7 @@ func DisplayOptionsScreen():
 				VisualsCore.KeepAspectRatio-=1
 			else:  VisualsCore.KeepAspectRatio = 1
 
-#			if (VisualsCore.KeepAspectRatio == 1):
-#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
-#			elif (VisualsCore.KeepAspectRatio == 0):
-#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
+			VisualsCore.SetScreenStretchMode()
 
 			if (VisualsCore.KeepAspectRatio == 1):
 				VisualsCore.DrawText(OptionsTextAspectRatio, "On", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -826,10 +823,7 @@ func DisplayOptionsScreen():
 				VisualsCore.KeepAspectRatio+=1
 			else:  VisualsCore.KeepAspectRatio = 0
 
-#			if (VisualsCore.KeepAspectRatio == 1):
-#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_KEEP_WIDTH, Vector2(1024, 640) , 1)
-#			elif (VisualsCore.KeepAspectRatio == 0):
-#				get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,  SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024, 640) , 1)
+			VisualsCore.SetScreenStretchMode()
 
 			if (VisualsCore.KeepAspectRatio == 1):
 				VisualsCore.DrawText(OptionsTextAspectRatio, "On", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
