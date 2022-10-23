@@ -201,7 +201,7 @@ func DisplayGodotScreen():
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta #2+", 445, 185, 0, 46, 1.0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 ''Beta 2''+", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
 
 		ScreenDisplayTimer = (200*2)
 
@@ -362,7 +362,7 @@ func DisplayTitleScreen():
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 
-	var _value
+#	var _value
 #	if (ItchBuild == false):
 #		if InterfaceCore.ThisIconWasPressed(1, -1) == true:
 #			if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
@@ -532,41 +532,41 @@ func DisplayOptionsScreen():
 			VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2.0, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2.0), VisualsCore.ScreenHeight-25)
 		elif (JoystickSetupIndex == JoySetup1Up):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup1Down):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup1Left):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup1Right):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup1Button1):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup1Button2):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 1", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 1", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Up):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Down):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Left):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Right):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Button1):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup2Button2):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 2", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 2", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Up):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [UP] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Down):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [DOWN] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Left):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [LEFT] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Right):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [RIGHT] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Button1):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 1] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (JoystickSetupIndex == JoySetup3Button2):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 3", VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.5, 1.5, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
 	if (InputCore.ThereAreGamepads == false):
 		JoystickSetupIndex = JoySetupNotStarted

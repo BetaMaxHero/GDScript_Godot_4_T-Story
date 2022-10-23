@@ -61,6 +61,8 @@ var Sprites = SpriteClass.new()
 
 var FontTTF = []
 
+var TextIsUsed = []
+
 var TextCurrentIndex;
 
 class TextClass:
@@ -116,7 +118,11 @@ func _ready():
 		Sprites.SpriteColorGreen.append(1.0)
 		Sprites.SpriteColorBlue.append(1.0)
 		Sprites.SpriteColorAlpha.append(1.0)
-	
+
+	for _index in range(0, 1000):
+		TextIsUsed.append(false)
+#		TextIsUsed[_index] = false
+
 	Sprites.SpriteImage[0] = load("res://media/images/backgrounds/FadingBlackBG.png")
 	Sprites.SpriteActive[0] = true
 
@@ -409,7 +415,7 @@ func _ready():
 	var fontToUseIndex = 1
 	var fontSize = 26
 
-	var newTextDrawingOffsetY = 0
+#	var newTextDrawingOffsetY = 0
 
 	FramesPerSecondText.TextImage[0].text = "30/30"
 	FramesPerSecondText.TextImage[0].set_use_bbcode(false)
@@ -480,9 +486,12 @@ func DeleteAllTexts():
 	var size = (TextCurrentIndex - 1)
 
 	for index in range(size, 9, -1):
-		if ( is_instance_valid(Texts.TextImage[index]) == true ):
+		if (TextIsUsed[index] == true):
 			remove_child(Texts.TextImage[index])
-#		Texts.TextImage[index].free()
+#			Texts.TextImage[index].free()
+
+	for _index in range(0, TextCurrentIndex):
+		TextIsUsed[_index] = false
 
 	TextCurrentIndex = 10
 
@@ -501,6 +510,8 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	if ( index > (TextCurrentIndex-1) ):
 		Texts.TextImage.append(RichTextLabel.new())
 		add_child(Texts.TextImage[index])
+
+		TextIsUsed[index] = true
 
 	var newTextDrawingOffsetY = 0
 	var fontToUseIndex = 0
@@ -849,6 +860,9 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''YaroslavFox''", 1.0)
 	AddAboutScreenText("''Erich_L''", 1.0)
 	AddAboutScreenText("''Zoinkers''", 1.0)
+
+	AddAboutScreenText("''Sanne''", 1.0)
+	AddAboutScreenText("''circuitbone''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)

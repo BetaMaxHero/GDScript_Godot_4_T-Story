@@ -281,22 +281,22 @@ func DrawAllArrowSets():
 			VisualsCore.DrawSprite(81+(index*2), 30, ArrowSets.ArrowSetScreenY[index], 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 			if ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 3:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[81+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[81+(index*2)], Vector2(0.85, 0.85), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[81+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[81+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[81+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[81+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(81+(index*2), 30, ArrowSets.ArrowSetScreenY[index], 0.85, 0.85, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 2:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[81+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[81+(index*2)], Vector2(0.90, 0.90), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[81+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[81+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[81+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[81+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(81+(index*2), 30, ArrowSets.ArrowSetScreenY[index], 0.9, 0.9, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 1:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[81+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[81+(index*2)], Vector2(0.95, 0.95), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[81+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[81+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[81+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[81+(index+2)] / 2.0))))
+				VisualsCore.DrawSprite(81+(index*2), 30, ArrowSets.ArrowSetScreenY[index], 0.95, 0.95, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 0:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[81+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[81+(index*2)], Vector2(1.0, 1.0), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[81+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[81+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[81+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[81+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(81+(index*2), 30, ArrowSets.ArrowSetScreenY[index], 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 			if ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 3:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[80+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[80+(index*2)], Vector2(0.85, 0.85), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[80+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[80+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[80+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[80+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(80+(index*2),  VisualsCore.ScreenWidth-30, ArrowSets.ArrowSetScreenY[index], 0.85, 0.85, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 2:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[80+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[80+(index*2)], Vector2(0.90, 0.90), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[80+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[80+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[80+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[80+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(80+(index*2),  VisualsCore.ScreenWidth-30, ArrowSets.ArrowSetScreenY[index], 0.9, 0.9, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 1:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[80+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[80+(index*2)], Vector2(0.95, 0.95), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[80+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[80+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[80+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[80+(index*2)] / 2.0))))
+				VisualsCore.DrawSprite(80+(index*2),  VisualsCore.ScreenWidth-30, ArrowSets.ArrowSetScreenY[index], 0.95, 0.95, 0, 1.0, 1.0, 1.0, 1.0)
 			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 0:
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[80+(index*2)], Transform2D(VisualsCore.Sprites.SpriteRotation[80+(index*2)], Vector2(1.0, 1.0), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[80+(index*2)] - (VisualsCore.Sprites.SpriteImageWidth[80+(index*2)] / 2.0), VisualsCore.Sprites.SpriteScreenY[80+(index*2)] - (VisualsCore.Sprites.SpriteImageHeight[80+(index+2)] / 2.0))))
+				VisualsCore.DrawSprite(80+(index*2),  VisualsCore.ScreenWidth-30, ArrowSets.ArrowSetScreenY[index], 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 	VisualsCore.DrawSprite(60, VisualsCore.ScreenWidth/2.0, ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard], 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.3)
 
@@ -414,7 +414,7 @@ func DrawAllIcons():
 	pass
 
 #----------------------------------------------------------------------------------------
-func ThisIconWasPressed(iconToCheck, player):
+func ThisIconWasPressed(iconToCheck, _player):
 	if NumberOfIconsOnScreen == 0:  return false
 
 	if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen && InputCore.DelayAllUserInput > -1):

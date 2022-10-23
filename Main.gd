@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                   Version 3.0.0.7 Alpha Final
+#                                   Version 3.0.0.7 Alpha Final+
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -45,6 +45,12 @@
 #- [DONE!] Full music soundtrack [DONE!] -
 #- [DONE!] Ending [DONE!] -
 #- Thorough testing of final beta version -
+
+# Pre-Beta1of3(Not Finished!):
+# - Fixed configure gamepad(s) text position in [Options] screen
+# - Fixed warnings/errors when running the game in the IDE
+# - Fixed centering of scaled GUI arrow set arrows
+# - 
 
 
 extends Node2D
