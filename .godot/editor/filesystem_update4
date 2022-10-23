@@ -1,6 +1,7 @@
 res://Main.tscn
 res://InterfaceCore.gd
 res://ScreensCore.gd
-res://VisualsCore.gd
 res://Main.gd
+res://VisualsCore.gd
 res://LogicCore.gd
+res://DataCore.gd

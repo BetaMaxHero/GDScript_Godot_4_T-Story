@@ -121,7 +121,6 @@ func _ready():
 
 	for _index in range(0, 1000):
 		TextIsUsed.append(false)
-#		TextIsUsed[_index] = false
 
 	Sprites.SpriteImage[0] = load("res://media/images/backgrounds/FadingBlackBG.png")
 	Sprites.SpriteActive[0] = true
@@ -415,8 +414,6 @@ func _ready():
 	var fontToUseIndex = 1
 	var fontSize = 26
 
-#	var newTextDrawingOffsetY = 0
-
 	FramesPerSecondText.TextImage[0].text = "30/30"
 	FramesPerSecondText.TextImage[0].set_use_bbcode(false)
 
@@ -488,7 +485,6 @@ func DeleteAllTexts():
 	for index in range(size, 9, -1):
 		if (TextIsUsed[index] == true):
 			remove_child(Texts.TextImage[index])
-#			Texts.TextImage[index].free()
 
 	for _index in range(0, TextCurrentIndex):
 		TextIsUsed[_index] = false
@@ -818,9 +814,6 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Opera", 1.0)
 	AddAboutScreenText("Microsoft Edge", 1.0)
 	AddAboutScreenText("[?Working?]Apple macOS Safari[?Working?]", 1.0)
-
-#	AddAboutScreenText("HTML5 Version Tested On macOS Safari By:", 0.0)
-#	AddAboutScreenText("''EvanR''", 1.0)
 
 	AddAboutScreenText("Android Version Tested On:", 0.0)
 	AddAboutScreenText("Samsung® Galaxy A51 Smartphone", 1.0)

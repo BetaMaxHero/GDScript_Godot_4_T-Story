@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.7 - Alpha Final+"
+var Version = "Version 3.0.0.7 - Alpha Final+2"
 
 const ChildMode				= 0
 const TeenMode				= 1

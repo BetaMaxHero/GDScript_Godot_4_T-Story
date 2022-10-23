@@ -180,6 +180,14 @@ func DrawAllButtons():
 		var textHeight = VisualsCore.Texts.TextImage[index].get_theme_font("normal_font").get_string_size(VisualsCore.Texts.TextImage[index].text).y
 		VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].global_position.y = (Buttons.ButtonScreenY[index]-(textHeight / 2) - 7)
 
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):
+			for indexTwo in range(40, 50):
+				RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[indexTwo], Color(1.0, 1.0, 1.0, 1.0))
+		elif (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+			for indexThree in range(40, 50):
+				if (ScreensCore.NewHighScoreNameInputJoyY == 5):
+					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[indexThree], Color(0.0, 1.0, 1.0, 1.0))
+
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -369,7 +377,6 @@ func ThisArrowWasPressed(arrowToCheck):
 
 #----------------------------------------------------------------------------------------
 func CreateIcon(spriteIndex, screenX, screenY, text):
-	
 	Icons.IconIndex[NumberOfIconsOnScreen] = NumberOfIconsOnScreen
 	Icons.IconSprite[NumberOfIconsOnScreen] = spriteIndex
 	Icons.IconScreenX[NumberOfIconsOnScreen] = screenX
@@ -377,11 +384,10 @@ func CreateIcon(spriteIndex, screenX, screenY, text):
 	Icons.IconAnimationTimer[NumberOfIconsOnScreen] = -1
 	Icons.IconScale[NumberOfIconsOnScreen] = 1.0
 
-#	VisualsCore.Sprites.SpriteImage[Icons.IconSprite[NumberOfIconsOnScreen]].scale = Vector2(1.0, 1.0)
 	RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[NumberOfIconsOnScreen]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[Icons.IconSprite[NumberOfIconsOnScreen]] - (VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[NumberOfIconsOnScreen]] / 2.0), VisualsCore.Sprites.SpriteScreenY[Icons.IconSprite[NumberOfIconsOnScreen]] - (VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[NumberOfIconsOnScreen]] / 2.0))))
 
 	Icons.IconText[NumberOfIconsOnScreen] = text
-	Icons.IconTextIndex[NumberOfIconsOnScreen] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, text, screenX-14, screenY-23, 0, 35, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+	Icons.IconTextIndex[NumberOfIconsOnScreen] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, text, (screenX-3.0)-(VisualsCore.ScreenWidth/2.0), screenY-23, 1, 35, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 	NumberOfIconsOnScreen+=1
 
@@ -396,20 +402,20 @@ func DrawAllIcons():
 
 		if Icons.IconAnimationTimer[index] == 3:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.85, 0.85), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.85) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.85) / 2.0))))
-#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-#				VisualsCore.DrawText(Icons.IconTextIndex[index], Icons.IconText[index], Icons.IconScreenX[index]-14, Icons.IconScreenY[index]-23, 0, 35, 0.85, 0.85, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.85, 0.85, 0)
 		elif Icons.IconAnimationTimer[index] == 2:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.90, 0.90), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.90) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.90) / 2.0))))
-#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-#				VisualsCore.DrawText(Icons.IconTextIndex[index], Icons.IconText[index], Icons.IconScreenX[index]-14, Icons.IconScreenY[index]-23, 0, 35, 0.90, 0.90, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.9, 0.9, 0)
 		elif Icons.IconAnimationTimer[index] == 1:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.95, 0.95), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.90) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.95) / 2.0))))
-#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-#				VisualsCore.DrawText(Icons.IconTextIndex[index], Icons.IconText[index], Icons.IconScreenX[index]-14, Icons.IconScreenY[index]-23, 0, 35, 0.95, 0.95, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.95, 0.95, 0)
 		elif Icons.IconAnimationTimer[index] == 0:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*1.0) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*1.0) / 2.0))))
-#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-#				VisualsCore.DrawText(Icons.IconTextIndex[index], Icons.IconText[index], Icons.IconScreenX[index]-14, Icons.IconScreenY[index]-23, 0, 35, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 1.0, 1.0, 0)
 
 	pass
 
@@ -421,7 +427,6 @@ func ThisIconWasPressed(iconToCheck, _player):
 		for index in range (0, NumberOfIconsOnScreen):
 			Icons.IconAnimationTimer[index] = -1
 			Icons.IconScale[index] = 1.0
-#			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(Icons.IconScreenX[index] - (VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]] / 2.0), Icons.IconScreenY[index] - (VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]] / 2.0))))
 		return false
 
@@ -434,12 +439,10 @@ func ThisIconWasPressed(iconToCheck, _player):
 
 		if (ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen):
 			if (iconToCheck != iconIndex):
-#				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
 				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[iconToCheck]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(Icons.IconScreenX[iconToCheck] - (VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[iconToCheck]] / 2.0), Icons.IconScreenY[iconToCheck] - (VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[iconToCheck]] / 2.0))))
 				return true
 			else:
 				Icons.IconAnimationTimer[iconToCheck] = -1
-#				VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].scale = Vector2(1.0, 1.0)
 				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[iconToCheck]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(Icons.IconScreenX[iconToCheck] - (VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[iconToCheck]] / 2.0), Icons.IconScreenY[iconToCheck] - (VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[iconToCheck]] / 2.0))))
 	elif Icons.IconAnimationTimer[iconToCheck] == 2:
 		Icons.IconAnimationTimer[iconToCheck]-=1
@@ -565,7 +568,7 @@ func ThisIconWasPressed(iconToCheck, _player):
 func DeleteAllGUI():
 	ButtonSelectedByKeyboard = 0
 
-	for index in range (0, 10):#NumberOfButtonsOnScreen):
+	for index in range (0, 10):
 		Buttons.ButtonIndex[index] = -1
 		Buttons.ButtonScreenX[index] = -99999
 		Buttons.ButtonScreenY[index] = -99999
@@ -594,16 +597,9 @@ func DeleteAllGUI():
 		Icons.IconScreenY[index] = -99999
 		Icons.IconAnimationTimer[index] = -1
 		Icons.IconScale[index] = 1.0
-#		VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
 		Icons.IconText[index] = " "
 
 	NumberOfIconsOnScreen = 0
-
-#	for index in range(0, 100):
-#		VisualsCore.Sprites.SpriteImage[200+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
-
-#	for index in range(0, 10):
-#		VisualsCore.Sprites.SpriteImage[40+index].modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 	pass
 

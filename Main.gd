@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                   Version 3.0.0.7 Alpha Final+
+#                                  Version 3.0.0.7 Alpha Final+2
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -47,11 +47,14 @@
 #- Thorough testing of final beta version -
 
 # Pre-Beta1of3(Not Finished!):
-# - Fixed configure gamepad(s) text position in [Options] screen
+# - Fixed configure controller(s) text position in [Options] screen
 # - Fixed warnings/errors when running the game in the IDE
 # - Fixed centering of scaled GUI arrow set arrows
+# - Fixed scaling of icon characters on new high score name input screen
+# - Fixed controller(s) not highlighting [Exit] button on new high score name input screen
+# - Fixed [<] (backspace) button disappearing on new high score name input screen
+# - [NOT DONE!]
 # - 
-
 
 extends Node2D
 

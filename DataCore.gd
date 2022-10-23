@@ -25,7 +25,7 @@ var HighScoreScore = []
 var PlayerWithHighestScore
 var NewHighScoreRank
 
-const FILE_NAME = "user://TetriStory-3_0_0_7-game-data.json"
+const FILE_NAME = "user://TetriStory-3_0_0_7.1-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func CheckForNewHighScore():

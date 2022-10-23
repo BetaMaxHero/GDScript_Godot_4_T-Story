@@ -13,7 +13,7 @@ _global_script_class_icons={}
 
 [application]
 
-config/name="TetriStory"
+config/name="TetriStory 110%"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/image="res://media/images/backgrounds/FadingBlackBG.png"
