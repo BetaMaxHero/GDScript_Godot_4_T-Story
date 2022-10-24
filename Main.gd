@@ -53,6 +53,12 @@
 # - Fixed scaling of icon characters on new high score name input screen
 # - Fixed controller(s) not highlighting [Exit] button on new high score name input screen
 # - Fixed [<] (backspace) button disappearing on new high score name input screen
+# - Fixed playfield sprite overlap of box sprites in playing game screen
+# - Fixed lost game data by saving game options/high scores when displaying title screen
+# - Mapped pause ley from [P] to [Spacebar] when in playing game screen
+# - Mapped secondary rotate key from [Alt] to [Shift] when in playing game screen
+# - Added "Game Paused" text/background when in playing game screen
+# - 
 # - [NOT DONE!]
 # - 
 

@@ -209,6 +209,9 @@ func _ready():
 	Sprites.SpriteImage[131] = load("res://media/images/playing/Board3PlayerNewBG.png")
 	Sprites.SpriteActive[131] = true
 
+	Sprites.SpriteImage[135] = load("res://media/images/playing/PauseBG.png")
+	Sprites.SpriteActive[135] = true
+
 	Sprites.SpriteImage[141] = load("res://media/images/story/BG_Story-1.png")
 	Sprites.SpriteActive[141] = true
 	Sprites.SpriteImage[142] = load("res://media/images/story/BG_Story-2.png")
@@ -389,7 +392,8 @@ func _ready():
 #				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
 			elif (index > 9999 && index < 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
-
+			elif (index == 135):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 250)
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
 	FontTTF.append(-1)

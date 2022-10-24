@@ -230,38 +230,38 @@ func DisplayFASScreen():
 		RenderingServer.set_default_clear_color(Color(0.1, 0.1, 0.1, 1.0))
 
 		if (OperatingSys != OSAndroid):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''TetriStory 110%™''", 0, 16, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''TetriStory 110%™''", 0, 2, 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif (OperatingSys == OSAndroid):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''T-Story 110%™''", 0, 16, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''T-Story 110%™''", 0, 2, 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 16+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By: Team ''BetaMax Heroes''", 0, 16+(30*2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 2+30, 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By: Team ''BetaMax Heroes''", 0, 2+(30*2), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2.0, 16+(30*3), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Target Platforms:", 0, 16+(30*4), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Valve's Steam Game Client[Windows/Linux] -", 0, 16+(30*5), 1, 25, 1.0, 1.0, 0, 0.1, 0.1, 0.1, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Windows/macOS/Linux Desktop/Laptop HTML5 Internet Browsers -", 0, 16+(30*6), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Android Smartphones/Tablets -", 0, 16+(30*7), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Target Platforms:", 0, 2+(30*4), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Valve's Steam Game Client[Windows/Linux] -", 0, 2+(30*5), 1, 23, 1.0, 1.0, 0, 0.1, 0.1, 0.1, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Windows/macOS/Linux Desktop/Laptop HTML5 Internet Browsers -", 0, 2+(30*6), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Android Smartphones/Tablets -", 0, 2+(30*7), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2.0, 16+(30*8), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "To Do List:", 0, 16+(30*9), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Perfect single player game [DONE!] -", 0, 16+(30*10), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Level progression [DONE!] -", 0, 16+(30*11), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Cut scenes [DONE!] -", 0, 16+(30*12), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect multi player game -", 0, 16+(30*13), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect computer A.I. players -", 0, 16+(30*14), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] New high score name input [DONE!] -", 0, 16+(30*15), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Full music soundtrack [DONE!] -", 0, 16+(30*16), 1, 25, 1.0, 1.0, 0, 0.0, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Ending [DONE!] -", 0, 16+(30*17), 1, 25, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Thorough testing of final beta version -", 0, 16+(30*18), 1, 25, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "To Do List:", 0, 2+(30*9), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Perfect single player game [DONE!] -", 0, 2+(30*10), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Level progression [DONE!] -", 0, 2+(30*11), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Cut scenes [DONE!] -", 0, 2+(30*12), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect multi player game -", 0, 2+(30*13), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect computer A.I. players -", 0, 2+(30*14), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] New high score name input [DONE!] -", 0, 2+(30*15), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Full music soundtrack [DONE!] -", 0, 2+(30*16), 1, 23, 1.0, 1.0, 0, 0.0, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Ending [DONE!] -", 0, 2+(30*17), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Thorough testing of final beta version -", 0, 2+(30*18), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2.0, 640-48, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		if (OperatingSys != OSAndroid):
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Click Left Mouse Button Or Press Keyboard [Spacebar] To Continue!", 0, 640-25, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Click Left Mouse Button Or Press Keyboard [Spacebar] To Continue!", 0, 640-25-12, 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		else:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Tap On Screen To Continue!", 0, 640-25, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Tap On Screen To Continue!", 0, 640-25-12, 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		ScreenDisplayTimer = (250*2)
 
@@ -287,6 +287,8 @@ func DisplayFASScreen():
 #----------------------------------------------------------------------------------------
 func DisplayTitleScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
+		DataCore.SaveOptionsAndHighScores()
+		
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12+2, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -1520,6 +1522,8 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(131, VisualsCore.ScreenWidth/2.0, (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		RenderingServer.canvas_item_set_draw_index(VisualsCore.Sprites.ci_rid[131], -1000)
 
+		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0)-9999, (VisualsCore.ScreenHeight/2.0)-9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.75)
+
 		var width = VisualsCore.Sprites.SpriteImageWidth[131]
 		var height = VisualsCore.Sprites.SpriteImageHeight[131]
 		RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[131], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(VisualsCore.Sprites.SpriteScreenX[131]-(width/2), VisualsCore.Sprites.SpriteScreenY[131]-(height/2))))#x - (sprite_size.x / 2.0), y - (sprite_size.y / 2.0))))
@@ -1568,7 +1572,7 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
 		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.target_fps = 99999
+			Engine.target_fps = 60
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
@@ -1576,6 +1580,11 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon(119, VisualsCore.ScreenWidth-59, 147+90+92+93, " ")
 
 	LogicCore.RunTetriGameEngine()
+
+	if (LogicCore.PAUSEgame == false):
+		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0)-9999, (VisualsCore.ScreenHeight/2.0)-9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+	if (LogicCore.PAUSEgame == true):
+		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
 
 	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
 		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)

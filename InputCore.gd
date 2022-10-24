@@ -267,12 +267,12 @@ func _process(_delta):
 	elif Input.is_action_pressed("KeyboardLeft"):
 		JoystickDirection[InputKeyboard] = JoyLeft
 
-	if Input.is_action_pressed("ButtonOne"):
-		JoyButtonOne[InputKeyboard] = Pressed
+	if (Input.is_action_pressed("ButtonOne")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonOne[InputKeyboard] = Pressed
 		InputThatStartedNewGame = InputKeyboard
 
-	if Input.is_action_pressed("ButtonTwo"):
-		JoyButtonTwo[InputKeyboard] = Pressed
+	if (Input.is_action_pressed("ButtonTwo")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonTwo[InputKeyboard] = Pressed
 
 	for index in range (0, 3):
 		if (JoyUpMapped[index][0] == JoyDPadUp && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_UP) == true):
