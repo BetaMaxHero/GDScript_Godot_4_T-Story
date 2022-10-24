@@ -148,6 +148,10 @@ SeeEnding={
 
 pointing/emulate_touch_from_mouse=true
 
+[physics]
+
+common/physics_ticks_per_second=30
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

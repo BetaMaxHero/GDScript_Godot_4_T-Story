@@ -29,7 +29,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                  Version 3.0.0.7 Alpha Final+2
+#                                  Version 3.0.0.9 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -46,7 +46,11 @@
 #- [DONE!] Ending [DONE!] -
 #- Thorough testing of final beta version -
 
-# Pre-Beta1of3(Not Finished!):
+# Pre-Beta2of3:
+# - [NOT DONE!]
+# - 
+
+# Pre-Beta1of3:
 # - Fixed configure controller(s) text position in [Options] screen
 # - Fixed warnings/errors when running the game in the IDE
 # - Fixed centering of scaled GUI arrow set arrows
@@ -55,12 +59,9 @@
 # - Fixed [<] (backspace) button disappearing on new high score name input screen
 # - Fixed playfield sprite overlap of box sprites in playing game screen
 # - Fixed lost game data by saving game options/high scores when displaying title screen
-# - Mapped pause ley from [P] to [Spacebar] when in playing game screen
+# - Mapped pause key from [P] to [Spacebar] when in playing game screen
 # - Mapped secondary rotate key from [Alt] to [Shift] when in playing game screen
 # - Added "Game Paused" text/background when in playing game screen
-# - 
-# - [NOT DONE!]
-# - 
 
 extends Node2D
 

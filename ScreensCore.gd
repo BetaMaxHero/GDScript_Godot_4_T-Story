@@ -1572,7 +1572,7 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
 		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.target_fps = 60
+			Engine.target_fps = 0
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
