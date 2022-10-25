@@ -312,7 +312,7 @@ func _ready():
 		Sprites.SpriteImage[index] = load("res://media/images/playing/BoxWhite1.png")
 		Sprites.SpriteActive[index] = true
 
-	PlayfieldSpriteCurrentIndex.resize(9)
+	var _warnErase = PlayfieldSpriteCurrentIndex.resize(9)
 	for index in range (0, 8):
 		PlayfieldSpriteCurrentIndex[index] = 0
 
@@ -349,7 +349,7 @@ func _ready():
 		Sprites.SpriteImage[index] = load("res://media/images/playing/BoxWhite1.png")
 		Sprites.SpriteActive[index] = true
 
-	PieceSpriteCurrentIndex.resize(9)
+	_warnErase = PieceSpriteCurrentIndex.resize(9)
 	for index in range (0, 9):
 		PieceSpriteCurrentIndex[index] = 0
 

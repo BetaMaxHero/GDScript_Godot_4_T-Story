@@ -115,16 +115,16 @@ func _ready():
 	KeyboardSpacebarPressed = false
 	KeyboardEnterPressed = false
 
-	JoystickDirection.resize(9)
-	JoyButtonOne.resize(9)
-	JoyButtonOneWasPressed.resize(9)
-	JoyButtonTwo.resize(9)
-	JoyButtonTwoWasPressed.resize(9)
+	var _warnErase = JoystickDirection.resize(9)
+	_warnErase = JoyButtonOne.resize(9)
+	_warnErase = JoyButtonOneWasPressed.resize(9)
+	_warnErase = JoyButtonTwo.resize(9)
+	_warnErase = JoyButtonTwoWasPressed.resize(9)
 
-	JoyButtonOnePressedDuration.resize(10)
+	_warnErase = JoyButtonOnePressedDuration.resize(10)
 	for x in range(0, 10):
 		JoyButtonOnePressedDuration[x] = []
-		JoyButtonOnePressedDuration[x].resize(10)
+		_warnErase = JoyButtonOnePressedDuration[x].resize(10)
 		for y in range(0, 10):
 			JoyButtonOnePressedDuration[x][y] = []
 
@@ -132,10 +132,10 @@ func _ready():
 		for y in range(0, 10):
 			JoyButtonOnePressedDuration[x][y] = 0
 
-	JoyButtonOnePressedCounter.resize(10)
+	_warnErase = JoyButtonOnePressedCounter.resize(10)
 	for x in range(0, 10):
 		JoyButtonOnePressedCounter[x] = []
-		JoyButtonOnePressedCounter[x].resize(10)
+		_warnErase = JoyButtonOnePressedCounter[x].resize(10)
 		for y in range(0, 10):
 			JoyButtonOnePressedCounter[x][y] = []
 
@@ -160,45 +160,45 @@ func _ready():
 
 	var _GamepadsConnected = Input.get_connected_joypads()
 
-	JoyUpMapped.resize(9)
+	_warnErase = JoyUpMapped.resize(9)
 	for x in range(9):
 		JoyUpMapped[x] = []
-		JoyUpMapped[x].resize(1)
+		_warnErase = JoyUpMapped[x].resize(1)
 		for y in range(1):
 			JoyUpMapped[x][y] = []
 
-	JoyDownMapped.resize(9)
+	_warnErase = JoyDownMapped.resize(9)
 	for x in range(9):
 		JoyDownMapped[x] = []
-		JoyDownMapped[x].resize(1)
+		_warnErase = JoyDownMapped[x].resize(1)
 		for y in range(1):
 			JoyDownMapped[x][y] = []
 
-	JoyLeftMapped.resize(9)
+	_warnErase = JoyLeftMapped.resize(9)
 	for x in range(9):
 		JoyLeftMapped[x] = []
-		JoyLeftMapped[x].resize(1)
+		_warnErase = JoyLeftMapped[x].resize(1)
 		for y in range(1):
 			JoyLeftMapped[x][y] = []
 
-	JoyRightMapped.resize(9)
+	_warnErase = JoyRightMapped.resize(9)
 	for x in range(9):
 		JoyRightMapped[x] = []
-		JoyRightMapped[x].resize(1)
+		_warnErase = JoyRightMapped[x].resize(1)
 		for y in range(1):
 			JoyRightMapped[x][y] = []
 
-	JoyButtonOneMapped.resize(9)
+	_warnErase = JoyButtonOneMapped.resize(9)
 	for x in range(9):
 		JoyButtonOneMapped[x] = []
-		JoyButtonOneMapped[x].resize(1)
+		_warnErase = JoyButtonOneMapped[x].resize(1)
 		for y in range(1):
 			JoyButtonOneMapped[x][y] = []
 
-	JoyButtonTwoMapped.resize(9)
+	_warnErase = JoyButtonTwoMapped.resize(9)
 	for x in range(9):
 		JoyButtonTwoMapped[x] = []
-		JoyButtonTwoMapped[x].resize(1)
+		_warnErase = JoyButtonTwoMapped[x].resize(1)
 		for y in range(1):
 			JoyButtonTwoMapped[x][y] = []
 

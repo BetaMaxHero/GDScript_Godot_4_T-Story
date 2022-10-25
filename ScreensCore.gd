@@ -137,8 +137,8 @@ func _ready():
 	if (VideoAndroid == true):
 		OperatingSys = OSAndroid
 
-	CutSceneTextIndex.resize(7)
-	CutSceneTextScale.resize(7)
+	var _warnErase = CutSceneTextIndex.resize(7)
+	_warnErase = CutSceneTextScale.resize(7)
 	CutSceneTextScale[0] = 0.0
 	CutSceneTextScale[1] = 0.0
 	CutSceneTextScale[2] = 0.0
@@ -148,7 +148,7 @@ func _ready():
 	CutSceneTextScale[6] = 0.0
 	CutSceneTextScaleIndex = 0
 
-	CutSceneSceneTotal.resize(10)
+	_warnErase = CutSceneSceneTotal.resize(10)
 	CutSceneSceneTotal[1] = 1
 	CutSceneSceneTotal[2] = 2
 	CutSceneSceneTotal[3] = 2
@@ -1572,7 +1572,7 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
 		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.target_fps = 0
+			Engine.max_fps = 0
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
@@ -1787,7 +1787,7 @@ func DisplayPlayingGameScreen():
 				LogicCore.PlayerStatus[2] = LogicCore.NewPieceDropping
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
-		Engine.target_fps = 30
+		Engine.max_fps = 30
 		
 		if (LogicCore.StillPlaying == false):
 			DataCore.CheckForNewHighScore()

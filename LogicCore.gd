@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.9 - Pre-Beta1of3"
+var Version = "Version 3.0.0.10 - Pre-Beta1of3 [Godot v4 Beta v3.5]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -151,7 +151,7 @@ var StillPlaying
 
 #----------------------------------------------------------------------------------------
 func InitializePieceData():
-	PieceData.resize(8)
+	var _warnErase = PieceData.resize(8)
 	for piece in range(8):
 		PieceData[piece] = []
 		PieceData[piece].resize(5)
@@ -998,11 +998,11 @@ func MovePieceRight(player):
 #----------------------------------------------------------------------------------------
 func SetupForNewGame():
 	if GameMode == ChildMode:
-		Engine.target_fps = 15
+		Engine.max_fps = 15
 	elif GameMode == TeenMode:
-		Engine.target_fps = 30
+		Engine.max_fps = 30
 	elif GameMode == AdultMode:
-		Engine.target_fps = 25
+		Engine.max_fps = 25
 
 	ClearPlayfieldWithCollisionDetection()
 
@@ -1160,11 +1160,11 @@ func SetupForNewLevel():
 		return
 	
 	if GameMode == ChildMode:
-		Engine.target_fps = 15
+		Engine.max_fps = 15
 	elif GameMode == TeenMode:
-		Engine.target_fps = 30
+		Engine.max_fps = 30
 	elif GameMode == AdultMode:
-		Engine.target_fps = 25
+		Engine.max_fps = 25
 
 	ClearPlayfieldWithCollisionDetection()
 
@@ -1377,9 +1377,9 @@ func ComputeComputerPlayerMove(player):
 				BestRotation[player] = rot
 	elif (MovedToBestMove[player] == false && BestMoveX[player] != -1 && BestRotation[player] != -1):
 		if (PieceRotation[player] < BestRotation[player]):
-			RotatePieceClockwise(player)
+			var _warnErase = RotatePieceClockwise(player)
 		elif (PieceRotation[player] > BestRotation[player]):
-			RotatePieceCounterClockwise(player)
+			var _warnErase = RotatePieceCounterClockwise(player)
 
 		if (BestMoveX[player] < PiecePlayfieldX[player]):
 			if ( PieceCollisionLeft(player) != CollisionWithPiece && PieceCollisionLeft(player) != CollisionWithPlayfield):
@@ -1588,7 +1588,7 @@ func RunTetriGameEngine():
 
 								if (InputCore.JoystickDirection[PlayerInput[player]] == InputCore.JoyUp):
 									if PieceRotatedUp[player] == false:
-										RotatePieceClockwise(player)
+										var _warnErase = RotatePieceClockwise(player)
 										PieceRotatedUp[player] = true
 								else:
 									PieceRotatedUp[player] = false
@@ -1601,14 +1601,14 @@ func RunTetriGameEngine():
 
 								if InputCore.JoyButtonOne[PlayerInput[player]] == InputCore.Pressed:
 									if PieceRotatedOne[player] == false:
-										RotatePieceClockwise(player)
+										var _warnErase = RotatePieceClockwise(player)
 										PieceRotatedOne[player] = true
 								else:
 									PieceRotatedOne[player] = false
 
 								if InputCore.JoyButtonTwo[PlayerInput[player]] == InputCore.Pressed:
 									if PieceRotatedTwo[player] == false:
-										RotatePieceCounterClockwise(player)
+										var _warnErase = RotatePieceCounterClockwise(player)
 										PieceRotatedTwo[player] = true
 								else:
 									PieceRotatedTwo[player] = false
@@ -1649,7 +1649,7 @@ func RunTetriGameEngine():
 
 							if InterfaceCore.ThisIconWasPressed(3, player) == true:
 								if PieceRotatedOne[player] == false:
-									RotatePieceClockwise(player)
+									var _warnErase = RotatePieceClockwise(player)
 									PieceRotatedOne[player] = true
 							else:
 								PieceRotatedOne[player] = false
@@ -1691,7 +1691,7 @@ func RunTetriGameEngine():
 
 								if InterfaceCore.ThisIconWasPressed(3, player) == true:
 									if PieceRotatedOne[player] == false:
-										RotatePieceClockwise(player)
+										var _warnErase = RotatePieceClockwise(player)
 										PieceRotatedOne[player] = true
 								else:
 									PieceRotatedOne[player] = false
@@ -1732,7 +1732,7 @@ func RunTetriGameEngine():
 
 							if InterfaceCore.ThisIconWasPressed(7, player) == true:
 								if PieceRotatedOne[player] == false:
-									RotatePieceClockwise(player)
+									var _warnErase = RotatePieceClockwise(player)
 									PieceRotatedOne[player] = true
 							else:
 								PieceRotatedOne[player] = false
@@ -1762,7 +1762,7 @@ func RunTetriGameEngine():
 					ScreensCore.ScreenToDisplayNext = ScreensCore.CutSceneScreen
 					Level+=1
 					ScreensCore.CutSceneScene = 1
-					Engine.target_fps = 30
+					Engine.max_fps = 30
 					LevelCleared = true
 					
 					if (LogicCore.Level == 2):
@@ -1786,7 +1786,7 @@ func RunTetriGameEngine():
 						InputCore.DelayAllUserInput = 100
 						StillPlaying = false
 						GameWon = true
-						Engine.target_fps = 30
+						Engine.max_fps = 30
 #						AudioCore.PlayMusic(10)
 						ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
 						ScreensCore.ScreenToDisplayNext = ScreensCore.WonGameScreen
@@ -1798,7 +1798,7 @@ func RunTetriGameEngine():
 						SecretCodeCombined = (SecretCode[0]*1000)+(SecretCode[1]*100)+(SecretCode[2]*10)+(SecretCode[3]*1)
 
 				if (PlayerStatus[0] == GameOver && PlayerStatus[1] == GameOver && PlayerStatus[2] == GameOver):
-					Engine.target_fps = 30
+					Engine.max_fps = 30
 					AudioCore.PlayMusic(0)
 
 					StillPlaying = false
@@ -1823,23 +1823,23 @@ func _ready():
 
 	InitializePieceData()
 
-	Playfield.resize(35)
+	var _warnErase = Playfield.resize(35)
 	for x in range(35):
 		Playfield[x] = []
 		Playfield[x].resize(26)
 		for y in range(26):
 			Playfield[x][y] = []
 
-	PlayfieldMoveAI.resize(35)
+	_warnErase = PlayfieldMoveAI.resize(35)
 	for x in range(35):
 		PlayfieldMoveAI[x] = []
 		PlayfieldMoveAI[x].resize(26)
 		for y in range(26):
 			PlayfieldMoveAI[x][y] = []
 
-	PieceBagIndex.resize(3)
+	_warnErase = PieceBagIndex.resize(3)
 
-	PieceBag.resize(3)
+	_warnErase = PieceBag.resize(3)
 	for player in range(3):
 		PieceBag[player] = []
 		PieceBag[player].resize(2)
@@ -1847,24 +1847,24 @@ func _ready():
 			PieceBag[player][bag] = []
 			PieceBag[player][bag].resize(9)
 
-	PieceSelectedAlready.resize(3)
+	_warnErase = PieceSelectedAlready.resize(3)
 	for player in range(3):
 		PieceSelectedAlready[player] = []
-		PieceSelectedAlready[player].resize(9)
+		_warnErase = PieceSelectedAlready[player].resize(9)
 
-	Piece.resize(3)
-	NextPiece.resize(3)
+	_warnErase = Piece.resize(3)
+	_warnErase = NextPiece.resize(3)
 
-	PieceRotation.resize(3)
-	PiecePlayfieldX.resize(3)
-	PiecePlayfieldY.resize(3)
+	_warnErase = PieceRotation.resize(3)
+	_warnErase = PiecePlayfieldX.resize(3)
+	_warnErase = PiecePlayfieldY.resize(3)
 
-	PieceDropTimer.resize(3)
-	TimeToDropPiece.resize(3)
+	_warnErase = PieceDropTimer.resize(3)
+	_warnErase = TimeToDropPiece.resize(3)
 
-	PlayerStatus.resize(3)
+	_warnErase = PlayerStatus.resize(3)
 
-	PieceDropStartHeight.resize(8)
+	_warnErase = PieceDropStartHeight.resize(8)
 	PieceDropStartHeight[0] = 0
 	PieceDropStartHeight[1] = 4
 	PieceDropStartHeight[2] = 4
@@ -1874,48 +1874,48 @@ func _ready():
 	PieceDropStartHeight[6] = 3
 	PieceDropStartHeight[7] = 5
 
-	PieceBagFirstUse.resize(3)
+	_warnErase = PieceBagFirstUse.resize(3)
 
-	PieceMovementDelay.resize(3)
+	_warnErase = PieceMovementDelay.resize(3)
 
-	PieceRotatedOne.resize(3)
-	PieceRotatedTwo.resize(3)
+	_warnErase = PieceRotatedOne.resize(3)
+	_warnErase = PieceRotatedTwo.resize(3)
 
-	PieceRotatedUp.resize(3)
+	_warnErase = PieceRotatedUp.resize(3)
 
-	Score.resize(3)
+	_warnErase = Score.resize(3)
 	Score[0] = 0
 	Score[1] = 0
 	Score[2] = 0
 
 	Level = 1
 
-	DropBonus.resize(3)
+	_warnErase = DropBonus.resize(3)
 
-	AndroidMovePieceDownDelay.resize(3)
-	AndroidMovePieceDownPressed.resize(3)
-	AndroidMovePieceLeftDelay.resize(3)
-	AndroidMovePieceRightDelay.resize(3)
+	_warnErase = AndroidMovePieceDownDelay.resize(3)
+	_warnErase = AndroidMovePieceDownPressed.resize(3)
+	_warnErase = AndroidMovePieceLeftDelay.resize(3)
+	_warnErase = AndroidMovePieceRightDelay.resize(3)
 
-	PlayerInput.resize(3)
+	_warnErase = PlayerInput.resize(3)
 
-	MovePieceCollision.resize(3)
+	_warnErase = MovePieceCollision.resize(3)
 	for player in range(3):
 		MovePieceCollision[player] = []
-		MovePieceCollision[player].resize(35)
+		_warnErase = MovePieceCollision[player].resize(35)
 		for x in range(35):
 			MovePieceCollision[player][x] = []
-			MovePieceCollision[player][x].resize(26)
+			_warnErase = MovePieceCollision[player][x].resize(26)
 
-	MovePieceHeight.resize(3)
+	_warnErase = MovePieceHeight.resize(3)
 	for player in range(3):
 		MovePieceHeight[player] = []
-		MovePieceHeight[player].resize(35)
+		_warnErase = MovePieceHeight[player].resize(35)
 		for x in range(35):
 			MovePieceHeight[player][x] = []
-			MovePieceHeight[player][x].resize(26)
+			_warnErase = MovePieceHeight[player][x].resize(26)
 
-	MoveTrappedHoles.resize(3)
+	_warnErase = MoveTrappedHoles.resize(3)
 	for player in range(3):
 		MoveTrappedHoles[player] = []
 		MoveTrappedHoles[player].resize(35)
@@ -1923,7 +1923,7 @@ func _ready():
 			MoveTrappedHoles[player][x] = []
 			MoveTrappedHoles[player][x].resize(26)
 
-	MoveOneBlockCavernHoles.resize(3)
+	_warnErase = MoveOneBlockCavernHoles.resize(3)
 	for player in range(3):
 		MoveOneBlockCavernHoles[player] = []
 		MoveOneBlockCavernHoles[player].resize(35)
@@ -1931,27 +1931,27 @@ func _ready():
 			MoveOneBlockCavernHoles[player][x] = []
 			MoveOneBlockCavernHoles[player][x].resize(26)
 
-	MovePlayfieldBoxEdges.resize(3)
+	_warnErase = MovePlayfieldBoxEdges.resize(3)
 	for player in range(3):
 		MovePlayfieldBoxEdges[player] = []
-		MovePlayfieldBoxEdges[player].resize(35)
+		_warnErase = MovePlayfieldBoxEdges[player].resize(35)
 		for x in range(35):
 			MovePlayfieldBoxEdges[player][x] = []
-			MovePlayfieldBoxEdges[player][x].resize(26)
+			_warnErase = MovePlayfieldBoxEdges[player][x].resize(26)
 
-	MoveCompletedLines.resize(3)
+	_warnErase = MoveCompletedLines.resize(3)
 	for player in range(3):
 		MoveCompletedLines[player] = []
-		MoveCompletedLines[player].resize(35)
+		_warnErase = MoveCompletedLines[player].resize(35)
 		for x in range(35):
 			MoveCompletedLines[player][x] = []
-			MoveCompletedLines[player][x].resize(26)
+			_warnErase = MoveCompletedLines[player][x].resize(26)
 
-	BestMoveX.resize(3)
-	BestRotation.resize(3)
-	MovedToBestMove.resize(3)
+	_warnErase = BestMoveX.resize(3)
+	_warnErase = BestRotation.resize(3)
+	_warnErase = MovedToBestMove.resize(3)
 
-	MaxRotationArray.resize(8)
+	_warnErase = MaxRotationArray.resize(8)
 	MaxRotationArray[0] = 0
 	MaxRotationArray[1] = 2
 	MaxRotationArray[2] = 2
@@ -1961,24 +1961,24 @@ func _ready():
 	MaxRotationArray[6] = 1
 	MaxRotationArray[7] = 2
 
-	CPUPlayerMovementSkip.resize(3)
+	_warnErase = CPUPlayerMovementSkip.resize(3)
 
-	CPUPlayerForcedDirection.resize(3)
+	_warnErase = CPUPlayerForcedDirection.resize(3)
 	CPUPlayerForcedDirection[0] = CPUForcedFree
 	CPUPlayerForcedDirection[1] = CPUForcedFree
 	CPUPlayerForcedDirection[2] = CPUForcedFree
 
-	CPUPieceTestX.resize(3)
-	CPURotationTest.resize(3)
-	CPUComputedBestMove.resize(3)
+	_warnErase = CPUPieceTestX.resize(3)
+	_warnErase = CPURotationTest.resize(3)
+	_warnErase = CPUComputedBestMove.resize(3)
 
-	pTXStep.resize(3)
-	bestValue.resize(3)
+	_warnErase = pTXStep.resize(3)
+	_warnErase = bestValue.resize(3)
 
-	PlayfieldBackup.resize(35)
+	_warnErase = PlayfieldBackup.resize(35)
 	for x in range(35):
 		PlayfieldBackup[x] = []
-		PlayfieldBackup[x].resize(26)
+		_warnErase = PlayfieldBackup[x].resize(26)
 		for y in range(26):
 			PlayfieldBackup[x][y] = []
 

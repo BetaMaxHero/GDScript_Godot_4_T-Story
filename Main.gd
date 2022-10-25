@@ -1,5 +1,4 @@
-# Beta 2 Until Beta 4:
-# "target_fps" to "max_fps"
+# Godot Engine v4 Beta 3.5
 
 # Copyright 2023 Team "BetaMax Heroes"
 # 
@@ -29,7 +28,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/                       \/\/
-#                                  Version 3.0.0.9 Pre-Beta1of3
+#                                  Version 3.0.0.9 Pre-Beta2of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -67,7 +66,7 @@ extends Node2D
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	Engine.target_fps = 30
+	Engine.max_fps = 30
 
 	if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
 		VisualsCore.KeepAspectRatio = 0

@@ -25,7 +25,7 @@ var HighScoreScore = []
 var PlayerWithHighestScore
 var NewHighScoreRank
 
-const FILE_NAME = "user://TetriStory-3_0_0_9-game-data.json"
+const FILE_NAME = "user://TetriStory-3_0_0_10-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func CheckForNewHighScore():
@@ -147,7 +147,7 @@ func SaveOptionsAndHighScores():
 	config.set_value("Options", "JoyButtonOneMapped", InputCore.JoyButtonOneMapped)
 	config.set_value("Options", "JoyButtonTwoMapped", InputCore.JoyButtonTwoMapped)
 
-	config.save(FILE_NAME)
+	var _warnErase = config.save(FILE_NAME)
 
 
 	pass
