@@ -1,4 +1,4 @@
-# Godot Engine v4 Beta 3.5
+# Godot Engine v4 Beta 4
 
 # Copyright 2023 Team "BetaMax Heroes"
 # 
@@ -27,7 +27,7 @@
 #    |    |_/ __ \   __\_  __ \  |\_____  \\   __\/  _ \_  __ <   |  |  |   ||   /  /_\  \_// /_
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
-#               \/                       \/                    \/                       \/\/
+#               \/                       \/                    \/           T U R B O   \/\/
 #                                  Version 3.0.0.9 Pre-Beta2of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
@@ -46,6 +46,7 @@
 #- Thorough testing of final beta version -
 
 # Pre-Beta2of3:
+# - Fixed screen jitter when a new line is placed at bottom of playfield when playing
 # - [NOT DONE!]
 # - 
 
@@ -85,6 +86,8 @@ func _ready():
 func _process(_delta):
 
 	ScreensCore.ProcessScreenToDisplay()
+
+#	print(LogicCore.ScoreChanged)
 
 	pass
 

@@ -18,12 +18,14 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.10 - Pre-Beta1of3 [Godot v4 Beta v3.5]"
+var Version = "Version 3.0.0.10 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
 const AdultMode				= 2
-var GameMode = AdultMode
+const TurboMode				= 3
+
+var GameMode = TurboMode
 
 var AllowComputerPlayers = 0
 
@@ -73,6 +75,7 @@ const ClearingPlayfield 		= 4
 var PlayerStatus = []
 
 var PAUSEgame = false
+var PauseWasJustPressed = false
 
 var PieceDropStartHeight = []
 
@@ -148,6 +151,12 @@ var AddRandomBlocksToBottomTimer
 var PlayfieldBackup = []
 
 var StillPlaying
+
+var ScoreOneText
+var ScoreTwoText
+var ScoreThreeText
+var LinesLeftText
+
 
 #----------------------------------------------------------------------------------------
 func InitializePieceData():
@@ -560,6 +569,10 @@ func RotatePieceClockwise(player):
 
 #----------------------------------------------------------------------------------------
 func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
+	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
+
+#	if (TempOrCurrentOrNextOrDropShadowOrFallen == Next):  return
+
 	var TEMP_Piece = Piece[player]
 	var TEMP_PieceRotation = PieceRotation[player]
 	var TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
@@ -645,8 +658,11 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 
 #----------------------------------------------------------------------------------------
 func DeletePieceFromPlayfieldMemory(player, CurrentOrNextOrDropShadow):
-	if (PlayerStatus[player] == FlashingCompletedLines || PlayerStatus[player] == ClearingCompletedLines):
-		return
+	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
+
+#	if (CurrentOrNextOrDropShadow == Next):  return
+
+	if (PlayerStatus[player] == FlashingCompletedLines || PlayerStatus[player] == ClearingCompletedLines):  return
 
 	var TEMP_Piece = Piece[player]
 	var TEMP_PieceRotation = PieceRotation[player]
@@ -997,13 +1013,6 @@ func MovePieceRight(player):
 
 #----------------------------------------------------------------------------------------
 func SetupForNewGame():
-	if GameMode == ChildMode:
-		Engine.max_fps = 15
-	elif GameMode == TeenMode:
-		Engine.max_fps = 30
-	elif GameMode == AdultMode:
-		Engine.max_fps = 25
-
 	ClearPlayfieldWithCollisionDetection()
 
 	for player in range(0, 3):
@@ -1165,7 +1174,8 @@ func SetupForNewLevel():
 		Engine.max_fps = 30
 	elif GameMode == AdultMode:
 		Engine.max_fps = 25
-
+	elif GameMode == TurboMode:
+		Engine.max_fps = 60
 	ClearPlayfieldWithCollisionDetection()
 
 	for player in range(0, 3):
@@ -1560,6 +1570,8 @@ func RunTetriGameEngine():
 						PieceDropTimer[player]+=1
 					
 					if PlayerStatus[player] == NewPieceDropping:
+						DrawEverything = true
+						
 						if PiecePlayfieldY[player] < PieceDropStartHeight[ Piece[player] ]:
 							if (PieceCollisionDown(player) != CollisionWithPiece):
 								MovePieceDown(player, true)

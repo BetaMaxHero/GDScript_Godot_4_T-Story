@@ -46,6 +46,8 @@ var JoyButtonOnePressedCounter = []
 
 var ThereAreGamepads = false
 
+var _GamepadsConnected = []
+
 var JoyUpMapped = []
 var JoyDownMapped = []
 var JoyLeftMapped = []
@@ -158,7 +160,11 @@ func _ready():
 		if (Input.get_joy_guid (index) != ""):
 			ThereAreGamepads = true
 
-	var _GamepadsConnected = Input.get_connected_joypads()
+#	_GamepadsConnected = Input.get_connected_joypads()
+
+	if (Input.get_connected_joypads().size() > 0):  _GamepadsConnected = true
+	else:  _GamepadsConnected = false
+
 
 	_warnErase = JoyUpMapped.resize(9)
 	for x in range(9):
@@ -317,7 +323,7 @@ func _process(_delta):
 					JoyButtonOnePressedCounter[index][indexTwo] = JoyButtonOnePressedDuration[index][indexTwo]
 					JoyButtonOnePressedDuration[index][indexTwo] = 0
 
-					if (ThereAreGamepads == true && JoyButtonOnePressedCounter[index][indexTwo] > 30):
+					if ((ThereAreGamepads == true or _GamepadsConnected == true) && JoyButtonOnePressedCounter[index][indexTwo] > 30):
 						if (ScreensCore.JoystickSetupIndex == ScreensCore.JoySetupNotStarted):
 							ScreensCore.ScreenToDisplayNext = ScreensCore.OptionsScreen
 							ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
@@ -347,11 +353,13 @@ func _process(_delta):
 		if (DelayAllUserInput < 1 && ScreensCore.ScreenToDisplay == ScreensCore.PlayingGameScreen):
 			if (LogicCore.PAUSEgame == false):
 				LogicCore.PAUSEgame = true
+				LogicCore.PauseWasJustPressed = true
 
 				OldMusicVolume = AudioCore.MusicVolume
 				AudioCore.MusicPlayer.set_volume_db(AudioCore.ConvertLinearToDB(0.0))
 			elif (LogicCore.PAUSEgame == true):
 				LogicCore.PAUSEgame = false
+				LogicCore.PauseWasJustPressed = true
 
 				AudioCore.MusicVolume = OldMusicVolume
 				AudioCore.MusicPlayer.set_volume_db(AudioCore.ConvertLinearToDB(AudioCore.MusicVolume))

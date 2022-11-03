@@ -19,6 +19,13 @@
 extends Node2D
 
 var DEBUG = true
+
+var FramesPerSecondArrayIndex = 0
+var FramesPerSecondArray = []
+var FramesPerSecondAverage = 0
+var FramesPerSecondLastSecondTick = Time.get_ticks_msec()
+var FramesPerSecondFrames = 0
+
 #var FramesPerSecondText
 class FPSClass:
 	var TextImage = []
@@ -101,6 +108,9 @@ var KeepAspectRatio
 
 #----------------------------------------------------------------------------------------
 func _ready():
+	for _index in range(0, 10):
+		FramesPerSecondArray.append(0)
+
 	for _index in range(0, 20000):
 		Sprites.ci_rid.append(-1)
 		Sprites.ci_rid[_index] = RenderingServer.canvas_item_create()
@@ -316,7 +326,7 @@ func _ready():
 	for index in range (0, 8):
 		PlayfieldSpriteCurrentIndex[index] = 0
 
-	maxIndex = (4*3*2)
+	maxIndex = (4*3*3)
 	for index in range(19000, 19000+maxIndex):
 		Sprites.SpriteImage[index] = load("res://media/images/playing/BoxRed1.png")
 		Sprites.SpriteActive[index] = true
@@ -392,6 +402,8 @@ func _ready():
 #				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
 			elif (index > 9999 && index < 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
+			elif (index == 131):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -99999)
 			elif (index == 135):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 250)
 	FontTTF.append(-1)
@@ -628,7 +640,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
-	AddAboutScreenText("Version 4.0 Beta 2+", 1.0)
+	AddAboutScreenText("Version 4.0 Beta 4+", 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
