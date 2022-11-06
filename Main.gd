@@ -47,6 +47,7 @@
 
 # Pre-Beta2of3:
 # - Fixed screen jitter when a new line is placed at bottom of playfield when playing
+# - Can't Detect Game Controllers(They Work) In HTML5 On Mozilla Firefox & Google Chrome, Edge, & Opera
 # - [NOT DONE!]
 # - 
 

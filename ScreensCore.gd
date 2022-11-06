@@ -479,13 +479,18 @@ func DisplayOptionsScreen():
 			elif (VisualsCore.KeepAspectRatio == 0):
 				OptionsTextAspectRatio = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Off", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Configure Gamepads:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			InterfaceCore.CreateArrowSet(3, 65+50+50+50)
+			if (OperatingSys == OSDesktop):
+				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Configure Gamepads:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-			if (InputCore.ThereAreGamepads == true or InputCore._GamepadsConnected == true):
-				OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Press Button For 10+ Seconds", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			elif (InputCore.ThereAreGamepads == false):
-				OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "No Gamepads Available", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+				if (InputCore.ThereAreGamepads == true or InputCore._GamepadsConnected == true):
+					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Press Button For 10+ Seconds", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+				elif (InputCore.ThereAreGamepads == false):
+					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "No Gamepads Available", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			else:# (OperatingSys == OSHTMLFive):
+				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Gamepads Might Work In:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+				OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Edge/Firefox/Chrome/Opera", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+			InterfaceCore.CreateArrowSet(3, 65+50+50+50)
 
 			VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2.0, 250, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -1647,14 +1652,16 @@ func DisplayPlayingGameScreen():
 	if (LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping || LogicCore.PlayerStatus[2] == LogicCore.PieceFalling || LogicCore.PlayerStatus[2] == LogicCore.GameOver):
 		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
 
+	var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[10000] / 2)
+
 	for index in range (0, 9):
 		VisualsCore.PlayfieldSpriteCurrentIndex[index] = 0
 
 	if (LogicCore.PlayerStatus[0] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[1] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping):
-		LogicCore.DrawEverything = true
+		LogicCore.DrawEverything = 2
 
-	if LogicCore.DrawEverything == true:
-		print("Draw Everything")
+	if (LogicCore.DrawEverything > 0):
+		print("",LogicCore.DrawEverything," - Draw Everything")
 
 		for indexStart in range(10000, 18000, 1000):
 			for index in range (0, 624):
@@ -1668,18 +1675,23 @@ func DisplayPlayingGameScreen():
 		for y in range(0, 24):
 			for x in range(2, 32):
 				if (LogicCore.Playfield[x][y] > 0):
-					if (LogicCore.Playfield[x][y] > 30 && LogicCore.Playfield[x][y] < 40):
+					if (LogicCore.Playfield[x][y] > 10 && LogicCore.Playfield[x][y] < 20): # Next Piece
+						adjustedBox = LogicCore.Playfield[x][y]
+						adjustedBox-=10
+						startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
+
+						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+
+						VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
+					elif (LogicCore.Playfield[x][y] > 30 && LogicCore.Playfield[x][y] < 40):
 						adjustedBox = LogicCore.Playfield[x][y]
 						adjustedBox-=30
 						startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
-
-						var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 
 						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 
 						VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
 					elif (LogicCore.Playfield[x][y] == 99999):
-						var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]] / 2)
 						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[17000+VisualsCore.PlayfieldSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 						VisualsCore.PlayfieldSpriteCurrentIndex[8]+=1
 
@@ -1688,49 +1700,30 @@ func DisplayPlayingGameScreen():
 			screenX = 135
 			screenY+=26
 
-		LogicCore.DrawEverything = false
+		if (LogicCore.DrawEverything > 0):  LogicCore.DrawEverything = LogicCore.DrawEverything - 1
 
 	for index in range (0, 9):
 		VisualsCore.PieceSpriteCurrentIndex[index] = 0
 
-	var maxIndex = (4*3*3)
+	var maxIndex = (4*3*4)
 	for indexStart in range(19000, 19800, 100):
 		for index in range (0, maxIndex):
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
 
 	var screenX = 135
-	var screenY = -5
+	var screenY = -5 + (26*4)
 	var startBoxIndex = 10000
 	var adjustedBox
-	var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[10000] / 2)
-	for y in range(0, 24):
+	for y in range(4, 24):
 		for x in range(2, 32):
 			if (LogicCore.Playfield[x][y] > 0):
-				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010):
+				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
 					adjustedBox = LogicCore.Playfield[x][y]
 					adjustedBox-=1000
 					startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
 					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 					VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
-				elif (LogicCore.Playfield[x][y] > 10 && LogicCore.Playfield[x][y] < 20):
-					adjustedBox = LogicCore.Playfield[x][y]
-					adjustedBox-=10
-					startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
-
-					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-
-					VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
-				elif (LogicCore.Playfield[x][y] > 30 && LogicCore.Playfield[x][y] < 40):
-					adjustedBox = LogicCore.Playfield[x][y]
-					adjustedBox-=30
-					startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
-
-					if (y > 4):
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-						RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Color(1.0, 1.0, 1.0, 1.0))
-
-					VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
-				elif (LogicCore.Playfield[x][y] == 2000):
+				elif (LogicCore.Playfield[x][y] == 2000): # Drop Shadow
 					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))
 					VisualsCore.PieceSpriteCurrentIndex[8]+=1

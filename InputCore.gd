@@ -323,7 +323,7 @@ func _process(_delta):
 					JoyButtonOnePressedCounter[index][indexTwo] = JoyButtonOnePressedDuration[index][indexTwo]
 					JoyButtonOnePressedDuration[index][indexTwo] = 0
 
-					if ((ThereAreGamepads == true or _GamepadsConnected == true) && JoyButtonOnePressedCounter[index][indexTwo] > 30):
+					if ((ThereAreGamepads == true or _GamepadsConnected == true or ScreensCore.OperatingSys == ScreensCore.OSHTMLFive) && JoyButtonOnePressedCounter[index][indexTwo] > 30):
 						if (ScreensCore.JoystickSetupIndex == ScreensCore.JoySetupNotStarted):
 							ScreensCore.ScreenToDisplayNext = ScreensCore.OptionsScreen
 							ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack

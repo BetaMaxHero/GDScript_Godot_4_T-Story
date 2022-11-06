@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.10 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.11 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -48,6 +48,7 @@ var PieceBag = []
 var PieceSelectedAlready = []
 
 var NextPiece = []
+#var NextPieceDrawn = []
 
 const Current			= 0
 const Next				= 1
@@ -583,7 +584,7 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	if (TempOrCurrentOrNextOrDropShadowOrFallen == Fallen):
 		value = (Piece[player] + 30)
 	elif TempOrCurrentOrNextOrDropShadowOrFallen == Next:
-		DrawEverything = true
+		DrawEverything = 2
 		Piece[player] = NextPiece[player]
 		value = (NextPiece[player] + 10)
 		PieceRotation[player] = 1
@@ -815,7 +816,7 @@ func FlashCompletedLines(player):
 				boxTotal+=1
 
 		if (boxTotal == 30):
-			DrawEverything = true
+			DrawEverything = 2
 			_numberOfCompletedLines+=1
 
 			if (FlashCompletedLinesTimer % 2 == 0):
@@ -846,7 +847,7 @@ func ClearCompletedLines(player):
 		if boxTotal == 30:
 			thereWasACompletedLine = true
 
-			DrawEverything = true
+			DrawEverything = 2
 
 			if ClearCompletedLinesTimer < 40:
 				ClearCompletedLinesTimer+=1
@@ -862,7 +863,7 @@ func ClearCompletedLines(player):
 				AudioCore.PlayEffect(5)
 
 	if thereWasACompletedLine == false:
-		DrawEverything = true
+		DrawEverything = 2
 		SetupNewPiece(player)
 		PlayerStatus[player] = NewPieceDropping
 
@@ -872,7 +873,7 @@ func ClearCompletedLines(player):
 func CheckForCompletedLines(player):
 	var numberOfCompletedLines = 0
 
-	DrawEverything = true
+	DrawEverything = 2
 
 	AddPieceToPlayfieldMemory(player, Fallen)
 
@@ -1100,7 +1101,7 @@ func SetupForNewGame():
 
 	BoardFlip = 0
 
-	DrawEverything = true
+	DrawEverything = 2
 
 	for index in range(0, 4):
 		InterfaceCore.Icons.IconAnimationTimer[index] = -1
@@ -1250,7 +1251,7 @@ func SetupForNewLevel():
 
 	BoardFlip = 0
 
-	DrawEverything = true
+	DrawEverything = 2
 
 	for index in range(0, 4):
 		InterfaceCore.Icons.IconAnimationTimer[index] = -1
@@ -1448,7 +1449,7 @@ func ComputeComputerPlayerMove(player):
 
 #----------------------------------------------------------------------------------------
 func AddRandomBlocksToBottom():
-	DrawEverything = true
+	DrawEverything = 2
 
 	var thereWillBeNoDownwardCollisions = true
 	if (PlayerStatus[0] == PieceFalling):
@@ -1570,7 +1571,7 @@ func RunTetriGameEngine():
 						PieceDropTimer[player]+=1
 					
 					if PlayerStatus[player] == NewPieceDropping:
-						DrawEverything = true
+						DrawEverything = 2
 						
 						if PiecePlayfieldY[player] < PieceDropStartHeight[ Piece[player] ]:
 							if (PieceCollisionDown(player) != CollisionWithPiece):
@@ -1865,7 +1866,9 @@ func _ready():
 		_warnErase = PieceSelectedAlready[player].resize(9)
 
 	_warnErase = Piece.resize(3)
+
 	_warnErase = NextPiece.resize(3)
+#	_warnErase = NextPieceDrawn.resize(3)
 
 	_warnErase = PieceRotation.resize(3)
 	_warnErase = PiecePlayfieldX.resize(3)

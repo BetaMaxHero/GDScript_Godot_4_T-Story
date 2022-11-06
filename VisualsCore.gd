@@ -326,7 +326,7 @@ func _ready():
 	for index in range (0, 8):
 		PlayfieldSpriteCurrentIndex[index] = 0
 
-	maxIndex = (4*3*3)
+	maxIndex = (4*3*4)
 	for index in range(19000, 19000+maxIndex):
 		Sprites.SpriteImage[index] = load("res://media/images/playing/BoxRed1.png")
 		Sprites.SpriteActive[index] = true
