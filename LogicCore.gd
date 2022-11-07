@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.11 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.14 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -48,7 +48,6 @@ var PieceBag = []
 var PieceSelectedAlready = []
 
 var NextPiece = []
-#var NextPieceDrawn = []
 
 const Current			= 0
 const Next				= 1
@@ -348,7 +347,7 @@ func ClearPlayfieldWithCollisionDetection():
 
 	if (LogicCore.SecretCodeCombined == 8888):
 		for x in range(2, 31):
-			for y in range(9, 24):#20, 24):
+			for y in range(9, 24):
 				Playfield[x][y] = 30 + ( (randi() % 7) + 1 )
 
 	pass
@@ -457,8 +456,6 @@ func PieceCollisionDown(player):
 
 	return(returnValue)
 
-#	pass
-
 #----------------------------------------------------------------------------------------
 func PieceCollisionLeft(player):
 	var box = 1
@@ -488,8 +485,6 @@ func PieceCollisionLeft(player):
 			box+=1
 
 	return(returnValue)
-
-#	pass
 
 #----------------------------------------------------------------------------------------
 func PieceCollisionRight(player):
@@ -521,8 +516,6 @@ func PieceCollisionRight(player):
 
 	return(returnValue)
 
-#	pass
-
 #----------------------------------------------------------------------------------------
 func RotatePieceCounterClockwise(player):
 	if PieceRotation[player] > 1:
@@ -544,8 +537,6 @@ func RotatePieceCounterClockwise(player):
 #        else  PlayerData[Player].RotateDirection = 0;
 
 	return(false)
-
-#	pass
 
 #----------------------------------------------------------------------------------------
 func RotatePieceClockwise(player):
@@ -569,15 +560,9 @@ func RotatePieceClockwise(player):
 
 	return(false)
 
-#	pass
-
 #----------------------------------------------------------------------------------------
 func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
-
-#	PieceMoved = 1
-
-#	if (TempOrCurrentOrNextOrDropShadowOrFallen == Next):  return
 
 	var TEMP_Piece = Piece[player]
 	var TEMP_PieceRotation = PieceRotation[player]
@@ -665,10 +650,6 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 #----------------------------------------------------------------------------------------
 func DeletePieceFromPlayfieldMemory(player, CurrentOrNextOrDropShadow):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
-
-#	PieceMoved = 1
-
-#	if (CurrentOrNextOrDropShadow == Next):  return
 
 	if (PlayerStatus[player] == FlashingCompletedLines || PlayerStatus[player] == ClearingCompletedLines):  return
 
@@ -1013,7 +994,6 @@ func MovePieceRight(player):
 			PiecePlayfieldX[player]-=1
 	elif (PlayerInput[player] != InputCore.InputCPU):
 		if (AndroidMovePieceRightDelay[player] == 1 || AndroidMovePieceRightDelay[player] == 1+5 || AndroidMovePieceRightDelay[player] == 6+4 || AndroidMovePieceRightDelay[player] == 10+3 || AndroidMovePieceRightDelay[player] > 10+4):
-#		if (AndroidMovePieceRightDelay[player] == 1 || AndroidMovePieceRightDelay[player] == 10 || AndroidMovePieceRightDelay[player] == 16 || AndroidMovePieceRightDelay[player] == 19 || AndroidMovePieceRightDelay[player] > 20):
 			PiecePlayfieldX[player]+=1
 
 		if (PieceCollision(player) == CollisionWithPlayfield || PieceCollision(player) == CollisionWithPiece):
@@ -1072,7 +1052,6 @@ func SetupForNewGame():
 		CPUPieceTestX[player] = 0
 
 		bestValue[player] = 99999
-
 
 	ScoreChanged = true
 
@@ -1234,7 +1213,6 @@ func SetupForNewLevel():
 		CPUPieceTestX[player] = 0
 
 		bestValue[player] = 99999
-
 
 	ScoreChanged = true
 
@@ -1463,6 +1441,8 @@ func ComputeComputerPlayerMove(player):
 
 #----------------------------------------------------------------------------------------
 func AddRandomBlocksToBottom():
+	if (SecretCodeCombined == 8888):  return
+
 	DrawEverything = 1
 
 	var thereWillBeNoDownwardCollisions = true
@@ -1814,7 +1794,6 @@ func RunTetriGameEngine():
 						StillPlaying = false
 						GameWon = true
 						Engine.max_fps = 30
-#						AudioCore.PlayMusic(10)
 						ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
 						ScreensCore.ScreenToDisplayNext = ScreensCore.WonGameScreen
 
@@ -1882,7 +1861,6 @@ func _ready():
 	_warnErase = Piece.resize(3)
 
 	_warnErase = NextPiece.resize(3)
-#	_warnErase = NextPieceDrawn.resize(3)
 
 	_warnErase = PieceRotation.resize(3)
 	_warnErase = PiecePlayfieldX.resize(3)

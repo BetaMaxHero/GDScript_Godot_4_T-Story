@@ -1,4 +1,4 @@
-# Godot Engine v4 Beta 4
+# Godot Engine v4 Beta 4+
 
 # Copyright 2023 Team "BetaMax Heroes"
 # 
@@ -27,8 +27,8 @@
 #    |    |_/ __ \   __\_  __ \  |\_____  \\   __\/  _ \_  __ <   |  |  |   ||   /  /_\  \_// /_
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
-#               \/                       \/                    \/           T U R B O   \/\/
-#                                  Version 3.0.0.13 Pre-Beta2of3
+#               \/                       \/                    \/         15% T U R B O   \/\/
+#                                  Version 3.0.0.14 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -47,7 +47,9 @@
 
 # Pre-Beta2of3:
 # - Fixed screen jitter when a new line is placed at bottom of playfield when playing
-# - Can't Detect Game Controllers(They Work) In HTML5 On Mozilla Firefox & Google Chrome, Edge, & Opera
+# - Can't Detect game controllers(they work) in HTML5 on Mozilla Firefox & Google Chrome, Edge, & Opera
+# - Optimized playing game screen by about 15% - needs further optimizations
+# - Created 10 second average Frames Per Second calculated display
 # - [NOT DONE!]
 # - 
 
@@ -87,8 +89,6 @@ func _ready():
 func _process(_delta):
 
 	ScreensCore.ProcessScreenToDisplay()
-
-#	print(LogicCore.ScoreChanged)
 
 	pass
 

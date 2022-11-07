@@ -119,6 +119,25 @@ var P2ScoreText
 var P3ScoreText
 var LevelText
 
+
+
+
+var fps = []
+#		if (ScreenToDisplay == PlayingGameScreen):# || ScreenToDisplay == CutSceneScreen):
+#			if LogicCore.GameMode == LogicCore.ChildMode:
+#				fps = "15"
+#			elif LogicCore.GameMode == LogicCore.TeenMode:
+#				fps = "30"
+#			elif LogicCore.GameMode == LogicCore.AdultMode:
+#				fps = "25"
+#			elif LogicCore.GameMode == LogicCore.TurboMode:
+#				fps = "60"
+
+
+
+
+
+
 #----------------------------------------------------------------------------------------
 func _ready():
 	ScreenFadeStatus = FadingFromBlack
@@ -158,6 +177,38 @@ func _ready():
 	CutSceneSceneTotal[7] = 1
 	CutSceneSceneTotal[8] = 3
 	CutSceneSceneTotal[9] = 1
+
+	_warnErase = fps.resize(4)
+	fps[0] = "15"
+	fps[1] = "30"
+	fps[2] = "25"
+	fps[3] = "60"
+#			elif LogicCore.GameMode == LogicCore.TeenMode:
+#				fps = "30"
+#			elif LogicCore.GameMode == LogicCore.AdultMode:
+#				fps = "25"
+#			elif LogicCore.GameMode == LogicCore.TurboMode:
+#				fps = "60"
+
+
+
+
+
+#var fps = []
+#		if (ScreenToDisplay == PlayingGameScreen):# || ScreenToDisplay == CutSceneScreen):
+#			if LogicCore.GameMode == LogicCore.ChildMode:
+#				fps = "15"
+#			elif LogicCore.GameMode == LogicCore.TeenMode:
+#				fps = "30"
+#			elif LogicCore.GameMode == LogicCore.AdultMode:
+#				fps = "25"
+#			elif LogicCore.GameMode == LogicCore.TurboMode:
+#				fps = "60"
+
+
+
+
+
 
 	pass
 
@@ -343,6 +394,8 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By: Team ''BetaMax Heroes''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-100, VisualsCore.ScreenHeight-50+30, 0.5, 0.5, 0, 1.0, 1.0, 1.0, 1.0)
 
 		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 
@@ -1540,7 +1593,7 @@ func DisplayPlayingGameScreen():
 			Engine.max_fps = 60
 
 		if (LogicCore.SecretCodeCombined == 8888 or LogicCore.SecretCodeCombined == 8889):
-			Engine.max_fps = 0
+			Engine.max_fps = 0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
@@ -1609,11 +1662,9 @@ func DisplayPlayingGameScreen():
 	if (LogicCore.PAUSEgame == false and LogicCore.PauseWasJustPressed == true):
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0)-9999, (VisualsCore.ScreenHeight/2.0)-9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		LogicCore.PauseWasJustPressed = false
-		print("Play")
 	if (LogicCore.PAUSEgame == true and LogicCore.PauseWasJustPressed == true):
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
 		LogicCore.PauseWasJustPressed = false
-		print("Pause")
 
 	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
 		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
@@ -1660,15 +1711,14 @@ func DisplayPlayingGameScreen():
 	if (LogicCore.PlayerStatus[0] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[1] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping):
 		LogicCore.DrawEverything = 1
 
-	if (LogicCore.DrawEverything > 0):
+	if (LogicCore.DrawEverything > 0): # DRAW EVERYTHING
 		LogicCore.DrawEverything-=1
-		
-		print("",LogicCore.DrawEverything," - Draw Everything")
 
+		var pos = Vector2(-9999, -9999)
 		for indexStart in range(10000, 18000, 1000):
 			for index in range (0, 624):
 				if (VisualsCore.Sprites.SpriteActive[indexStart+index] == true):
-					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(pos))
 
 		var screenX = 135
 		var screenY = -5
@@ -1676,64 +1726,69 @@ func DisplayPlayingGameScreen():
 		var adjustedBox
 		for y in range(0, 24):
 			for x in range(2, 32):
-				if (LogicCore.Playfield[x][y] > 0):
-					if (LogicCore.Playfield[x][y] > 10 && LogicCore.Playfield[x][y] < 20): # Next Piece
-						adjustedBox = LogicCore.Playfield[x][y]
-						adjustedBox-=10
-						startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
+				if (LogicCore.Playfield[x][y] > 10 && LogicCore.Playfield[x][y] < 20): # Next Piece
+					adjustedBox = LogicCore.Playfield[x][y]
+					adjustedBox-=10
+					startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
 
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 
-						VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
-					elif (LogicCore.Playfield[x][y] > 30 && LogicCore.Playfield[x][y] < 40):
-						adjustedBox = LogicCore.Playfield[x][y]
-						adjustedBox-=30
-						startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
+					VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
+				elif (LogicCore.Playfield[x][y] > 30 && LogicCore.Playfield[x][y] < 40): # Fallen Colored Box Pieces In Playfield
+					adjustedBox = LogicCore.Playfield[x][y]
+					adjustedBox-=30
+					startBoxIndex = 10000 + ( (adjustedBox-1)*1000 )
 
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
 
-						VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
-					elif (LogicCore.Playfield[x][y] == 99999):
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[17000+VisualsCore.PlayfieldSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-						VisualsCore.PlayfieldSpriteCurrentIndex[8]+=1
+					VisualsCore.PlayfieldSpriteCurrentIndex[adjustedBox]+=1
+				elif (LogicCore.Playfield[x][y] == 99999): # Flashing White Completed Line(s)
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[17000+VisualsCore.PlayfieldSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+					VisualsCore.PlayfieldSpriteCurrentIndex[8]+=1
 
 				screenX+=26
 
 			screenX = 135
 			screenY+=26
 
-#		if (LogicCore.DrawEverything > 0):  LogicCore.DrawEverything = LogicCore.DrawEverything - 1
-
-	if (LogicCore.PieceMoved > 0):
+	if (LogicCore.PieceMoved > 0): # DRAW CURRENT FALLING PIECE(S) WITH DROP SHADOW(S)
 		LogicCore.PieceMoved-=1
 
 		for index in range (0, 9):
 			VisualsCore.PieceSpriteCurrentIndex[index] = 0
 
+		var pos = Vector2(-9999, -9999)
 		var maxIndex = (4*3*4)
 		for indexStart in range(19000, 19800, 100):
 			for index in range (0, maxIndex):
-				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
+				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(pos))
 
 		var screenX = 135
 		var screenY = -5 + (26*4)
 		var startBoxIndex = 10000
 		var adjustedBox
+		var boxCount = 0
 		for y in range(4, 24):
 			for x in range(2, 32):
-				if (LogicCore.Playfield[x][y] > 0):
-					if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
-						adjustedBox = LogicCore.Playfield[x][y]
-						adjustedBox-=1000
-						startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-						VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
-					elif (LogicCore.Playfield[x][y] == 2000): # Drop Shadow
-						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-						RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))
-						VisualsCore.PieceSpriteCurrentIndex[8]+=1
+				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
+					adjustedBox = LogicCore.Playfield[x][y]
+					adjustedBox-=1000
+					startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+					VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
+
+					boxCount+=1
+				elif (LogicCore.Playfield[x][y] == 2000): # Drop Shadow
+					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))
+					VisualsCore.PieceSpriteCurrentIndex[8]+=1
+
+					boxCount+=1
 
 				screenX+=26
+				if (boxCount > (maxIndex-1)):
+					x = 99999
+					y = 99999
 
 			screenX = 135
 			screenY+=26
@@ -1743,8 +1798,6 @@ func DisplayPlayingGameScreen():
 			VisualsCore.DrawText(LogicCore.ScoreTwoText, str(LogicCore.Score[1]), 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(LogicCore.ScoreThreeText, str(LogicCore.Score[2]), 260, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			VisualsCore.DrawText(LogicCore.LinesLeftText, str(10-LogicCore.TotalLines), 0, 620, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			
-			print("Score Updated ",str(LogicCore.Score[1]))
 			LogicCore.ScoreChanged = false
 
 	if VisualsCore.KeyboardControlsAlphaTimer > 0.0 && ScreensCore.OperatingSys != ScreensCore.OSAndroid:
@@ -1833,7 +1886,7 @@ func DisplayNewHighScoreScreen():
 		NewHighScoreNameInputJoyX = 0
 		NewHighScoreNameInputJoyY = 0
 
-		NewHighScoreString = NewHighScoreString.left(-1) #(NewHighScoreString.length() - 1, 1)
+		NewHighScoreString = NewHighScoreString.left(-1)
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
@@ -2104,53 +2157,58 @@ func ProcessScreenToDisplay():
 	if (LogicCore.SecretCodeCombined == 2777 || LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889):
 		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = (10)
 
-		var fps = "30"
-		if (ScreenToDisplay == PlayingGameScreen):# || ScreenToDisplay == CutSceneScreen):
-			if LogicCore.GameMode == LogicCore.ChildMode:
-				fps = "15"
-			elif LogicCore.GameMode == LogicCore.TeenMode:
-				fps = "30"
-			elif LogicCore.GameMode == LogicCore.AdultMode:
-				fps = "25"
-			elif LogicCore.GameMode == LogicCore.TurboMode:
-				fps = "60"
+#		var fps = "30"
+#		if (ScreenToDisplay == PlayingGameScreen):# || ScreenToDisplay == CutSceneScreen):
+#			if LogicCore.GameMode == LogicCore.ChildMode:
+#				fps = "15"
+#			elif LogicCore.GameMode == LogicCore.TeenMode:
+#				fps = "30"
+#			elif LogicCore.GameMode == LogicCore.AdultMode:
+#				fps = "25"
+#			elif LogicCore.GameMode == LogicCore.TurboMode:
+#				fps = "60"
 
-		var _realMouseScreenX = -1
-		if (InputCore.MouseScreenX != null):
-			_realMouseScreenX = floor(InputCore.MouseScreenX)
-		var _realMouseScreenY = -1
-		if (InputCore.MouseScreenY != null):
-			_realMouseScreenY = floor(InputCore.MouseScreenY)
+#		var _realMouseScreenX = -1
+#		if (InputCore.MouseScreenX != null):
+#			_realMouseScreenX = floor(InputCore.MouseScreenX)
+#		var _realMouseScreenY = -1
+#		if (InputCore.MouseScreenY != null):
+#			_realMouseScreenY = floor(InputCore.MouseScreenY)
+#
+#		var _realTouchTwoScreenX = -1
+#		if (InputCore.TouchTwoScreenX != null):
+#			_realTouchTwoScreenX = floor(InputCore.TouchTwoScreenX)
+#		var _realTouchTwoScreenY = -1
+#		if (InputCore.TouchTwoScreenY != null):
+#			_realTouchTwoScreenY = floor(InputCore.TouchTwoScreenY)
 
-		var _realTouchTwoScreenX = -1
-		if (InputCore.TouchTwoScreenX != null):
-			_realTouchTwoScreenX = floor(InputCore.TouchTwoScreenX)
-		var _realTouchTwoScreenY = -1
-		if (InputCore.TouchTwoScreenY != null):
-			_realTouchTwoScreenY = floor(InputCore.TouchTwoScreenY)
+		VisualsCore.FramesPerSecondFrames = (VisualsCore.FramesPerSecondFrames + 1)
 
-#		VisualsCore.FramesPerSecondFrames = (VisualsCore.FramesPerSecondFrames + 1)
-#
-#		var ticks = Time.get_ticks_msec()
-#		if (ticks > (1000+VisualsCore.FramesPerSecondLastSecondTick)):
-#			VisualsCore.FramesPerSecondLastSecondTick = ticks
-#
-#			VisualsCore.FramesPerSecondArrayIndex = (VisualsCore.FramesPerSecondArrayIndex + 1)
-#			if (VisualsCore.FramesPerSecondArrayIndex > 9):  VisualsCore.FramesPerSecondArrayIndex = 0
-#
-#			VisualsCore.FramesPerSecondArray[VisualsCore.FramesPerSecondArrayIndex] = VisualsCore.FramesPerSecondFrames#Engine.get_frames_per_second()
-#
+		var ticks = Time.get_ticks_msec()
+		if (ticks > (1000+VisualsCore.FramesPerSecondLastSecondTick)):
+			VisualsCore.FramesPerSecondLastSecondTick = ticks
+
+			VisualsCore.FramesPerSecondArrayIndex = (VisualsCore.FramesPerSecondArrayIndex + 1)
+			if (VisualsCore.FramesPerSecondArrayIndex > 9):  VisualsCore.FramesPerSecondArrayIndex = 0
+
+			VisualsCore.FramesPerSecondArray[VisualsCore.FramesPerSecondArrayIndex] = VisualsCore.FramesPerSecondFrames#Engine.get_frames_per_second()
+
 #			print(str(Engine.get_frames_per_second()))
-#
-#			VisualsCore.FramesPerSecondFrames = 0
-#
-#		VisualsCore.FramesPerSecondAverage = 0
-#		for index in range(0, 10):
-#			VisualsCore.FramesPerSecondAverage+=VisualsCore.FramesPerSecondArray[index]
-#
-#		VisualsCore.FramesPerSecondAverage = (VisualsCore.FramesPerSecondAverage / 10.0)
-#		VisualsCore.FramesPerSecondAverage = floor(VisualsCore.FramesPerSecondAverage)
-		VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(Engine.get_frames_per_second())+"/"+fps)
+
+			VisualsCore.FramesPerSecondFrames = 0
+
+			VisualsCore.FramesPerSecondAverage = 0
+			for index in range(0, 10):
+				VisualsCore.FramesPerSecondAverage+=VisualsCore.FramesPerSecondArray[index]
+
+			VisualsCore.FramesPerSecondAverage = (VisualsCore.FramesPerSecondAverage / 10.0)
+			VisualsCore.FramesPerSecondAverage = floor(VisualsCore.FramesPerSecondAverage)
+
+			if (ScreenToDisplay == PlayingGameScreen):
+				VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(VisualsCore.FramesPerSecondAverage)+"/"+str(fps[LogicCore.GameMode]))
+			elif (ScreenToDisplay != PlayingGameScreen):
+				VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(VisualsCore.FramesPerSecondAverage)+"/30")
+#		VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(Engine.get_frames_per_second())+"/"+fps)
 	else:
 		VisualsCore.FramesPerSecondText.TextImage[0].global_position.x = -9999
 

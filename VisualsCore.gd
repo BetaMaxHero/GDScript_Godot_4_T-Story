@@ -156,6 +156,9 @@ func _ready():
 	Sprites.SpriteImage[23] = load("res://media/images/backgrounds/TS1.png")
 	Sprites.SpriteActive[23] = true
 
+	Sprites.SpriteImage[24] = load("res://media/images/logos/TurboChargedLogo.png")
+	Sprites.SpriteActive[24] = true
+
 	Sprites.SpriteImage[25] = load("res://media/images/logos/GooglePlayLogo.png")
 	Sprites.SpriteActive[25] = true
 
