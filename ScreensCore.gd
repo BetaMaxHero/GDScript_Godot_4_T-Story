@@ -1658,9 +1658,11 @@ func DisplayPlayingGameScreen():
 		VisualsCore.PlayfieldSpriteCurrentIndex[index] = 0
 
 	if (LogicCore.PlayerStatus[0] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[1] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping):
-		LogicCore.DrawEverything = 2
+		LogicCore.DrawEverything = 1
 
 	if (LogicCore.DrawEverything > 0):
+		LogicCore.DrawEverything-=1
+		
 		print("",LogicCore.DrawEverything," - Draw Everything")
 
 		for indexStart in range(10000, 18000, 1000):
@@ -1700,47 +1702,50 @@ func DisplayPlayingGameScreen():
 			screenX = 135
 			screenY+=26
 
-		if (LogicCore.DrawEverything > 0):  LogicCore.DrawEverything = LogicCore.DrawEverything - 1
+#		if (LogicCore.DrawEverything > 0):  LogicCore.DrawEverything = LogicCore.DrawEverything - 1
 
-	for index in range (0, 9):
-		VisualsCore.PieceSpriteCurrentIndex[index] = 0
+	if (LogicCore.PieceMoved > 0):
+		LogicCore.PieceMoved-=1
 
-	var maxIndex = (4*3*4)
-	for indexStart in range(19000, 19800, 100):
-		for index in range (0, maxIndex):
-			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
+		for index in range (0, 9):
+			VisualsCore.PieceSpriteCurrentIndex[index] = 0
 
-	var screenX = 135
-	var screenY = -5 + (26*4)
-	var startBoxIndex = 10000
-	var adjustedBox
-	for y in range(4, 24):
-		for x in range(2, 32):
-			if (LogicCore.Playfield[x][y] > 0):
-				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
-					adjustedBox = LogicCore.Playfield[x][y]
-					adjustedBox-=1000
-					startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
-					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-					VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
-				elif (LogicCore.Playfield[x][y] == 2000): # Drop Shadow
-					RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
-					RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))
-					VisualsCore.PieceSpriteCurrentIndex[8]+=1
+		var maxIndex = (4*3*4)
+		for indexStart in range(19000, 19800, 100):
+			for index in range (0, maxIndex):
+				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(Vector2(-9999, -9999)))
 
-			screenX+=26
+		var screenX = 135
+		var screenY = -5 + (26*4)
+		var startBoxIndex = 10000
+		var adjustedBox
+		for y in range(4, 24):
+			for x in range(2, 32):
+				if (LogicCore.Playfield[x][y] > 0):
+					if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
+						adjustedBox = LogicCore.Playfield[x][y]
+						adjustedBox-=1000
+						startBoxIndex = 19000 + ( (adjustedBox-1)*100 )
+						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[startBoxIndex+VisualsCore.PieceSpriteCurrentIndex[adjustedBox]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+						VisualsCore.PieceSpriteCurrentIndex[adjustedBox]+=1
+					elif (LogicCore.Playfield[x][y] == 2000): # Drop Shadow
+						RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Transform2D().translated(Vector2(screenX-(boxSizeHalf), screenY-(boxSizeHalf))))
+						RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[19700+VisualsCore.PieceSpriteCurrentIndex[8]], Color(1.0, 1.0, 1.0, 0.5))
+						VisualsCore.PieceSpriteCurrentIndex[8]+=1
 
-		screenX = 135
-		screenY+=26
+				screenX+=26
 
-	if LogicCore.ScoreChanged == true:
-		VisualsCore.DrawText(LogicCore.ScoreOneText, str(LogicCore.Score[0]), -260, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(LogicCore.ScoreTwoText, str(LogicCore.Score[1]), 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(LogicCore.ScoreThreeText, str(LogicCore.Score[2]), 260, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(LogicCore.LinesLeftText, str(10-LogicCore.TotalLines), 0, 620, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		
-		print("Score Updated ",str(LogicCore.Score[1]))
-		LogicCore.ScoreChanged = false
+			screenX = 135
+			screenY+=26
+
+		if LogicCore.ScoreChanged == true:
+			VisualsCore.DrawText(LogicCore.ScoreOneText, str(LogicCore.Score[0]), -260, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(LogicCore.ScoreTwoText, str(LogicCore.Score[1]), 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(LogicCore.ScoreThreeText, str(LogicCore.Score[2]), 260, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(LogicCore.LinesLeftText, str(10-LogicCore.TotalLines), 0, 620, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			
+			print("Score Updated ",str(LogicCore.Score[1]))
+			LogicCore.ScoreChanged = false
 
 	if VisualsCore.KeyboardControlsAlphaTimer > 0.0 && ScreensCore.OperatingSys != ScreensCore.OSAndroid:
 		VisualsCore.DrawSprite(19980, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 0.5, 0.5, 0, 1.0, 1.0, 1.0, VisualsCore.KeyboardControlsAlphaTimer)

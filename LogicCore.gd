@@ -103,6 +103,7 @@ var ScoreChanged
 var DropBonus = []
 
 var DrawEverything
+var PieceMoved
 
 var AndroidMovePieceDownDelay = []
 var AndroidMovePieceDownPressed = []
@@ -531,6 +532,7 @@ func RotatePieceCounterClockwise(player):
 
 	if PieceCollision(player) == CollisionNotTrue:
 		AudioCore.PlayEffect(2)
+		PieceMoved = 1
 		return(true)
 	else:
 		if PieceRotation[player] < 4:
@@ -554,6 +556,7 @@ func RotatePieceClockwise(player):
 
 	if PieceCollision(player) == CollisionNotTrue:
 		AudioCore.PlayEffect(2)
+		PieceMoved = 1
 		return(true)
 	else:
 		if PieceRotation[player] > 1:
@@ -572,6 +575,8 @@ func RotatePieceClockwise(player):
 func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
 
+#	PieceMoved = 1
+
 #	if (TempOrCurrentOrNextOrDropShadowOrFallen == Next):  return
 
 	var TEMP_Piece = Piece[player]
@@ -584,7 +589,7 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	if (TempOrCurrentOrNextOrDropShadowOrFallen == Fallen):
 		value = (Piece[player] + 30)
 	elif TempOrCurrentOrNextOrDropShadowOrFallen == Next:
-		DrawEverything = 2
+		DrawEverything = 1
 		Piece[player] = NextPiece[player]
 		value = (NextPiece[player] + 10)
 		PieceRotation[player] = 1
@@ -660,6 +665,8 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 #----------------------------------------------------------------------------------------
 func DeletePieceFromPlayfieldMemory(player, CurrentOrNextOrDropShadow):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
+
+#	PieceMoved = 1
 
 #	if (CurrentOrNextOrDropShadow == Next):  return
 
@@ -816,7 +823,7 @@ func FlashCompletedLines(player):
 				boxTotal+=1
 
 		if (boxTotal == 30):
-			DrawEverything = 2
+			DrawEverything = 1
 			_numberOfCompletedLines+=1
 
 			if (FlashCompletedLinesTimer % 2 == 0):
@@ -847,7 +854,7 @@ func ClearCompletedLines(player):
 		if boxTotal == 30:
 			thereWasACompletedLine = true
 
-			DrawEverything = 2
+			DrawEverything = 1
 
 			if ClearCompletedLinesTimer < 40:
 				ClearCompletedLinesTimer+=1
@@ -863,7 +870,7 @@ func ClearCompletedLines(player):
 				AudioCore.PlayEffect(5)
 
 	if thereWasACompletedLine == false:
-		DrawEverything = 2
+		DrawEverything = 1
 		SetupNewPiece(player)
 		PlayerStatus[player] = NewPieceDropping
 
@@ -873,7 +880,7 @@ func ClearCompletedLines(player):
 func CheckForCompletedLines(player):
 	var numberOfCompletedLines = 0
 
-	DrawEverything = 2
+	DrawEverything = 1
 
 	AddPieceToPlayfieldMemory(player, Fallen)
 
@@ -924,6 +931,8 @@ func MovePieceDown(player, _force):
 	if (InputCore.DelayAllUserInput > -1):
 		return
 	
+	PieceMoved = 1
+	
 	DeletePieceFromPlayfieldMemory(player, Current)
 
 	PiecePlayfieldY[player]+=1
@@ -965,6 +974,8 @@ func MovePieceDown(player, _force):
 
 #----------------------------------------------------------------------------------------
 func MovePieceLeft(player):
+	PieceMoved = 1
+	
 	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 		if PieceMovementDelay[player] > -6:
 			PieceMovementDelay[player]-=1
@@ -989,6 +1000,8 @@ func MovePieceLeft(player):
 
 #----------------------------------------------------------------------------------------
 func MovePieceRight(player):
+	PieceMoved = 1
+	
 	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 		if PieceMovementDelay[player] < 6:
 			PieceMovementDelay[player]+=1
@@ -1101,7 +1114,8 @@ func SetupForNewGame():
 
 	BoardFlip = 0
 
-	DrawEverything = 2
+	DrawEverything = 1
+	PieceMoved = 1
 
 	for index in range(0, 4):
 		InterfaceCore.Icons.IconAnimationTimer[index] = -1
@@ -1251,7 +1265,7 @@ func SetupForNewLevel():
 
 	BoardFlip = 0
 
-	DrawEverything = 2
+	DrawEverything = 1
 
 	for index in range(0, 4):
 		InterfaceCore.Icons.IconAnimationTimer[index] = -1
@@ -1449,7 +1463,7 @@ func ComputeComputerPlayerMove(player):
 
 #----------------------------------------------------------------------------------------
 func AddRandomBlocksToBottom():
-	DrawEverything = 2
+	DrawEverything = 1
 
 	var thereWillBeNoDownwardCollisions = true
 	if (PlayerStatus[0] == PieceFalling):
@@ -1571,7 +1585,7 @@ func RunTetriGameEngine():
 						PieceDropTimer[player]+=1
 					
 					if PlayerStatus[player] == NewPieceDropping:
-						DrawEverything = 2
+						DrawEverything = 1
 						
 						if PiecePlayfieldY[player] < PieceDropStartHeight[ Piece[player] ]:
 							if (PieceCollisionDown(player) != CollisionWithPiece):
