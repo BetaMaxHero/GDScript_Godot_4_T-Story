@@ -160,11 +160,8 @@ func _ready():
 		if (Input.get_joy_guid (index) != ""):
 			ThereAreGamepads = true
 
-#	_GamepadsConnected = Input.get_connected_joypads()
-
 	if (Input.get_connected_joypads().size() > 0):  _GamepadsConnected = true
 	else:  _GamepadsConnected = false
-
 
 	_warnErase = JoyUpMapped.resize(9)
 	for x in range(9):
@@ -250,8 +247,6 @@ func GetJoystickInputForMapping(index, _buttons):
 			return(indexTwo)
 
 	return(-1)
-
-#	pass
 
 #----------------------------------------------------------------------------------------
 func _process(_delta):

@@ -26,7 +26,6 @@ var FramesPerSecondAverage = 0
 var FramesPerSecondLastSecondTick = Time.get_ticks_msec()
 var FramesPerSecondFrames = 0
 
-#var FramesPerSecondText
 class FPSClass:
 	var TextImage = []
 	var TextIndex = []
@@ -222,6 +221,9 @@ func _ready():
 	Sprites.SpriteImage[131] = load("res://media/images/playing/Board3PlayerNewBG.png")
 	Sprites.SpriteActive[131] = true
 
+	Sprites.SpriteImage[133] = load("res://media/images/playing/ToggleFPS.png")
+	Sprites.SpriteActive[133] = true
+
 	Sprites.SpriteImage[135] = load("res://media/images/playing/PauseBG.png")
 	Sprites.SpriteActive[135] = true
 
@@ -401,8 +403,6 @@ func _ready():
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -10)
 			elif (index == 173):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
-#			elif (index > 18999 && index < 19980):
-#				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
 			elif (index > 9999 && index < 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
 			elif (index == 131):
@@ -445,8 +445,8 @@ func _ready():
 
 	var textHeight = FramesPerSecondText.TextImage[0].get_theme_font("normal_font").get_string_size(FramesPerSecondText.TextImage[0].text).y
 
-	FramesPerSecondText.TextImage[0].global_position.x = 5
-	FramesPerSecondText.TextImage[0].global_position.y = 610
+	FramesPerSecondText.TextImage[0].global_position.x = 1
+	FramesPerSecondText.TextImage[0].global_position.y = 600
 	FramesPerSecondText.TextImage[0].set_size(Vector2(VisualsCore.ScreenWidth, VisualsCore.ScreenHeight), false)
 	FramesPerSecondText.TextImage[0].pivot_offset = Vector2((VisualsCore.ScreenWidth / 2.0), (textHeight / 2.0))
 	FramesPerSecondText.TextImage[0].scale = Vector2(1.0, 1.0)
@@ -552,6 +552,9 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 		fontToUseIndex = 0
 		fontSize = 65
 		newTextDrawingOffsetY = 80.0
+	elif fontSize == 57:
+		fontToUseIndex = 0
+		fontSize = 40
 
 	var xValue = x
 
@@ -664,7 +667,11 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("The ''Grand National GNX'' v2 Engine By:", 1.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
-	AddAboutScreenText("Original Cooperative Story Mode Created By:", 0.0)
+	AddAboutScreenText("Graphics Core(Texts/Sprites) Ported & Turbocharged By:", 0.0)
+	AddAboutScreenText("''flairetic''", 1.0)
+
+	AddAboutScreenText("Original Cooperative Story Mode:", 0.0)
+	AddAboutScreenText("(C)opyright 1998 By:", 1.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
 	AddAboutScreenText("Lead Game Designer:", 0.0)
@@ -672,9 +679,6 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Lead Game Programmer:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
-
-	AddAboutScreenText("TTF Text String Drawing v3.5 To v4.0 Beta 2+ Porter Programmer:", 0.0)
-	AddAboutScreenText("''flairetic''", 1.0)
 
 	AddAboutScreenText("Lead Game Tester:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
@@ -838,13 +842,13 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Samsung® Galaxy A51 Smartphone", 1.0)
 	AddAboutScreenText("Vankyo® S20 Tablet", 1.0)
 
-	AddAboutScreenText("Big Thank You To People Who Helped:", 0.0)
+	AddAboutScreenText("Big Thank You To People Who Helped Us:", 0.0)
 	AddAboutScreenText("''Yuri S.''", 1.0)
 	AddAboutScreenText("''TwistedTwigleg''", 1.0)
 	AddAboutScreenText("''Megalomaniak''", 1.0)
 	AddAboutScreenText("''SIsilicon28''", 1.0)
 	AddAboutScreenText("''vimino''", 1.0)
-	AddAboutScreenText("[ : ''PurpleConditioner'' : ]", 1.0)
+	AddAboutScreenText("( : ''PurpleConditioner'' : )", 1.0)
 	AddAboutScreenText("''Kequc''", 1.0)
 	AddAboutScreenText("''qeed''", 1.0)
 	AddAboutScreenText("''Calinou''", 1.0)
@@ -872,14 +876,17 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''YaroslavFox''", 1.0)
 	AddAboutScreenText("''Erich_L''", 1.0)
 	AddAboutScreenText("''Zoinkers''", 1.0)
-
 	AddAboutScreenText("''Sanne''", 1.0)
 	AddAboutScreenText("''circuitbone''", 1.0)
+	AddAboutScreenText("''duane''", 1.0)	
+	AddAboutScreenText("''Pixophir''", 1.0)
+	AddAboutScreenText("''Zireael''", 1.0)
+	AddAboutScreenText("''Kojack''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
 
-	AddAboutScreenText("''A 110% By Team BetaMax Heroes!''", 0.0)
+	AddAboutScreenText("A 110% By Team ''BetaMax Heroes''!", 0.0)
 	AddAboutScreenText(" ", 1.0)
 
 	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex], ((ScreenWidth/2.0)+100.0), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)

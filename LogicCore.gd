@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.14 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.15 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -157,7 +157,6 @@ var ScoreOneText
 var ScoreTwoText
 var ScoreThreeText
 var LinesLeftText
-
 
 #----------------------------------------------------------------------------------------
 func InitializePieceData():
@@ -423,8 +422,6 @@ func PieceCollision(player):
 			box+=1
 
 	return(returnValue)
-
-#	pass
 
 #----------------------------------------------------------------------------------------
 func PieceCollisionDown(player):
@@ -880,19 +877,15 @@ func CheckForCompletedLines(player):
 		if (numberOfCompletedLines == 1):
 			Score[player] += (40 * (Level+1))
 			TotalLines+=1
-#           TotalOneLines++;
 		elif (numberOfCompletedLines == 2):
 			Score[player] += (100 * (Level+1))
 			TotalLines+=2
-#            TotalTwoLines++;
 		elif (numberOfCompletedLines == 3):
 			Score[player] += (300 * (Level+1))
 			TotalLines+=3
-#            TotalThreeLines++;
 		elif (numberOfCompletedLines == 4):
 			Score[player] += (1200 * (Level+1))
 			TotalLines+=4
-#            TotalFourLines++;
 			AudioCore.PlayEffect(6)
 		ScoreChanged = true
 
@@ -1444,6 +1437,7 @@ func AddRandomBlocksToBottom():
 	if (SecretCodeCombined == 8888):  return
 
 	DrawEverything = 1
+	PieceMoved = 1
 
 	var thereWillBeNoDownwardCollisions = true
 	if (PlayerStatus[0] == PieceFalling):
