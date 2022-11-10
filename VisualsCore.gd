@@ -548,6 +548,9 @@ func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scal
 	elif fontSize == 23:
 		fontToUseIndex = 1
 		fontSize = 26
+	elif fontSize == 13:
+		fontToUseIndex = 1
+		fontSize = 13
 	elif fontSize == 100:
 		fontToUseIndex = 0
 		fontSize = 65
@@ -882,6 +885,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Pixophir''", 1.0)
 	AddAboutScreenText("''Zireael''", 1.0)
 	AddAboutScreenText("''Kojack''", 1.0)
+	AddAboutScreenText("''akien-mga''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)

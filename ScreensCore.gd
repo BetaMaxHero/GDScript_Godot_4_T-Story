@@ -129,9 +129,9 @@ func _ready():
 	ScreenToDisplay = GodotScreen
 	ScreenToDisplayNext = FASScreen
 
-	if (OS.get_name() == "Windows" or OS.get_name() == "X11"):
+	if (OS.get_name() == "Windows" or OS.get_name() == "Linux"):
 		OperatingSys = OSDesktop
-	elif OS.get_name() == "HTML5":
+	elif OS.get_name() == "Web":
 		OperatingSys = OSHTMLFive
 	elif OS.get_name() == "Android":
 		OperatingSys = OSAndroid
@@ -364,6 +364,40 @@ func DisplayTitleScreen():
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2.0), (buttonY))
 			buttonY+=buttonOffsetY
 
+
+
+		var textScnY = 265
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", 5+22, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=15
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=25
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] False game over?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=20
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(pressing left/right during new piece fall)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=5
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=25
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] Controllers on HTML5 not working?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=20
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad/Analog not working, buttons work)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=5
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=25
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - FPS?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=20
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Windows ''22H2'' HTML5 30 FPS limit?)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=5
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=25
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] Placement of text incorrect infrequently?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=20
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(absolutely no ideas on above?)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		textScnY+=5
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+
+
+
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602-15, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By: Team ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
@@ -511,7 +545,7 @@ func DisplayOptionsScreen():
 					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Press Button For 10+ Seconds", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 				elif (InputCore.ThereAreGamepads == false):
 					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "No Gamepads Available", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			elif (OperatingSys == OSHTMLFive):
+			if (OperatingSys == OSHTMLFive):
 				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Gamepads Might Work In:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 				OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Edge/Firefox/Chrome/Opera", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
@@ -1563,7 +1597,7 @@ func DisplayPlayingGameScreen():
 			Engine.max_fps = 60
 
 		if (LogicCore.SecretCodeCombined == 8888 or LogicCore.SecretCodeCombined == 8889):
-			Engine.max_fps = 0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
+			Engine.max_fps = 9999999#0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
@@ -1618,8 +1652,8 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 122, VisualsCore.ScreenWidth-59, 147+90, " " )
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
-		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.max_fps = 0
+#		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
+#			Engine.max_fps = 0
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
@@ -2159,6 +2193,8 @@ func ProcessScreenToDisplay():
 
 			VisualsCore.FramesPerSecondAverage = (VisualsCore.FramesPerSecondAverage / 10.0)
 			VisualsCore.FramesPerSecondAverage = floor(VisualsCore.FramesPerSecondAverage)
+
+#		VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(Engine.get_frames_per_second())+"/???")
 
 			if (ScreenToDisplay == PlayingGameScreen):
 				VisualsCore.FramesPerSecondText.TextImage[0].text = (" "+str(VisualsCore.FramesPerSecondAverage)+"/"+str(fps[LogicCore.GameMode]))

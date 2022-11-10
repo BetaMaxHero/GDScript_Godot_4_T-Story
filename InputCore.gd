@@ -275,59 +275,107 @@ func _process(_delta):
 	if (Input.is_action_pressed("ButtonTwo")):
 		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonTwo[InputKeyboard] = Pressed
 
-	for index in range (0, 3):
-		if (JoyUpMapped[index][0] == JoyDPadUp && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_UP) == true):
-			JoystickDirection[InputJoyOne+index] = JoyUp
-		elif (JoyDownMapped[index][0] == JoyDPadDown && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_DOWN) == true):
-			JoystickDirection[InputJoyOne+index] = JoyDown
-		elif (JoyLeftMapped[index][0] == JoyDPadLeft && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_LEFT) == true):
-			JoystickDirection[InputJoyOne+index] = JoyLeft
-		elif (JoyRightMapped[index][0] == JoyDPadRight && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_RIGHT) == true):
-			JoystickDirection[InputJoyOne+index] = JoyRight
-		elif (JoyUpMapped[index][0] == JoyAnalogVertical && Input.get_joy_axis(index, JOY_AXIS_LEFT_Y) < -0.5):
-			JoystickDirection[InputJoyOne+index] = JoyUp
-		elif (JoyDownMapped[index][0] == JoyAnalogVertical && Input.get_joy_axis(index, JOY_AXIS_LEFT_Y) > 0.5):
-			JoystickDirection[InputJoyOne+index] = JoyDown
-		elif (JoyLeftMapped[index][0] == JoyAnalogHorizontal && Input.get_joy_axis(index, JOY_AXIS_LEFT_X) < -0.5):
-			JoystickDirection[InputJoyOne+index] = JoyLeft
-		elif (JoyRightMapped[index][0] == JoyAnalogHorizontal && Input.get_joy_axis(index, JOY_AXIS_LEFT_X) > 0.5):
-			JoystickDirection[InputJoyOne+index] = JoyRight
+#	for index in range (0, 3):
+#		if (JoyUpMapped[index][0] == JoyDPadUp && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_UP) == true):
+#			JoystickDirection[InputJoyOne+index] = JoyUp
+#		elif (JoyDownMapped[index][0] == JoyDPadDown && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_DOWN) == true):
+#			JoystickDirection[InputJoyOne+index] = JoyDown
+#		elif (JoyLeftMapped[index][0] == JoyDPadLeft && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_LEFT) == true):
+#			JoystickDirection[InputJoyOne+index] = JoyLeft
+#		elif (JoyRightMapped[index][0] == JoyDPadRight && Input.is_joy_button_pressed (index, JOY_BUTTON_DPAD_RIGHT) == true):
+#			JoystickDirection[InputJoyOne+index] = JoyRight
+#		elif (JoyUpMapped[index][0] == JoyAnalogVertical && Input.get_joy_axis(index, JOY_AXIS_LEFT_Y) < -0.5):
+#			JoystickDirection[InputJoyOne+index] = JoyUp
+#		elif (JoyDownMapped[index][0] == JoyAnalogVertical && Input.get_joy_axis(index, JOY_AXIS_LEFT_Y) > 0.5):
+#			JoystickDirection[InputJoyOne+index] = JoyDown
+#		elif (JoyLeftMapped[index][0] == JoyAnalogHorizontal && Input.get_joy_axis(index, JOY_AXIS_LEFT_X) < -0.5):
+#			JoystickDirection[InputJoyOne+index] = JoyLeft
+#		elif (JoyRightMapped[index][0] == JoyAnalogHorizontal && Input.get_joy_axis(index, JOY_AXIS_LEFT_X) > 0.5):
+#			JoystickDirection[InputJoyOne+index] = JoyRight
+#
+#		for indexThree in range(0, 10):
+#			if (JoyUpMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
+#				JoystickDirection[InputJoyOne+index] = JoyUp
+#			elif (JoyDownMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
+#				JoystickDirection[InputJoyOne+index] = JoyDown
+#			elif (JoyLeftMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
+#				JoystickDirection[InputJoyOne+index] = JoyLeft
+#			elif (JoyRightMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
+#				JoystickDirection[InputJoyOne+index] = JoyRight
+#
+#		if (ScreensCore.ScreenToDisplay != ScreensCore.OptionsScreen):  JoyButtonOnePressedDuration[index][0] = 0
+#
+#		if (ScreensCore.ScreenToDisplay != ScreensCore.OptionsScreen):
+#			if (Input.is_joy_button_pressed (index, JoyButtonOneMapped[index][0]-7) == true):
+#				JoyButtonOne[InputJoyOne+index]  = Pressed
+#				InputThatStartedNewGame = (InputJoyOne+index)
+#		elif (ScreensCore.ScreenToDisplay == ScreensCore.OptionsScreen):
+#			for indexTwo in range(0, 10):
+#				if (Input.is_joy_button_pressed (index, indexTwo) == true):
+#					JoyButtonOnePressedDuration[index][indexTwo]+=1
+#				elif (Input.is_joy_button_pressed (index, indexTwo) == false && JoyButtonOnePressedDuration[index][indexTwo] > 0):
+#					if (indexTwo == JOY_BUTTON_A):  JoyButtonOne[InputJoyOne+index]  = Pressed
+#					JoyButtonOnePressedCounter[index][indexTwo] = JoyButtonOnePressedDuration[index][indexTwo]
+#					JoyButtonOnePressedDuration[index][indexTwo] = 0
+#
+#					if ((ThereAreGamepads == true or _GamepadsConnected == true or ScreensCore.OperatingSys == ScreensCore.OSHTMLFive) && JoyButtonOnePressedCounter[index][indexTwo] > 30):
+#						if (ScreensCore.JoystickSetupIndex == ScreensCore.JoySetupNotStarted):
+#							ScreensCore.ScreenToDisplayNext = ScreensCore.OptionsScreen
+#							ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
+#							ScreensCore.JoystickSetupIndex = ScreensCore.JoySetup1Up
+#				else:
+#					JoyButtonOnePressedCounter[index][indexTwo] = 0
+#
+#		if (Input.is_joy_button_pressed (index, JoyButtonTwoMapped[index][0]-7) == true):
+#			JoyButtonTwo[InputJoyOne+index]  = Pressed
 
-		for indexThree in range(0, 10):
-			if (JoyUpMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
-				JoystickDirection[InputJoyOne+index] = JoyUp
-			elif (JoyDownMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
-				JoystickDirection[InputJoyOne+index] = JoyDown
-			elif (JoyLeftMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
-				JoystickDirection[InputJoyOne+index] = JoyLeft
-			elif (JoyRightMapped[index][0] == JoyButton0+indexThree && Input.is_joy_button_pressed (index, JoyButton0-7+indexThree) == true):
-				JoystickDirection[InputJoyOne+index] = JoyRight
+	if Input.is_action_pressed("Joy0DPadUp"):
+		JoystickDirection[InputJoyOne] = JoyUp
+	elif Input.is_action_pressed("Joy0DPadRight"):
+		JoystickDirection[InputJoyOne] = JoyRight
+	elif Input.is_action_pressed("Joy0DPadDown"):
+		JoystickDirection[InputJoyOne] = JoyDown
+	elif Input.is_action_pressed("Joy0DPadLeft"):
+		JoystickDirection[InputJoyOne] = JoyLeft
 
-		if (ScreensCore.ScreenToDisplay != ScreensCore.OptionsScreen):  JoyButtonOnePressedDuration[index][0] = 0
+	if (Input.is_action_pressed("Joy0ButtonA")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonOne[InputJoyOne] = Pressed
+		InputThatStartedNewGame = InputJoyOne
 
-		if (ScreensCore.ScreenToDisplay != ScreensCore.OptionsScreen):
-			if (Input.is_joy_button_pressed (index, JoyButtonOneMapped[index][0]-7) == true):
-				JoyButtonOne[InputJoyOne+index]  = Pressed
-				InputThatStartedNewGame = (InputJoyOne+index)
-		elif (ScreensCore.ScreenToDisplay == ScreensCore.OptionsScreen):
-			for indexTwo in range(0, 10):
-				if (Input.is_joy_button_pressed (index, indexTwo) == true):
-					JoyButtonOnePressedDuration[index][indexTwo]+=1
-				elif (Input.is_joy_button_pressed (index, indexTwo) == false && JoyButtonOnePressedDuration[index][indexTwo] > 0):
-					if (indexTwo == JOY_BUTTON_A):  JoyButtonOne[InputJoyOne+index]  = Pressed
-					JoyButtonOnePressedCounter[index][indexTwo] = JoyButtonOnePressedDuration[index][indexTwo]
-					JoyButtonOnePressedDuration[index][indexTwo] = 0
+	if (Input.is_action_pressed("Joy0ButtonB")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonTwo[InputJoyOne] = Pressed
 
-					if ((ThereAreGamepads == true or _GamepadsConnected == true or ScreensCore.OperatingSys == ScreensCore.OSHTMLFive) && JoyButtonOnePressedCounter[index][indexTwo] > 30):
-						if (ScreensCore.JoystickSetupIndex == ScreensCore.JoySetupNotStarted):
-							ScreensCore.ScreenToDisplayNext = ScreensCore.OptionsScreen
-							ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
-							ScreensCore.JoystickSetupIndex = ScreensCore.JoySetup1Up
-				else:
-					JoyButtonOnePressedCounter[index][indexTwo] = 0
+	if Input.is_action_pressed("Joy1DPadUp"):
+		JoystickDirection[InputJoyTwo] = JoyUp
+	elif Input.is_action_pressed("Joy1DPadRight"):
+		JoystickDirection[InputJoyTwo] = JoyRight
+	elif Input.is_action_pressed("Joy1DPadDown"):
+		JoystickDirection[InputJoyTwo] = JoyDown
+	elif Input.is_action_pressed("Joy1DPadLeft"):
+		JoystickDirection[InputJoyTwo] = JoyLeft
 
-		if (Input.is_joy_button_pressed (index, JoyButtonTwoMapped[index][0]-7) == true):
-			JoyButtonTwo[InputJoyOne+index]  = Pressed
+	if (Input.is_action_pressed("Joy1ButtonA")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonOne[InputJoyTwo] = Pressed
+		InputThatStartedNewGame = InputJoyTwo
+
+	if (Input.is_action_pressed("Joy1ButtonB")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonTwo[InputJoyTwo] = Pressed
+
+	if Input.is_action_pressed("Joy2DPadUp"):
+		JoystickDirection[InputJoyThree] = JoyUp
+	elif Input.is_action_pressed("Joy2DPadRight"):
+		JoystickDirection[InputJoyThree] = JoyRight
+	elif Input.is_action_pressed("Joy2DPadDown"):
+		JoystickDirection[InputJoyThree] = JoyDown
+	elif Input.is_action_pressed("Joy2DPadLeft"):
+		JoystickDirection[InputJoyThree] = JoyLeft
+
+	if (Input.is_action_pressed("Joy2ButtonA")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonOne[InputJoyThree] = Pressed
+		InputThatStartedNewGame = InputJoyThree
+
+	if (Input.is_action_pressed("Joy2ButtonB")):
+		if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):  JoyButtonTwo[InputJoyThree] = Pressed
 
 	for index in range (0, 8):
 		if (JoystickDirection[index] != JoyCentered):

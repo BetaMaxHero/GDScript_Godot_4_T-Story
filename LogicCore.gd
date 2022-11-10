@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.15 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.16 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1

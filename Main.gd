@@ -28,7 +28,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/         15% T U R B O   \/\/
-#                                  Version 3.0.0.15 Pre-Beta1of3
+#                                  Version 3.0.0.16 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -47,10 +47,10 @@
 
 # Pre-Beta2of3:
 # - Fixed screen jitter when a new line is placed at bottom of playfield when playing
-# - Can't Detect game controllers(they work) in HTML5 on Mozilla Firefox & Google Chrome, Edge, & Opera
 # - Optimized playing game screen by about 15% - needs further optimizations
 # - Created 10 second average Frames Per Second calculated display
 # - Fixed drop shadow(s) when adding an incomplete line to the bottom of playfield
+# - Working on controllers: they don't work on HTML5 yet?
 # - 
 # - [NOT DONE!]
 # - 
