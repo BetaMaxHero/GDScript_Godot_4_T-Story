@@ -513,12 +513,12 @@ func DeleteAllTexts():
 	pass
 
 #----------------------------------------------------------------------------------------
-func DrawnTextChangeScaleRotation(index, scaleX, scaleY, rotations):
-	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
-	Texts.TextImage[index].rotation = rotations
-
-	pass
-
+#func DrawnTextChangeScaleRotation(index, scaleX, scaleY, rotations):
+#	Texts.TextImage[index].scale = Vector2(scaleX, scaleY)
+#	Texts.TextImage[index].rotation = rotations
+#
+#	pass
+#
 #----------------------------------------------------------------------------------------
 # Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic"(Not 100%-I'll finish it):
 func DrawText(index, text, x, y, horizontalJustification, fontSize, scaleX, scaleY, rotations, red, green, blue, alpha, outlineRed, outlineGreen, outlineBlue):

@@ -364,44 +364,78 @@ func DisplayTitleScreen():
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2.0), (buttonY))
 			buttonY+=buttonOffsetY
 
+		if (LogicCore.SecretCodeCombined == 2777):
+			var textScnY = 265
+			var textScnX = 5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=15
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[5]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-
-		var textScnY = 265
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", 5+22, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=15
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=25
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] False game over?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=20
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(pressing left/right during new piece fall)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=5
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=25
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] Controllers on HTML5 not working?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=20
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad/Analog not working, buttons work)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=5
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=25
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - FPS?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=20
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Windows ''22H2'' HTML5 30 FPS limit?)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=5
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=25
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] Placement of text incorrect infrequently?", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=20
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(absolutely no ideas on above?)", 5, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		textScnY+=5
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", 5, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-
-
-
+			textScnY = 265
+			textScnX = -5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS FIXED(3.0.0.15):", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=15
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] FIXED False game over?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(was issue with input and new falling piece)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] FIXED Controllers on HTML5 not working?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad still not working, left analog / buttons work now)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - 30 FPS Windows?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(not currently fixable(driver issue) - will revisit)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=25
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] FIXED Placement of text incorrect infrequently?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=20
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(issue was with new game story text scaling)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+			textScnY+=5
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602-15, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By: Team ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 - ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-100, VisualsCore.ScreenHeight-50+30, 0.5, 0.5, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-125, VisualsCore.ScreenHeight-50+23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "15%", VisualsCore.ScreenWidth-112-119, VisualsCore.ScreenHeight-50+11, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 
@@ -447,6 +481,7 @@ func DisplayTitleScreen():
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(1) == true:
 		ScreenToDisplayNext = OptionsScreen
+		InputCore.OptionsInJoySetup = false
 		JoystickSetupIndex = JoySetupNotStarted
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(2) == true:
@@ -538,16 +573,8 @@ func DisplayOptionsScreen():
 			elif (VisualsCore.KeepAspectRatio == 0):
 				OptionsTextAspectRatio = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Off", -75, 65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-			if (OperatingSys == OSDesktop):
-				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Configure Gamepads:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-
-				if (InputCore.ThereAreGamepads == true or InputCore._GamepadsConnected == true):
-					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Press Button For 10+ Seconds", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-				elif (InputCore.ThereAreGamepads == false):
-					OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "No Gamepads Available", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			if (OperatingSys == OSHTMLFive):
-				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Gamepads Might Work In:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-				OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Edge/Firefox/Chrome/Opera", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Gamepads Might Work:", 75, 65+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			OptionsTextGamepads = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Press [F1] To Configure", -75, 65+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 			InterfaceCore.CreateArrowSet(3, 65+50+50+50)
 
@@ -632,8 +659,32 @@ func DisplayOptionsScreen():
 		elif (JoystickSetupIndex == JoySetup3Button2):
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [BUTTON 2] ON GAMEPAD 3", 0.0, VisualsCore.ScreenHeight/2.0, 1, 35, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 
-	if (InputCore.ThereAreGamepads == false and InputCore._GamepadsConnected == false):
-		JoystickSetupIndex = JoySetupNotStarted
+		if (JoystickSetupIndex > JoySetupNotStarted):
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [F1] TO QUIT[Resetting Config]", 0.0, (VisualsCore.ScreenHeight/2.0)+75, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "PRESS [Esc] TO QUIT[Keeping Config]", 0.0, (VisualsCore.ScreenHeight/2.0)+75+45, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+	if InputCore.DelayAllUserInput == -1 and Input.is_action_pressed("ConfigureJaoysticks"):
+		InputCore.DelayAllUserInput = 50
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+
+		if (InputCore.OptionsInJoySetup == false):
+			JoystickSetupIndex = JoySetup1Up
+			InputCore.OptionsInJoySetup = true
+		else:
+			JoystickSetupIndex =  JoySetupNotStarted
+			InputCore.OptionsInJoySetup = false
+
+			for index in range(0, 9):
+				InputCore.JoyUpMapped[index][0] = 11+10
+				InputCore.JoyDownMapped[index][0] = 12+10
+				InputCore.JoyLeftMapped[index][0] = 13+10
+				InputCore.JoyRightMapped[index][0] = 14+10
+				InputCore.JoyButtonOneMapped[index][0] = 0+10
+				InputCore.JoyButtonTwoMapped[index][0] = 1+10
+
+		AudioCore.PlayEffect(2)
 
 	if (JoystickSetupIndex == JoySetup1Up):
 		if ( InputCore.GetJoystickInputForMapping(0, false) != -1):
@@ -1018,16 +1069,16 @@ func DisplayHowToPlayScreen():
 		DemoRotationDirection = 0
 		DemoRotation = 0.0
 
-	if DemoRotationDirection == 0:
-		DemoRotation-=0.0015
-		if (DemoRotation < -0.1):
-			DemoRotationDirection = 1
-	elif DemoRotationDirection == 1:
-		DemoRotation+=0.0015
-		if (DemoRotation > 0.1):
-			DemoRotationDirection = 0
-
-	VisualsCore.DrawnTextChangeScaleRotation(DemoTextIndex, 1.0, 1.0, DemoRotation)
+#	if DemoRotationDirection == 0:
+#		DemoRotation-=0.0015
+#		if (DemoRotation < -0.1):
+#			DemoRotationDirection = 1
+#	elif DemoRotationDirection == 1:
+#		DemoRotation+=0.0015
+#		if (DemoRotation > 0.1):
+#			DemoRotationDirection = 0
+#
+#	VisualsCore.DrawnTextChangeScaleRotation(DemoTextIndex, 1.0, 1.0, DemoRotation)
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
@@ -1320,13 +1371,13 @@ func DisplayCutSceneScreen():
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Act # "+str(LogicCore.Level), 0, 35, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		CutSceneTextScale[0] = 0.0
-		CutSceneTextScale[1] = 0.0
-		CutSceneTextScale[2] = 0.0
-		CutSceneTextScale[3] = 0.0
-		CutSceneTextScale[4] = 0.0
-		CutSceneTextScale[5] = 0.0
-		CutSceneTextScale[6] = 0.0
+		CutSceneTextScale[0] = 1.0#0.0
+		CutSceneTextScale[1] = 1.0#0.0
+		CutSceneTextScale[2] = 1.0#0.0
+		CutSceneTextScale[3] = 1.0#0.0
+		CutSceneTextScale[4] = 1.0#0.0
+		CutSceneTextScale[5] = 1.0#0.0
+		CutSceneTextScale[6] = 1.0#0.0
 		CutSceneTextScaleIndex = 0
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, " ", 0, 0, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
@@ -1515,42 +1566,42 @@ func DisplayCutSceneScreen():
 		ScreenDisplayTimer = (70*4)
 
 	if (LogicCore.Level < 10):
-		if (CutSceneTextScaleIndex == 0):
-			CutSceneTextScale[0]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[0], CutSceneTextScale[0], CutSceneTextScale[0], 0.0)
-			if (CutSceneTextScale[0] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 1):
-			CutSceneTextScale[1]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[1], CutSceneTextScale[1], CutSceneTextScale[1], 0.0)
-			if (CutSceneTextScale[1] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 2):
-			CutSceneTextScale[2]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[2], CutSceneTextScale[2], CutSceneTextScale[2], 0.0)
-			if (CutSceneTextScale[2] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 3):
-			CutSceneTextScale[3]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[3], CutSceneTextScale[3], CutSceneTextScale[3], 0.0)
-			if (CutSceneTextScale[3] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 4):
-			CutSceneTextScale[4]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[4], CutSceneTextScale[4], CutSceneTextScale[4], 0.0)
-			if (CutSceneTextScale[4] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 5):
-			CutSceneTextScale[5]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[5], CutSceneTextScale[5], CutSceneTextScale[5], 0.0)
-			if (CutSceneTextScale[5] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (CutSceneTextScaleIndex == 6):
-			CutSceneTextScale[6]+=0.05
-			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[6], CutSceneTextScale[6], CutSceneTextScale[6], 0.0)
-			if (CutSceneTextScale[6] > 1.0):
-				CutSceneTextScaleIndex+=1
-		elif (ScreenDisplayTimer > 1):
+#		if (CutSceneTextScaleIndex == 0):
+#			CutSceneTextScale[0]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[0], CutSceneTextScale[0], CutSceneTextScale[0], 0.0)
+#			if (CutSceneTextScale[0] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 1):
+#			CutSceneTextScale[1]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[1], CutSceneTextScale[1], CutSceneTextScale[1], 0.0)
+#			if (CutSceneTextScale[1] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 2):
+#			CutSceneTextScale[2]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[2], CutSceneTextScale[2], CutSceneTextScale[2], 0.0)
+#			if (CutSceneTextScale[2] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 3):
+#			CutSceneTextScale[3]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[3], CutSceneTextScale[3], CutSceneTextScale[3], 0.0)
+#			if (CutSceneTextScale[3] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 4):
+#			CutSceneTextScale[4]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[4], CutSceneTextScale[4], CutSceneTextScale[4], 0.0)
+#			if (CutSceneTextScale[4] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 5):
+#			CutSceneTextScale[5]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[5], CutSceneTextScale[5], CutSceneTextScale[5], 0.0)
+#			if (CutSceneTextScale[5] > 1.0):
+#				CutSceneTextScaleIndex+=1
+#		elif (CutSceneTextScaleIndex == 6):
+#			CutSceneTextScale[6]+=0.05
+#			VisualsCore.DrawnTextChangeScaleRotation(CutSceneTextIndex[6], CutSceneTextScale[6], CutSceneTextScale[6], 0.0)
+#			if (CutSceneTextScale[6] > 1.0):
+#				CutSceneTextScaleIndex+=1
+		if (ScreenDisplayTimer > 1):
 			ScreenDisplayTimer-=1
 		elif (CutSceneScene < CutSceneSceneTotal[LogicCore.Level]):
 			CutSceneScene+=1

@@ -515,6 +515,8 @@ func PieceCollisionRight(player):
 
 #----------------------------------------------------------------------------------------
 func RotatePieceCounterClockwise(player):
+	if PlayerStatus[player] == NewPieceDropping:  return
+
 	if PieceRotation[player] > 1:
 		PieceRotation[player]-=1
 	else:
@@ -537,6 +539,8 @@ func RotatePieceCounterClockwise(player):
 
 #----------------------------------------------------------------------------------------
 func RotatePieceClockwise(player):
+	if PlayerStatus[player] == NewPieceDropping:  return
+
 	if PieceRotation[player] < 4:
 		PieceRotation[player]+=1
 	else:
@@ -949,7 +953,9 @@ func MovePieceDown(player, _force):
 #----------------------------------------------------------------------------------------
 func MovePieceLeft(player):
 	PieceMoved = 1
-	
+
+	if PlayerStatus[player] == NewPieceDropping:  return
+
 	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 		if PieceMovementDelay[player] > -6:
 			PieceMovementDelay[player]-=1
@@ -975,7 +981,9 @@ func MovePieceLeft(player):
 #----------------------------------------------------------------------------------------
 func MovePieceRight(player):
 	PieceMoved = 1
-	
+
+	if PlayerStatus[player] == NewPieceDropping:  return
+
 	if (ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 		if PieceMovementDelay[player] < 6:
 			PieceMovementDelay[player]+=1

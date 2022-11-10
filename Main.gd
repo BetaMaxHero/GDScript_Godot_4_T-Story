@@ -50,10 +50,11 @@
 # - Optimized playing game screen by about 15% - needs further optimizations
 # - Created 10 second average Frames Per Second calculated display
 # - Fixed drop shadow(s) when adding an incomplete line to the bottom of playfield
-# - Working on controllers: they don't work on HTML5 yet?
-# - 
-# - [NOT DONE!]
-# - 
+# - Fixed game controllers - d-pad does not work on HTML5 yet(use left analog stick)
+# - Fixed false game overs when playing
+# - Fixed infrequent incorrect placement of text
+# -
+# - [NOT DONE!] 
 
 # Pre-Beta1of3:
 # - Fixed configure controller(s) text position in [Options] screen
