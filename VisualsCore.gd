@@ -886,6 +886,8 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Zireael''", 1.0)
 	AddAboutScreenText("''Kojack''", 1.0)
 	AddAboutScreenText("''akien-mga''", 1.0)
+	AddAboutScreenText("''Valedict''", 1.0)
+	AddAboutScreenText("''Aliencodex''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
@@ -895,7 +897,7 @@ func LoadAboutScreenTexts():
 
 	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex], ((ScreenWidth/2.0)+100.0), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)
 
-	var screenY = ScreenHeight+25
+	var screenY = ScreenHeight-300
 	for index in range(AboutTextsStartIndex+1, AboutTextsEndIndex):
 		if (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
 			screenY+=50

@@ -371,15 +371,15 @@ func DisplayTitleScreen():
 			textScnY+=15
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] Act #9 cutscene missing image?", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=5
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] New high score name input screen crash", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=5
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			textScnY+=25
@@ -1553,7 +1553,7 @@ func DisplayCutSceneScreen():
 			CutSceneTextIndex[5] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "& the Rose he fought so hard to get her.", 0, 300+(5*47), 1, 35, CutSceneTextScale[5], CutSceneTextScale[5], 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			CutSceneTextIndex[6] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "", 0, 300+(6*47), 1, 35, CutSceneTextScale[6], CutSceneTextScale[6], 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif (LogicCore.Level == 9 && CutSceneScene == 1):
-			VisualsCore.DrawSprite(164, VisualsCore.ScreenWidth/.02, (VisualsCore.ScreenHeight/2.0)-137, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+			VisualsCore.DrawSprite(164, VisualsCore.ScreenWidth/2.0, (VisualsCore.ScreenHeight/2.0)-137, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 			CutSceneTextIndex[0] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "With her remaining strength,", 0, 300, 1, 35, CutSceneTextScale[0], CutSceneTextScale[0], 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 			CutSceneTextIndex[1] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "the Princess follows", 0, 300+(1*47), 1, 35, CutSceneTextScale[1], CutSceneTextScale[1], 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -1703,8 +1703,8 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 122, VisualsCore.ScreenWidth-59, 147+90, " " )
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
-#		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-#			Engine.max_fps = 0
+		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
+			Engine.max_fps = 0
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 

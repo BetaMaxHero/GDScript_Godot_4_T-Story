@@ -27,8 +27,8 @@
 #    |    |_/ __ \   __\_  __ \  |\_____  \\   __\/  _ \_  __ <   |  |  |   ||   /  /_\  \_// /_
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
-#               \/                       \/                    \/         15% T U R B O   \/\/
-#                                  Version 3.0.0.16 Pre-Beta1of3
+#               \/                       \/                    \/         15% T U R B O \/\/
+#                                  Version 3.0.0.17 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -53,7 +53,10 @@
 # - Fixed game controllers - d-pad does not work on HTML5 yet(use left analog stick)
 # - Fixed false game overs when playing
 # - Fixed infrequent incorrect placement of text
-# -
+# - Fixed missing Act 9 cutscene images
+# - Fixed crash in new high score name input screen
+# - 
+# - 
 # - [NOT DONE!] 
 
 # Pre-Beta1of3:

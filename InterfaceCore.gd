@@ -402,20 +402,20 @@ func DrawAllIcons():
 
 		if Icons.IconAnimationTimer[index] == 3:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.85, 0.85), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.85) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.85) / 2.0))))
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.85, 0.85, 0)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.85, 0.85, 0)
 		elif Icons.IconAnimationTimer[index] == 2:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.90, 0.90), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.90) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.90) / 2.0))))
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.9, 0.9, 0)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.9, 0.9, 0)
 		elif Icons.IconAnimationTimer[index] == 1:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(0.95, 0.95), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*0.90) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*0.95) / 2.0))))
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.95, 0.95, 0)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 0.95, 0.95, 0)
 		elif Icons.IconAnimationTimer[index] == 0:
 			RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[Icons.IconSprite[index]], Transform2D(0.0, Vector2(1.0, 1.0), 0.0, Vector2(Icons.IconScreenX[index] - ((VisualsCore.Sprites.SpriteImageWidth[Icons.IconSprite[index]]*1.0) / 2.0), Icons.IconScreenY[index] - ((VisualsCore.Sprites.SpriteImageHeight[Icons.IconSprite[index]]*1.0) / 2.0))))
-			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
-				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 1.0, 1.0, 0)
+#			if (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen):
+#				VisualsCore.DrawnTextChangeScaleRotation(Icons.IconTextIndex[index], 1.0, 1.0, 0)
 
 	pass
 
