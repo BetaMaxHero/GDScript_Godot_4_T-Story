@@ -27,8 +27,8 @@
 #    |    |_/ __ \   __\_  __ \  |\_____  \\   __\/  _ \_  __ <   |  |  |   ||   /  /_\  \_// /_
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
-#               \/                       \/                    \/         15% T U R B O \/\/
-#                                  Version 3.0.0.17 Pre-Beta1of3
+#               \/                       \/                    \/        100% T U R B O \/\/
+#                                  Version 3.0.0.18 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -55,7 +55,7 @@
 # - Fixed infrequent incorrect placement of text
 # - Fixed missing Act 9 cutscene images
 # - Fixed crash in new high score name input screen
-# - 
+# - Game turbocharger 100% operational
 # - 
 # - [NOT DONE!] 
 
@@ -76,7 +76,7 @@ extends Node2D
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	Engine.max_fps = 30
+	Engine.physics_ticks_per_second = 30
 
 	if (ScreensCore.OperatingSys == ScreensCore.OSAndroid):
 		VisualsCore.KeepAspectRatio = 0
@@ -92,7 +92,7 @@ func _ready():
 	pass
 
 #----------------------------------------------------------------------------------------
-func _process(_delta):
+func  _physics_process(_delta):
 
 	ScreensCore.ProcessScreenToDisplay()
 

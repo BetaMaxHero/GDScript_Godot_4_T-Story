@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.17 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.18 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -1164,13 +1164,13 @@ func SetupForNewLevel():
 		return
 	
 	if GameMode == ChildMode:
-		Engine.max_fps = 15
+		Engine.physics_ticks_per_second = 15
 	elif GameMode == TeenMode:
-		Engine.max_fps = 30
+		Engine.physics_ticks_per_second = 30
 	elif GameMode == AdultMode:
-		Engine.max_fps = 25
+		Engine.physics_ticks_per_second = 25
 	elif GameMode == TurboMode:
-		Engine.max_fps = 60
+		Engine.physics_ticks_per_second = 60
 	ClearPlayfieldWithCollisionDetection()
 
 	for player in range(0, 3):
@@ -1771,7 +1771,7 @@ func RunTetriGameEngine():
 					ScreensCore.ScreenToDisplayNext = ScreensCore.CutSceneScreen
 					Level+=1
 					ScreensCore.CutSceneScene = 1
-					Engine.max_fps = 30
+					Engine.physics_ticks_per_second = 30
 					LevelCleared = true
 					
 					if (LogicCore.Level == 2):
@@ -1795,7 +1795,7 @@ func RunTetriGameEngine():
 						InputCore.DelayAllUserInput = 100
 						StillPlaying = false
 						GameWon = true
-						Engine.max_fps = 30
+						Engine.physics_ticks_per_second = 30
 						ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
 						ScreensCore.ScreenToDisplayNext = ScreensCore.WonGameScreen
 
@@ -1806,7 +1806,7 @@ func RunTetriGameEngine():
 						SecretCodeCombined = (SecretCode[0]*1000)+(SecretCode[1]*100)+(SecretCode[2]*10)+(SecretCode[3]*1)
 
 				if (PlayerStatus[0] == GameOver && PlayerStatus[1] == GameOver && PlayerStatus[2] == GameOver):
-					Engine.max_fps = 30
+					Engine.physics_ticks_per_second = 30
 					AudioCore.PlayMusic(0)
 
 					StillPlaying = false

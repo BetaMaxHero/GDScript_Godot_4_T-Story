@@ -364,78 +364,78 @@ func DisplayTitleScreen():
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2.0), (buttonY))
 			buttonY+=buttonOffsetY
 
-		if (LogicCore.SecretCodeCombined == 2777):
-			var textScnY = 265
-			var textScnX = 5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=15
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] Act #9 cutscene missing image?", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] New high score name input screen crash", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[5]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-
-			textScnY = 265
-			textScnX = -5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS FIXED(3.0.0.15):", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=15
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] FIXED False game over?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(was issue with input and new falling piece)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] FIXED Controllers on HTML5 not working?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad still not working, left analog / buttons work now)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - 30 FPS Windows?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(not currently fixable(driver issue) - will revisit)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=25
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] FIXED Placement of text incorrect infrequently?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=20
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(issue was with new game story text scaling)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-			textScnY+=5
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#		if (LogicCore.SecretCodeCombined == 2777):
+#			var textScnY = 265
+#			var textScnX = 5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=15
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] Act #9 cutscene missing image?", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] New high score name input screen crash", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[5]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#
+#			textScnY = 265
+#			textScnX = -5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS FIXED(3.0.0.15):", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=15
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] FIXED False game over?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(was issue with input and new falling piece)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] FIXED Controllers on HTML5 not working?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad still not working, left analog / buttons work now)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - 30 FPS Windows?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(not currently fixable(driver issue) - will revisit)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=25
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] FIXED Placement of text incorrect infrequently?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=20
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(issue was with new game story text scaling)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+#			textScnY+=5
+#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602-15, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 - ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-125, VisualsCore.ScreenHeight-50+23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "15%", VisualsCore.ScreenWidth-112-119, VisualsCore.ScreenHeight-50+11, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", VisualsCore.ScreenWidth-112-119, VisualsCore.ScreenHeight-50+11, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 
@@ -1639,16 +1639,16 @@ func DisplayCutSceneScreen():
 func DisplayPlayingGameScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		if LogicCore.GameMode == LogicCore.ChildMode:
-			Engine.max_fps = 15
+			Engine.physics_ticks_per_second = 15
 		elif LogicCore.GameMode == LogicCore.TeenMode:
-			Engine.max_fps = 30
+			Engine.physics_ticks_per_second = 30
 		elif LogicCore.GameMode == LogicCore.AdultMode:
-			Engine.max_fps = 25
+			Engine.physics_ticks_per_second = 25
 		elif LogicCore.GameMode == LogicCore.TurboMode:
-			Engine.max_fps = 60
+			Engine.physics_ticks_per_second = 60
 
 		if (LogicCore.SecretCodeCombined == 8888 or LogicCore.SecretCodeCombined == 8889):
-			Engine.max_fps = 9999999#0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
+			Engine.physics_ticks_per_second = 9999999#0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
@@ -1704,7 +1704,7 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
 		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.max_fps = 0
+			Engine.physics_ticks_per_second = 0
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
@@ -1918,7 +1918,7 @@ func DisplayPlayingGameScreen():
 				LogicCore.PlayerStatus[2] = LogicCore.NewPieceDropping
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
-		Engine.max_fps = 30
+		Engine.physics_ticks_per_second = 30
 		
 		if (LogicCore.StillPlaying == false):
 			DataCore.CheckForNewHighScore()
