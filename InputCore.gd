@@ -313,7 +313,7 @@ func _process(_delta):
 				AudioCore.MusicPlayer.set_volume_db(AudioCore.ConvertLinearToDB(AudioCore.MusicVolume))
 
 			AudioCore.PlayEffect(1)
-			DelayAllUserInput = 20
+			DelayAllUserInput = 50
 	elif Input.is_action_pressed("SeeEnding"):
 		if (ScreensCore.ScreenToDisplay == ScreensCore.TitleScreen):
 			ScreensCore.SeeEndingStaff = true

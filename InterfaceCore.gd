@@ -205,7 +205,7 @@ func ThisButtonWasPressed(buttonToCheck):
 
 					AudioCore.PlayEffect(0)
 
-					InputCore.DelayAllUserInput = 5
+					InputCore.DelayAllUserInput = 30
 				elif InputCore.JoystickDirection[InputCore.InputAny] == InputCore.JoyDown && NumberOfButtonsOnScreen > 1:
 					if ButtonSelectedByKeyboard < (NumberOfButtonsOnScreen-1):
 						ButtonSelectedByKeyboard+=1
@@ -214,38 +214,38 @@ func ThisButtonWasPressed(buttonToCheck):
 
 					AudioCore.PlayEffect(0)
 
-					InputCore.DelayAllUserInput = 5
+					InputCore.DelayAllUserInput = 30
 
 				if ( (ScreensCore.ScreenToDisplay == ScreensCore.OptionsScreen) && (InputCore.JoyButtonOne[InputCore.InputJoyOne] == InputCore.Pressed && InputCore.JoyButtonOnePressedCounter[InputCore.InputJoyOne][0] < 30) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 				elif ( (ScreensCore.ScreenToDisplay == ScreensCore.OptionsScreen) && (InputCore.JoyButtonOne[InputCore.InputJoyTwo] == InputCore.Pressed && InputCore.JoyButtonOnePressedCounter[InputCore.InputJoyTwo][0] < 30) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 				elif ( (ScreensCore.ScreenToDisplay == ScreensCore.OptionsScreen) && (InputCore.JoyButtonOne[InputCore.InputJoyThree] == InputCore.Pressed && InputCore.JoyButtonOnePressedCounter[InputCore.InputJoyThree][0] < 30) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 				elif ( (ScreensCore.ScreenToDisplay != ScreensCore.OptionsScreen && ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen) && (InputCore.JoyButtonOne[InputCore.InputAny] == InputCore.Pressed) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 				elif ( (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen) && (InputCore.KeyboardEnterPressed == true || InputCore.KeyboardSpacebarPressed == true) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 				elif ( (ScreensCore.ScreenToDisplay == ScreensCore.NewHighScoreScreen) && (InputCore.KeyboardEnterPressed == true) ):
 					if buttonToCheck == ButtonSelectedByKeyboard:
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30
 
 				if InputCore.MouseButtonLeftPressed == true:
 					var _addVerticalMobile = 0
@@ -254,7 +254,7 @@ func ThisButtonWasPressed(buttonToCheck):
 						ButtonSelectedByKeyboard = index
 						Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 2
 						AudioCore.PlayEffect(1)
-						InputCore.DelayAllUserInput = 15
+						InputCore.DelayAllUserInput = 30 
 
 			if Buttons.ButtonAnimationTimer[index] > -1:
 				Buttons.ButtonAnimationTimer[index]-=1
@@ -467,7 +467,7 @@ func ThisIconWasPressed(iconToCheck, _player):
 					if (ScreensCore.ScreenToDisplay != ScreensCore.NewHighScoreScreen):
 						AudioCore.PlayEffect(0)
 
-					InputCore.DelayAllUserInput = 5
+					InputCore.DelayAllUserInput = 30
 				elif (iconToCheck != iconIndex):
 					Icons.IconAnimationTimer[iconToCheck] = 3
 					return true

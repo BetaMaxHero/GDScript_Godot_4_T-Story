@@ -229,6 +229,7 @@ func DisplayGodotScreen():
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		ScreenToDisplayNext = FASScreen
+		InputCore.DelayAllUserInput = 30
 
 	pass
 
@@ -287,6 +288,7 @@ func DisplayFASScreen():
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		ScreenToDisplayNext = TitleScreen
+		InputCore.DelayAllUserInput = 30
 
 		AudioCore.PlayMusic(0)
 
@@ -523,8 +525,10 @@ func DisplayTitleScreen():
 		ScreenFadeStatus = FadingToBlack
 		ScreenToDisplayNext = WonGameScreen
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 #		ScreenToDisplayNext = TitleScreen
+		InputCore.DelayAllUserInput = 50
+
 	pass
 
 #----------------------------------------------------------------------------------------

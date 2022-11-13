@@ -16,6 +16,7 @@ _global_script_class_icons={}
 config/name="TetriStory 110%"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0")
+run/max_fps=60
 boot_splash/image="res://media/images/backgrounds/FadingBlackBG.png"
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.png"
