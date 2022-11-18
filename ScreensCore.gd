@@ -208,7 +208,7 @@ func DisplayGodotScreen():
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta 4+", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta 5+", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
 
 		ScreenDisplayTimer = (200*2)
 
@@ -1140,7 +1140,7 @@ func DisplayHighScoresScreen():
 			var level = int(DataCore.HighScoreLevel[LogicCore.GameMode][rank])
 			if level < 10:
 				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreLevel[LogicCore.GameMode][rank]), 690, screenY, 0, 25, 1.0, 1.0, 0, 1.0, blue, blue, 1.0, 0.0, 0.0, 0.0)
-			elif (LogicCore.GameMode == LogicCore.ChildMode || LogicCore.GameMode == LogicCore.TeenMode || LogicCore.GameMode == LogicCore.AdultMode):
+			elif (LogicCore.GameMode == LogicCore.ChildMode || LogicCore.GameMode == LogicCore.TeenMode || LogicCore.GameMode == LogicCore.AdultMode || LogicCore.GameMode == LogicCore.TurboMode):
 				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "WON!", 690, screenY, 0, 25, 1.0, 1.0, 0, 1.0, blue, blue, 1.0, 0.0, 0.0, 0.0)
 			else:
 				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreLevel[LogicCore.GameMode][rank]), 690, screenY, 0, 25, 1.0, 1.0, 0, 1.0, blue, blue, 1.0, 0.0, 0.0, 0.0)
@@ -1202,7 +1202,7 @@ func DisplayAboutScreen():
 			videoplayer.modulate = Color(1.0, 1.0, 1.0, 0.6)
 			videoplayer.play()
 
-	var textScrollSpeed = (1.2*2.0)
+	var textScrollSpeed = (1.22*2.0)
 	if (LogicCore.GameWon == false):
 		textScrollSpeed = (2.0*2.0)
 
@@ -1765,10 +1765,6 @@ func DisplayPlayingGameScreen():
 	for index in range (0, 9):
 		VisualsCore.PlayfieldSpriteCurrentIndex[index] = 0
 
-	if (LogicCore.PlayerStatus[0] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[1] == LogicCore.NewPieceDropping or LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping):
-		LogicCore.DrawEverything = 1
-		LogicCore.PieceMoved = 1
-
 	if (LogicCore.DrawEverything > 0): # DRAW EVERYTHING
 		LogicCore.DrawEverything-=1
 
@@ -1822,11 +1818,11 @@ func DisplayPlayingGameScreen():
 				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(pos))
 
 		var screenX = 135
-		var screenY = -5 + (26*4)
+		var screenY = -5# + (26*4)
 		var startBoxIndex = 10000
 		var adjustedBox
 		var boxCount = 0
-		for y in range(4, 24):
+		for y in range(0, 24):#4, 24):
 			for x in range(2, 32):
 				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
 					adjustedBox = LogicCore.Playfield[x][y]

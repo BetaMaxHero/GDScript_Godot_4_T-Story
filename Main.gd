@@ -1,4 +1,4 @@
-# Godot Engine v4 Beta 4+
+# Godot Engine v4 Beta 5+
 
 # Copyright 2023 Team "BetaMax Heroes"
 # 
@@ -28,7 +28,7 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/        100% T U R B O \/\/
-#                                  Version 3.0.0.18 Pre-Beta1of3
+#                                  Version 3.0.0.19 Pre-Beta1of3
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
@@ -56,8 +56,7 @@
 # - Fixed missing Act 9 cutscene images
 # - Fixed crash in new high score name input screen
 # - Game turbocharger 100% operational
-# - 
-# - [NOT DONE!] 
+# - NOT DONE
 
 # Pre-Beta1of3:
 # - Fixed configure controller(s) text position in [Options] screen

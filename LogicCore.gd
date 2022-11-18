@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.18 - Pre-Beta1of3 [Godot 4.0 Beta 4+]"
+var Version = "Version 3.0.0.19 - Pre-Beta1of3 [Godot 4.0 Beta 5+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -157,6 +157,8 @@ var ScoreOneText
 var ScoreTwoText
 var ScoreThreeText
 var LinesLeftText
+
+var MouseTouchRotateDir
 
 #----------------------------------------------------------------------------------------
 func InitializePieceData():
@@ -532,8 +534,8 @@ func RotatePieceCounterClockwise(player):
 		else:
 			PieceRotation[player] = 1
 
-#		if (PlayerData[Player].RotateDirection == 0)  PlayerData[Player].RotateDirection = 1;
-#        else  PlayerData[Player].RotateDirection = 0;
+		if (MouseTouchRotateDir == 0):  MouseTouchRotateDir = 1
+		else:  MouseTouchRotateDir = 0
 
 	return(false)
 
@@ -556,8 +558,8 @@ func RotatePieceClockwise(player):
 		else:
 			PieceRotation[player] = 4
 
-#		if (PlayerData[Player].RotateDirection == 0)  PlayerData[Player].RotateDirection = 1;
-#        else  PlayerData[Player].RotateDirection = 0;
+		if (MouseTouchRotateDir == 0):  MouseTouchRotateDir = 1
+		else:  MouseTouchRotateDir = 0
 
 	return(false)
 
@@ -944,6 +946,7 @@ func MovePieceDown(player, _force):
 		DropBonus[player] = 0
 
 		if PlayerStatus[player] == NewPieceDropping:
+			AddPieceToPlayfieldMemory(player, Current)
 			PlayerStatus[player] = GameOver
 		else:
 			CheckForCompletedLines(player)
@@ -1461,7 +1464,7 @@ func AddRandomBlocksToBottom():
 	if (thereWillBeNoDownwardCollisions == false):
 		return
 
-	for y in range(7, 24):
+	for y in range(4, 24):
 		for x in range(2, 32):
 			Playfield[x][y] = Playfield[x][y+1]
 
@@ -1568,10 +1571,12 @@ func RunTetriGameEngine():
 					
 					if PlayerStatus[player] == NewPieceDropping:
 						DrawEverything = 1
+						PieceMoved = 1
 						
 						if PiecePlayfieldY[player] < PieceDropStartHeight[ Piece[player] ]:
 							if (PieceCollisionDown(player) != CollisionWithPiece):
 								MovePieceDown(player, true)
+								AddPieceToPlayfieldMemory(player, Current)
 						else:
 							AddPieceToPlayfieldMemory(player, Next)
 							PlayerStatus[player] = PieceFalling
@@ -1700,7 +1705,12 @@ func RunTetriGameEngine():
 
 								if InterfaceCore.ThisIconWasPressed(3, player) == true:
 									if PieceRotatedOne[player] == false:
-										var _warnErase = RotatePieceClockwise(player)
+										var _warnErase
+										if (MouseTouchRotateDir == 0):
+											_warnErase = RotatePieceClockwise(player)
+										elif (MouseTouchRotateDir == 1):
+											_warnErase = RotatePieceCounterClockwise(player)
+
 										PieceRotatedOne[player] = true
 								else:
 									PieceRotatedOne[player] = false
@@ -1992,6 +2002,8 @@ func _ready():
 			PlayfieldBackup[x][y] = []
 
 	GameWon = false
+
+	MouseTouchRotateDir = 0
 
 	pass
 

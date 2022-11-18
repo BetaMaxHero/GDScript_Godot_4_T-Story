@@ -392,7 +392,7 @@ func _ready():
 			elif (index > 39 && index < 49):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -10)
 			elif (index > 49 && index < 129):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -3)
 			elif (index > 139 && index < 150):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
 			elif (index == 170):
@@ -404,11 +404,14 @@ func _ready():
 			elif (index == 173):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -5)
 			elif (index > 9999 && index < 19980):
-				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -1)
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -2)
 			elif (index == 131):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], -99999)
 			elif (index == 135):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 250)
+			elif (index == 19980):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
+
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
 	FontTTF.append(-1)
@@ -649,7 +652,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
-	AddAboutScreenText("Version 4.0 Beta 4+", 1.0)
+	AddAboutScreenText("Version 4.0 Beta 5+", 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
@@ -888,6 +891,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''akien-mga''", 1.0)
 	AddAboutScreenText("''Valedict''", 1.0)
 	AddAboutScreenText("''Aliencodex''", 1.0)
+	AddAboutScreenText("''leonardus''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
