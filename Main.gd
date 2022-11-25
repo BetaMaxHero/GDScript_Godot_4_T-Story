@@ -1,4 +1,4 @@
-# Godot Engine v4 Beta 5+
+# Godot Engine v4 Beta 6+
 
 # Copyright 2023 Team "BetaMax Heroes"
 # 

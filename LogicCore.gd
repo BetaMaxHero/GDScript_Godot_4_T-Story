@@ -18,16 +18,16 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.19 - Pre-Beta1of3 [Godot 4.0 Beta 5+]"
+var Version = "Version 3.0.0.20 - Pre-Beta1of3 [Godot 4.0 Beta 6+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
 const AdultMode				= 2
 const TurboMode				= 3
 
-var GameMode = TeenMode#TurboMode
+var GameMode = TurboMode#TeenMode#TurboMode
 
-var AllowComputerPlayers = 0
+var AllowComputerPlayers = 2#0
 
 var GameSpeed = 30
 
@@ -1269,14 +1269,16 @@ func ComputeComputerPlayerMove(player):
 		var TEMP_PieceRotation
 		var TEMP_PiecePlayfieldX
 		var TEMP_PiecePlayfieldY
-
+		#------------------------------------------------------------------------------------------------------------
+		# Move the ai's pieces to the best place
 		if (CPUPlayerForcedDirection[player] == CPUForcedLeft):
 			pTXStep[player] = -1
 		elif (CPUPlayerForcedDirection[player] == CPUForcedRight):
 			pTXStep[player] = 1
 		else:
-			pTXStep[player] = 1
-
+			pTXStep[player] = 1 # Default to moving right
+		#------------------------------------------------------------------------------------------------------------
+		# Rotate the ai's pieces to the best rotation
 		if (CPURotationTest[player] < MaxRotationArray[Piece[player]]):
 			CPURotationTest[player]+=1
 		else:
@@ -1294,14 +1296,18 @@ func ComputeComputerPlayerMove(player):
 				else:
 					if (CPURotationTest[player] == 1):
 						CPUComputedBestMove[player] = true
-
+		# ------------------------------------------------------------------------------------------------------------
 		TEMP_PieceRotation = PieceRotation[player]
 		TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
 		TEMP_PiecePlayfieldY = PiecePlayfieldY[player]
 
-		PiecePlayfieldX[player] = CPUPieceTestX[player]
-		PieceRotation[player] = CPURotationTest[player]
-
+		PiecePlayfieldX[player] = CPUPieceTestX[player] #Update x Location of piece to ai's calculation
+		PieceRotation[player] = CPURotationTest[player] #Update Rotation of piece to ai's calculation
+		
+		# MovePieceCollision[player] contains an array with a length of the amount of players
+		# MovePieceCollision[][x] contains an array with length of 35 for each position on the x axis
+		# MovePieceCollision[][][rotation] contains either true or false
+		
 		MovePieceCollision[player][CPUPieceTestX[player]][CPURotationTest[player]] = false
 		MovePieceHeight[player][CPUPieceTestX[player]][CPURotationTest[player]] = 0
 		if (PieceCollision(player) ==  CollisionNotTrue):
@@ -1400,6 +1406,10 @@ func ComputeComputerPlayerMove(player):
 				BestRotation[player] = -1
 				MovedToBestMove[player] = false
 				CPUComputedBestMove[player] = false
+				for i in 3: # Insert
+					if ( PieceCollisionDown(player) != CollisionWithPiece && PieceCollisionRight(player) != CollisionWithPlayfield):
+						await get_tree().create_timer(0.10).timeout
+						MovePieceDown(player, false) # Insert
 		elif (BestMoveX[player] > PiecePlayfieldX[player]):
 			if ( PieceCollisionRight(player) != CollisionWithPiece && PieceCollisionRight(player) != CollisionWithPlayfield):
 				MovePieceRight(player)
@@ -1412,6 +1422,10 @@ func ComputeComputerPlayerMove(player):
 				BestRotation[player] = -1
 				MovedToBestMove[player] = false
 				CPUComputedBestMove[player] = false
+				for i in 3: # Insert
+					if ( PieceCollisionDown(player) != CollisionWithPiece && PieceCollisionRight(player) != CollisionWithPlayfield):
+						await get_tree().create_timer(0.05).timeout
+						MovePieceDown(player, false)  
 		elif (PieceRotation[player] == BestRotation[player]):
 			var TEMP_PieceRotation = PieceRotation[player]
 			var TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
@@ -1440,6 +1454,8 @@ func ComputeComputerPlayerMove(player):
 			MovePieceDown(player, false)
 	else:
 		print("Confused???")
+		if ( PieceCollisionDown(player) != CollisionWithPiece && PieceCollisionRight(player) != CollisionWithPlayfield):
+			MovePieceDown(player, false)  
 
 	pass
 
@@ -1925,7 +1941,7 @@ func _ready():
 		for x in range(35):
 			MovePieceCollision[player][x] = []
 			_warnErase = MovePieceCollision[player][x].resize(26)
-
+	
 	_warnErase = MovePieceHeight.resize(3)
 	for player in range(3):
 		MovePieceHeight[player] = []

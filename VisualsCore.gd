@@ -652,7 +652,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
-	AddAboutScreenText("Version 4.0 Beta 5+", 1.0)
+	AddAboutScreenText("Version 4.0 Beta 6+", 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
@@ -695,6 +695,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("''Gift Of Sight'' Artificial Intelligence Programmer:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
+	AddAboutScreenText("''flairetic''", 1.0)
 	AddAboutScreenText("[400,000+ Average Lines Per Game!]", 1.0)
 
 	AddAboutScreenText("Support Game Programmers:", 0.0)
