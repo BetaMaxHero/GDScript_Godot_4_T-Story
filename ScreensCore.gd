@@ -121,6 +121,8 @@ var LevelText
 
 var fps = []
 
+var TSOneDisplayTimer
+
 #----------------------------------------------------------------------------------------
 func _ready():
 	ScreenFadeStatus = FadingFromBlack
@@ -208,7 +210,7 @@ func DisplayGodotScreen():
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta 6+", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta 6", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
 
 		ScreenDisplayTimer = (200*2)
 
@@ -259,10 +261,10 @@ func DisplayFASScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE?] Perfect single player game [DONE?] -", 0, 2+(30*10), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Level progression [DONE!] -", 0, 2+(30*11), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Cut scenes [DONE!] -", 0, 2+(30*12), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect multi player game -", 0, 2+(30*13), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect computer A.I. players -", 0, 2+(30*14), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE?] Perfect multi player game [DONE?] -", 0, 2+(30*13), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Perfect computer A.I. players -", 0, 2+(30*14), 1, 23, 1.0, 1.0, 0, 1.0, 0.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] New high score name input [DONE!] -", 0, 2+(30*15), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Full music soundtrack [DONE!] -", 0, 2+(30*16), 1, 23, 1.0, 1.0, 0, 0.0, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Full music soundtrack [DONE!] -", 0, 2+(30*16), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Ending [DONE!] -", 0, 2+(30*17), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Thorough testing of final beta version -", 0, 2+(30*18), 1, 23, 1.0, 1.0, 0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.0, 0.0)
 
@@ -365,73 +367,6 @@ func DisplayTitleScreen():
 
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2.0), (buttonY))
 			buttonY+=buttonOffsetY
-
-#		if (LogicCore.SecretCodeCombined == 2777):
-#			var textScnY = 265
-#			var textScnX = 5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS(Post Release):", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=15
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] Act #9 cutscene missing image?", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] New high score name input screen crash", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(Fixed in 3.0.0.17)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[5]", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(...)", textScnX, textScnY, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 0, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#
-#			textScnY = 265
-#			textScnX = -5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BUGS FIXED(3.0.0.15):", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=15
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[1] FIXED False game over?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(was issue with input and new falling piece)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[2] FIXED Controllers on HTML5 not working?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(D-Pad still not working, left analog / buttons work now)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[3] Windows vs. Linux on HTML5 - 30 FPS Windows?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(not currently fixable(driver issue) - will revisit)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 1.0, 0.4, 0.4, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=25
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "[4] FIXED Placement of text incorrect infrequently?", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=20
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "(issue was with new game story text scaling)", textScnX, textScnY, 2, 13, 1.0, 1.0, 0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#			textScnY+=5
-#			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "----------------------------------", textScnX, textScnY, 2, 23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602-15, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 - ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -1070,20 +1005,6 @@ func DisplayHowToPlayScreen():
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2.0), VisualsCore.ScreenHeight-25.0)
 
-		DemoRotationDirection = 0
-		DemoRotation = 0.0
-
-#	if DemoRotationDirection == 0:
-#		DemoRotation-=0.0015
-#		if (DemoRotation < -0.1):
-#			DemoRotationDirection = 1
-#	elif DemoRotationDirection == 1:
-#		DemoRotation+=0.0015
-#		if (DemoRotation > 0.1):
-#			DemoRotationDirection = 0
-#
-#	VisualsCore.DrawnTextChangeScaleRotation(DemoTextIndex, 1.0, 1.0, DemoRotation)
-
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
@@ -1184,7 +1105,7 @@ func DisplayAboutScreen():
 
 		VisualsCore.LoadAboutScreenTexts()
 
-		TS1ScreenY = (VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].global_position.y + 390)
+		TS1ScreenY = (VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].global_position.y + 390+150)
 		StaffScreenTSOneScale = 1.0
 
 		if (LogicCore.GameWon == false):
@@ -1201,6 +1122,8 @@ func DisplayAboutScreen():
 			add_child(videoplayer)
 			videoplayer.modulate = Color(1.0, 1.0, 1.0, 0.6)
 			videoplayer.play()
+
+		TSOneDisplayTimer = 125
 
 	var textScrollSpeed = (1.22*2.0)
 	if (LogicCore.GameWon == false):
@@ -1225,12 +1148,15 @@ func DisplayAboutScreen():
 		InputCore.DelayAllUserInput = 30
 		ScreenFadeStatus = FadingToBlack
 	elif (TS1ScreenY <= (VisualsCore.ScreenHeight/2.0)):
-		StaffScreenTSOneScale = StaffScreenTSOneScale - 0.05
+		if (TSOneDisplayTimer > 0):
+			TSOneDisplayTimer-=1
+		else:
+			StaffScreenTSOneScale = StaffScreenTSOneScale - 0.01
 
-		if (StaffScreenTSOneScale < 0):
-			ScreenFadeStatus = FadingToBlack
+			if (StaffScreenTSOneScale < 0):
+				ScreenFadeStatus = FadingToBlack
 
-			InputCore.DelayAllUserInput = 30
+				InputCore.DelayAllUserInput = 30
 
 	VisualsCore.DrawSprite(23, VisualsCore.ScreenWidth/2.0, TS1ScreenY, StaffScreenTSOneScale, StaffScreenTSOneScale, 0, 1.0, 1.0, 1.0, 1.0)
 
@@ -1568,6 +1494,7 @@ func DisplayCutSceneScreen():
 			CutSceneTextIndex[6] = VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "", 0, 300+(6*47), 1, 35, CutSceneTextScale[6], CutSceneTextScale[6], 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		ScreenDisplayTimer = (70*4)
+		if (LogicCore.SecretCodeCombined == 2779):  ScreenDisplayTimer = 30
 
 	if (LogicCore.Level < 10):
 #		if (CutSceneTextScaleIndex == 0):
@@ -1652,7 +1579,11 @@ func DisplayPlayingGameScreen():
 			Engine.physics_ticks_per_second = 60
 
 		if (LogicCore.SecretCodeCombined == 8888 or LogicCore.SecretCodeCombined == 8889):
-			Engine.physics_ticks_per_second = 9999999#0 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
+			Engine.physics_ticks_per_second = 999999 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
+		elif (LogicCore.SecretCodeCombined == 2776):
+			Engine.physics_ticks_per_second = 5
+		elif (LogicCore.SecretCodeCombined == 2779):
+			Engine.physics_ticks_per_second = 999
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
@@ -1708,13 +1639,17 @@ func DisplayPlayingGameScreen():
 			InterfaceCore.CreateIcon( 123, VisualsCore.ScreenWidth-59, 147+90+92, " " )
 
 		if LogicCore.SecretCodeCombined == 8888 || LogicCore.SecretCodeCombined == 8889:
-			Engine.physics_ticks_per_second = 0
+			Engine.physics_ticks_per_second = 999999
 
 		InterfaceCore.CreateIcon(117, VisualsCore.ScreenWidth-34, VisualsCore.ScreenHeight-34, " ")
 
 		if (LogicCore.PlayersCanJoinIn == true):
 			InterfaceCore.CreateIcon(119, VisualsCore.ScreenWidth-59, 147+90+92+93, " ")
-	LogicCore.RunTetriGameEngine()
+
+		if (LogicCore.SecretCodeCombined == 2778):
+			VisualsCore.DrawSprite(20000, 770, 305, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.75)
+
+	LogicCore.RunPuzzleGameCore()
 
 	if (LogicCore.PAUSEgame == false and LogicCore.PauseWasJustPressed == true):
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0)-9999, (VisualsCore.ScreenHeight/2.0)-9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
@@ -1723,42 +1658,7 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
 		LogicCore.PauseWasJustPressed = false
 
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.Current)
-
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.Current)
-
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.Temp)
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.Current)
-
-	if (LogicCore.PlayerStatus[0] == LogicCore.NewPieceDropping || LogicCore.PlayerStatus[0] == LogicCore.PieceFalling || LogicCore.PlayerStatus[0] == LogicCore.GameOver):
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.Temp)
-	if (LogicCore.PlayerStatus[1] == LogicCore.NewPieceDropping || LogicCore.PlayerStatus[1] == LogicCore.PieceFalling || LogicCore.PlayerStatus[1] == LogicCore.GameOver):
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
-	if (LogicCore.PlayerStatus[2] == LogicCore.NewPieceDropping || LogicCore.PlayerStatus[2] == LogicCore.PieceFalling || LogicCore.PlayerStatus[2] == LogicCore.GameOver):
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
+	LogicCore.AddToPlayfieldAllPlayerPiecesAndDropShadows()
 
 	var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[10000] / 2)
 
@@ -1818,11 +1718,11 @@ func DisplayPlayingGameScreen():
 				RenderingServer.canvas_item_set_transform(VisualsCore.Sprites.ci_rid[indexStart+index], Transform2D().translated(pos))
 
 		var screenX = 135
-		var screenY = -5# + (26*4)
+		var screenY = -5
 		var startBoxIndex = 10000
 		var adjustedBox
 		var boxCount = 0
-		for y in range(0, 24):#4, 24):
+		for y in range(0, 24):
 			for x in range(2, 32):
 				if (LogicCore.Playfield[x][y] > 1000 && LogicCore.Playfield[x][y] < 1010): # Falling Piece
 					adjustedBox = LogicCore.Playfield[x][y]
@@ -1858,43 +1758,7 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(19980, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 0.5, 0.5, 0, 1.0, 1.0, 1.0, VisualsCore.KeyboardControlsAlphaTimer)
 		VisualsCore.KeyboardControlsAlphaTimer-=0.015
 
-	for player in range(0, 3):
-		if LogicCore.PlayerStatus[player] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[player] != LogicCore.ClearingCompletedLines:
-			LogicCore.DeletePieceFromPlayfieldMemory(player, LogicCore.Current)
-
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.Current)
-
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(2, LogicCore.Temp)
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.Current)
-
-	if LogicCore.PlayerStatus[0] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[0] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(0, LogicCore.Temp)
-	if LogicCore.PlayerStatus[1] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[1] != LogicCore.ClearingCompletedLines:
-		LogicCore.AddPieceToPlayfieldMemory(1, LogicCore.Temp)
-	if LogicCore.PlayerStatus[2] != LogicCore.FlashingCompletedLines && LogicCore.PlayerStatus[2] != LogicCore.ClearingCompletedLines:
-		LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.DropShadow)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.Current)
-
-	LogicCore.DeletePieceFromPlayfieldMemory(0, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(1, LogicCore.Current)
-	LogicCore.DeletePieceFromPlayfieldMemory(2, LogicCore.Current)
+	LogicCore.DeleteFromPlayfieldAllPlayerPiecesAndDropShadows()
 
 	var iconIndex = 4
 	if (OperatingSys == OSAndroid):
@@ -1922,8 +1786,8 @@ func DisplayPlayingGameScreen():
 		
 		if (LogicCore.StillPlaying == false):
 			DataCore.CheckForNewHighScore()
-			if (LogicCore.GameWon == true && DataCore.NewHighScoreRank < 999):
-				ScreenToDisplayNext = AboutScreen
+			if (LogicCore.GameWon == true):# && DataCore.NewHighScoreRank < 999):
+				ScreenToDisplayNext = WonGameScreen#AboutScreen
 			elif (DataCore.NewHighScoreRank < 999):
 				ScreenToDisplayNext = NewHighScoreScreen
 			elif (DataCore.NewHighScoreRank == 999):

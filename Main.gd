@@ -1,5 +1,3 @@
-# Godot Engine v4 Beta 6+
-
 # Copyright 2023 Team "BetaMax Heroes"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -19,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------------------------
 #                              Cross-Platform / M.I.T. Open-Source
-#              "Grand National GNX" v2 Godot Engine 4.x 2D Video Game Framework
+#             "Grand National GNX" v2 Godot Engine 4.0 Beta 6 2D Video Game Framework
 # ------------------------------------------------------------------------------------------------
 #                                 "Fight To Win, Win For Love!"
 #  ___________     __         .__  _________ __                         ____ ___________  _   /\TM
@@ -28,37 +26,42 @@
 #    |    |\  ___/|  |  |  | \/  |/        \|  | (  <_> )  | \/\___  |  |   ||   \  \_/   \/ // \
 #    |____| \___  >__|  |__|  |__/_______  /|__|  \____/|__|   / ____|  |___||___|\_____  / / \_/
 #               \/                       \/                    \/        100% T U R B O \/\/
-#                                  Version 3.0.0.19 Pre-Beta1of3
+#                                                      TM
+#                                      "TetriStory 110%"
+#                                 @>-/---------- ---------\-<@
+#                                 Version 3.0.0.21 Beta 0.95%
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
-#                             (C)opyright 2023 - Team "BetaMax Heroes"
+#                            (C)opyright 2023 - Team "BetaMax Heroes"
 # ------------------------------------------------------------------------------------------------
 
 #- [DONE?] Perfect single player game [DONE?] -
 #- [DONE!] Level progression [DONE!] -
 #- [DONE!] Cut scenes [DONE!] -
-#- Perfect multi player game -
+#- [DONE?] Perfect multi player game [DONE?] -
 #- Perfect computer A.I. player[s] -
 #- [DONE!] New high score name input [DONE!] -
 #- [DONE!] Full music soundtrack [DONE!] -
 #- [DONE!] Ending [DONE!] -
 #- Thorough testing of final beta version -
 
-# Pre-Beta2of3:
+# Beta 1:
 # - Fixed screen jitter when a new line is placed at bottom of playfield when playing
 # - Optimized playing game screen by about 15% - needs further optimizations
 # - Created 10 second average Frames Per Second calculated display
 # - Fixed drop shadow(s) when adding an incomplete line to the bottom of playfield
 # - Fixed game controllers - d-pad does not work on HTML5 yet(use left analog stick)
-# - Fixed false game overs when playing
+# - Fixed false game overs when playinghttps://github.com/BetaMaxHero/C_PlusPlus_SDL2_T-Crisis_4
 # - Fixed infrequent incorrect placement of text
 # - Fixed missing Act 9 cutscene images
 # - Fixed crash in new high score name input screen
 # - Game turbocharger 100% operational
+# - Perfected computer player(s) A.I. ? NEEDS WORK!
+# - 
 # - NOT DONE
 
-# Pre-Beta1of3:
+# Pre-Beta1
 # - Fixed configure controller(s) text position in [Options] screen
 # - Fixed warnings/errors when running the game in the IDE
 # - Fixed centering of scaled GUI arrow set arrows

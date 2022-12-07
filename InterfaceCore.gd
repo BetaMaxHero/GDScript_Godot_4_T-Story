@@ -62,7 +62,6 @@ var Icons = IconClass.new()
 
 var NumberOfIconsOnScreen
 
-
 #----------------------------------------------------------------------------------------
 func InitializeGUI(createTexts):
 	Buttons.ButtonImageIndex.clear()

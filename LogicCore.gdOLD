@@ -18,16 +18,16 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.21 - Beta 0.95% [Godot 4.0 Beta 6]"
+var Version = "Version 3.0.0.21 - Beta 1 [Godot 4.0 Beta 6+]"
 
 const ChildMode				= 0
 const TeenMode				= 1
 const AdultMode				= 2
 const TurboMode				= 3
 
-var GameMode = AdultMode
+var GameMode = TurboMode#TeenMode#TurboMode
 
-var AllowComputerPlayers = 2
+var AllowComputerPlayers = 2#0
 
 var GameSpeed = 30
 
@@ -467,7 +467,7 @@ func PieceCollisionDown(player):
 
 	return(returnValue)
 
-#-----------------------------------AddCurrentPieceToPlayfieldMemory-----------------------------------------------------
+#----------------------------------------------------------------------------------------
 func PieceCollisionLeft(player):
 	var box = 1
 	var returnValue = CollisionNotTrue
@@ -579,8 +579,6 @@ func RotatePieceClockwise(player):
 func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
 
-	if (ThereAreCompletedLines() == true):  return
-
 	var TEMP_Piece = Piece[player]
 	var TEMP_PieceRotation = PieceRotation[player]
 	var TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
@@ -665,29 +663,10 @@ func AddPieceToPlayfieldMemory(player, TempOrCurrentOrNextOrDropShadowOrFallen):
 	pass
 
 #----------------------------------------------------------------------------------------
-func ThereAreCompletedLines():
-	var returnValue = false
-
-	for y in range(4, 24):
-		var boxTotal = 0
-
-		for x in range (2, 32):
-			if (Playfield[x][y] > 30 && Playfield[x][y] < 40):
-				boxTotal+=1
-			elif (Playfield[x][y] == 99999):
-				boxTotal+=1
-
-		if (boxTotal == 30):  returnValue = true
-
-	return(returnValue)
-
-#----------------------------------------------------------------------------------------
 func DeletePieceFromPlayfieldMemory(player, CurrentOrNextOrDropShadow):
 	if (LogicCore.PlayerStatus[player] == LogicCore.GameOver):  return
 
 	if (PlayerStatus[player] == FlashingCompletedLines || PlayerStatus[player] == ClearingCompletedLines):  return
-
-	if (ThereAreCompletedLines() == true):  return
 
 	var TEMP_Piece = Piece[player]
 	var TEMP_PieceRotation = PieceRotation[player]
@@ -917,16 +896,16 @@ func CheckForCompletedLines(player):
 	if (numberOfCompletedLines > 0):
 		if (numberOfCompletedLines == 1):
 			Score[player] += (40 * (Level+1))
-			if (SecretCodeCombined != 2778):  TotalLines+=1
+			TotalLines+=1
 		elif (numberOfCompletedLines == 2):
 			Score[player] += (100 * (Level+1))
-			if (SecretCodeCombined != 2778):  TotalLines+=2
+			TotalLines+=2
 		elif (numberOfCompletedLines == 3):
 			Score[player] += (300 * (Level+1))
-			if (SecretCodeCombined != 2778):  TotalLines+=3
+			TotalLines+=3
 		elif (numberOfCompletedLines == 4):
 			Score[player] += (1200 * (Level+1))
-			if (SecretCodeCombined != 2778):  TotalLines+=4
+			TotalLines+=4
 			AudioCore.PlayEffect(6)
 		ScoreChanged = true
 
@@ -945,7 +924,10 @@ func CheckForCompletedLines(player):
 func MovePieceDown(player, _force):
 	if (InputCore.DelayAllUserInput > -1):
 		return
-	
+
+	if (DoAnyPlayersHaveCompletedLine() == true):
+		return
+
 	PieceMoved = 1
 	
 	DeletePieceFromPlayfieldMemory(player, Current)
@@ -1200,11 +1182,6 @@ func SetupForNewGame():
 
 		for y in range(20, 24):
 			Playfield[6+7][y] = 0
-	elif (SecretCodeCombined == 2778):
-		for x in range(2, 30):#31):
-			for y in range(20, 24):
-				Playfield[x][y] = 30 + ( (randi() % 7) + 1 )
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -1212,6 +1189,14 @@ func SetupForNewLevel():
 	if (Level == 1 or SecretCodeCombined == 6161):
 		return
 
+	if GameMode == ChildMode:
+		Engine.physics_ticks_per_second = 15
+	elif GameMode == TeenMode:
+		Engine.physics_ticks_per_second = 30
+	elif GameMode == AdultMode:
+		Engine.physics_ticks_per_second = 25
+	elif GameMode == TurboMode:
+		Engine.physics_ticks_per_second = 60
 	ClearPlayfieldWithCollisionDetection()
 
 	for player in range(0, 3):
@@ -1302,48 +1287,6 @@ func SetupForNewLevel():
 	pass
 
 #----------------------------------------------------------------------------------------
-func AddCurrentPieceToPlayfieldMemory(player):
-	var value = (1000 + Piece[player])
-
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 1] == 1:
-		Playfield[PiecePlayfieldX[player]][PiecePlayfieldY[player]] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 2] == 1:
-		Playfield[PiecePlayfieldX[player]+1][PiecePlayfieldY[player]] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 3] == 1:
-		Playfield[PiecePlayfieldX[player]+2][PiecePlayfieldY[player]] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 4] == 1:
-		Playfield[PiecePlayfieldX[player]+3][PiecePlayfieldY[player]] = value
-
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 5] == 1:
-		Playfield[PiecePlayfieldX[player]][PiecePlayfieldY[player]+1] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 6] == 1:
-		Playfield[PiecePlayfieldX[player]+1][PiecePlayfieldY[player]+1] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 7] == 1:
-		Playfield[PiecePlayfieldX[player]+2][PiecePlayfieldY[player]+1] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 8] == 1:
-		Playfield[PiecePlayfieldX[player]+3][PiecePlayfieldY[player]+1] = value
-
-	if PieceData [Piece[player]] [PieceRotation[player]] [ 9] == 1:
-		Playfield[PiecePlayfieldX[player]][PiecePlayfieldY[player]+2] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [10] == 1:
-		Playfield[PiecePlayfieldX[player]+1][PiecePlayfieldY[player]+2] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [11] == 1:
-		Playfield[PiecePlayfieldX[player]+2][PiecePlayfieldY[player]+2] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [12] == 1:
-		Playfield[PiecePlayfieldX[player]+3][PiecePlayfieldY[player]+2] = value
-
-	if PieceData [Piece[player]] [PieceRotation[player]] [13] == 1:
-		Playfield[PiecePlayfieldX[player]][PiecePlayfieldY[player]+3] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [14] == 1:
-		Playfield[PiecePlayfieldX[player]+1][PiecePlayfieldY[player]+3] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [15] == 1:
-		Playfield[PiecePlayfieldX[player]+2][PiecePlayfieldY[player]+3] = value
-	if PieceData [Piece[player]] [PieceRotation[player]] [16] == 1:
-		Playfield[PiecePlayfieldX[player]+3][PiecePlayfieldY[player]+3] = value
-
-	pass
-
-#----------------------------------------------------------------------------------------
 func DeleteCurrentPieceFromPlayfieldMemory(player):
 	if PieceData [Piece[player]] [PieceRotation[player]] [ 1] == 1:
 		Playfield[PiecePlayfieldX[player]][PiecePlayfieldY[player]] = 0
@@ -1382,6 +1325,190 @@ func DeleteCurrentPieceFromPlayfieldMemory(player):
 		Playfield[PiecePlayfieldX[player]+3][PiecePlayfieldY[player]+3] = 0
 
 	pass
+
+#----------------------------------------------------------------------------------------
+# /\/\________.__  _____  __    ________   _____    _________.__       .__     __ /\/\
+# )/)/  _____/|__|/ ____\/  |_  \_____  \_/ ____\  /   _____/|__| ____ |  |___/  |)/)/
+#   /   \  ___|  \   __\\   __\  /   |   \   __\   \_____  \ |  |/ ___\|  |  \   __\  
+#   \    \_\  \  ||  |   |  |   /    |    \  |     /        \|  / /_/  >   Y  \  |    
+#    \______  /__||__|   |__|   \_______  /__|    /_______  /|__\___  /|___|  /__|    
+#           \/                          \/                \/   /_____/      \/        
+#
+# Cooperative Puzzle Artificial Intelligence A.I. By "JeZxLee" & "flairetic" (NOT 100%)
+
+func ComputeComputerPlayerMove(player):
+	if (CPUComputedBestMove[player] == false):
+		var TEMP_BreakFromDoubleForLoop
+
+		var TEMP_PieceRotation
+		var TEMP_PiecePlayfieldX
+		var TEMP_PiecePlayfieldY
+
+		for posX in range (0, 31):
+			for rot in range (1, MaxRotationArray[Piece[player]]+1):
+				MovePieceHeight[player][posX][rot] = 0.0
+				MoveTrappedHoles[player][posX][rot] = 99999.0
+				MoveOneBlockCavernHoles[player][posX][rot] = 99999.0
+				MovePlayfieldBoxEdges[player][posX][rot] = 99999.0
+				MoveCompletedLines[player][posX][rot] = 0.0
+				MovePieceCollision[player][posX][rot] = true
+
+#-- Compute, prioritize, and store all possible moves ---------------------------------------
+		var left = -1
+		var right = 1
+		var done = 0
+		var direction = left
+		var testLimitX
+		var testStepX
+
+		while (direction != done):
+			if (direction == left):
+				testLimitX = 0
+				testStepX = -1
+			elif (direction == right):
+				testLimitX = 31
+				testStepX = 1
+
+			TEMP_BreakFromDoubleForLoop = false
+			for NewCPUPieceTestX in range (PiecePlayfieldX[player], testLimitX, testStepX):
+				if (TEMP_BreakFromDoubleForLoop == false):
+					for NewCPURotationTest in range (0, MaxRotationArray[Piece[player]]+1):
+						if (TEMP_BreakFromDoubleForLoop == false):
+							TEMP_PieceRotation = PieceRotation[player]
+							TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
+							TEMP_PiecePlayfieldY = PiecePlayfieldY[player]
+
+							PiecePlayfieldX[player] = NewCPUPieceTestX
+							PieceRotation[player] = NewCPURotationTest
+
+							MovePieceCollision[player][NewCPUPieceTestX][NewCPURotationTest] = false
+
+							if (PieceCollision(player) != CollisionNotTrue):
+								TEMP_BreakFromDoubleForLoop = true
+
+								PieceRotation[player] = TEMP_PieceRotation
+								PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
+								PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
+							else:
+								var TEMP_BreakFromForLoop = false
+								for posY in range(PiecePlayfieldY[player], 23):
+									if (TEMP_BreakFromForLoop == false):
+										PiecePlayfieldY[player] = posY
+										if ( PieceCollision(player) == CollisionWithPiece ):
+											MovePieceCollision[player][NewCPUPieceTestX][NewCPURotationTest] = true
+											PieceRotation[player] = TEMP_PieceRotation
+											PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
+											PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
+											TEMP_BreakFromForLoop = true
+										elif ( PieceCollision(player) == CollisionWithPlayfield ):
+											PiecePlayfieldY[player] = (posY-1)
+											MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest] = PiecePlayfieldY[player]
+											TEMP_BreakFromForLoop = true
+
+											AddPieceToPlayfieldMemory(player, Fallen)
+
+											MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest] = 0
+											for posX in range(2, 32):
+												var numberOfEmpties = 0
+												for posYtwo in range(22, 4, -1):
+													if (Playfield[posX][posYtwo] == 0):
+														numberOfEmpties+=1
+													elif (Playfield[posX][posYtwo] > 30 && Playfield[posX][posYtwo] < 40):
+														MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest]+=numberOfEmpties
+														numberOfEmpties = 0
+
+											MoveCompletedLines[player][NewCPUPieceTestX][NewCPURotationTest] = 0
+											MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest] = 0
+											for posYthree in range(5, 23):
+												var boxTotal = 0
+												for posX in range(0, 32):
+													if ( (Playfield[posX][posYthree] > 30 && Playfield[posX][posYthree] < 40) || Playfield[posX][posYthree] == 255 ):
+														if (Playfield[posX][posYthree] != 255):
+															boxTotal+=1
+
+														if (Playfield[posX][(posYthree-1)] == 0):
+															MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+														if (Playfield[posX][(posYthree+1)] == 0):
+															MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+														if (Playfield[(posX-1)][posYthree] == 0):
+															MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+														if (Playfield[(posX+1)][posYthree] == 0):
+															MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+												if (boxTotal == 30):
+													MoveCompletedLines[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+											MoveOneBlockCavernHoles[player][NewCPUPieceTestX][NewCPURotationTest] = 0
+											for posYfour in range(5, 23):
+												for posX in range(2, 32):
+													if (Playfield[posX][posYfour] == 0 && Playfield[(posX-1)][posYfour] != 0 && Playfield[(posX+1)][posYfour] != 0):
+														MoveOneBlockCavernHoles[player][NewCPUPieceTestX][NewCPURotationTest]+=1
+
+								DeleteCurrentPieceFromPlayfieldMemory(player)
+								PieceRotation[player] = TEMP_PieceRotation
+								PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
+								PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
+
+			if (direction == left):
+				direction = right
+			else:
+				direction = done
+
+#-- Choose best move & rotation in either left or right direction ----------------------------------
+		var TEMP_BestValue = 9999999.0
+		for posX in range (0, 31):
+			for rot in range (0, MaxRotationArray[Piece[player]]+1):
+				if (MovePieceCollision[player][posX][rot] == false):
+					MovePieceHeight[player][posX][rot]+=MoveCompletedLines[player][posX][rot]
+
+					var testValue
+					testValue = ( (3.0*MoveTrappedHoles[player][posX][rot])
+					+(1.0*MoveOneBlockCavernHoles[player][posX][rot])
+					+(1.0*MovePlayfieldBoxEdges[player][posX][rot])
+					-(1.0*MovePieceHeight[player][posX][rot])
+					-(1000000.0*MoveCompletedLines[player][posX][rot]) )
+
+					if (MoveCompletedLines[player][posX][rot] > 0):
+						print("Player="+str(player)+"/testValue="+str(testValue)+"+/CompLines="+str(MoveCompletedLines[player][posX][rot]))
+
+					if (testValue <= TEMP_BestValue):
+						TEMP_BestValue = testValue
+						BestMoveX[player] = posX
+						BestRotation[player] = rot
+
+		CPUComputedBestMove[player] = true
+		MovedToBestMove[player] = false
+
+#-- Rotate & move falling piece to best ------------------------------------------------------------
+	elif (CPUComputedBestMove[player] == true):
+		if (MovedToBestMove[player] == false):
+			if (PieceRotation[player] < BestRotation[player]):
+				var _warnErase = RotatePieceClockwise(player)
+			elif (PieceRotation[player] > BestRotation[player]):
+				var _warnErase = RotatePieceCounterClockwise(player)
+
+			if (BestMoveX[player] < PiecePlayfieldX[player]):
+				MovePieceLeft(player)
+			elif (BestMoveX[player] > PiecePlayfieldX[player]):
+				MovePieceRight(player)
+			else:
+				MovedToBestMove[player] = true
+		elif (MovedToBestMove[player] == true):
+				MovePieceDown(player, true)
+
+	pass
+	
+#   /\/\________.__  _____  __    ________   _____    _________.__       .__     __ /\/\
+#   )/)/  _____/|__|/ ____\/  |_  \_____  \_/ ____\  /   _____/|__| ____ |  |___/  |)/)/
+#     /   \  ___|  \   __\\   __\  /   |   \   __\   \_____  \ |  |/ ___\|  |  \   __\  
+#     \    \_\  \  ||  |   |  |   /    |    \  |     /        \|  / /_/  >   Y  \  |    
+#      \______  /__||__|   |__|   \_______  /__|    /_______  /|__\___  /|___|  /__|    
+#             \/                          \/                \/   /_____/      \/        
+#
+#              Cooperative Puzzle Artificial Intelligence A.I. By "JeZxLee" & "flairetic"
 
 #----------------------------------------------------------------------------------------
 func AddRandomBlocksToBottom():
@@ -1425,6 +1552,7 @@ func AddRandomBlocksToBottom():
 	AudioCore.PlayEffect(7)
 
 	pass
+
 
 #----------------------------------------------------------------------------------------
 func CheckForNewPlayers():
@@ -1685,7 +1813,6 @@ func CheckForLevelAdvance():
 		Level+=1
 		ScreensCore.CutSceneScene = 1
 		Engine.physics_ticks_per_second = 30
-
 		LevelCleared = true
 
 		if (Level < 10):
@@ -1695,7 +1822,6 @@ func CheckForLevelAdvance():
 			StillPlaying = false
 			GameWon = true
 			Engine.physics_ticks_per_second = 30
-
 			ScreensCore.ScreenFadeStatus = ScreensCore.FadingToBlack
 			ScreensCore.ScreenToDisplayNext = ScreensCore.WonGameScreen
 
@@ -1711,7 +1837,6 @@ func CheckForLevelAdvance():
 func CheckForGameOver():
 	if (PlayerStatus[0] == GameOver && PlayerStatus[1] == GameOver && PlayerStatus[2] == GameOver):
 		Engine.physics_ticks_per_second = 30
-
 		AudioCore.PlayMusic(0)
 
 		StillPlaying = false
@@ -1721,324 +1846,26 @@ func CheckForGameOver():
 	pass
 
 #----------------------------------------------------------------------------------------
-func AddToPlayfieldAllPlayerPiecesAndDropShadows():
-	if PlayerStatus[1] == PieceFalling:
-		AddPieceToPlayfieldMemory(1, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		AddPieceToPlayfieldMemory(2, Temp)
-	if PlayerStatus[0] == PieceFalling:
-		AddPieceToPlayfieldMemory(0, DropShadow)
-
-	if (PlayerStatus[1] == PieceFalling):  DeletePieceFromPlayfieldMemory(1, Current)
-	if (PlayerStatus[2] == PieceFalling):  DeletePieceFromPlayfieldMemory(2, Current)
-
-	if PlayerStatus[0] == PieceFalling:
-		AddPieceToPlayfieldMemory(0, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		AddPieceToPlayfieldMemory(2, Temp)
-	if PlayerStatus[1] == PieceFalling:
-		AddPieceToPlayfieldMemory(1, DropShadow)
-
-	if (PlayerStatus[0] == PieceFalling):  DeletePieceFromPlayfieldMemory(0, Current)
-	if (PlayerStatus[2] == PieceFalling):  DeletePieceFromPlayfieldMemory(2, Current)
-
-	if PlayerStatus[0] == PieceFalling:
-		AddPieceToPlayfieldMemory(0, Temp)
-	if PlayerStatus[1] == PieceFalling:
-		AddPieceToPlayfieldMemory(1, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		AddPieceToPlayfieldMemory(2, DropShadow)
-
-	if (PlayerStatus[0] == PieceFalling):  DeletePieceFromPlayfieldMemory(0, Current)
-	if (PlayerStatus[1] == PieceFalling):  DeletePieceFromPlayfieldMemory(1, Current)
-
-	if (PlayerStatus[0] == PieceFalling):
-		AddPieceToPlayfieldMemory(0, Temp)
-	if (PlayerStatus[1] == PieceFalling):
-		AddPieceToPlayfieldMemory(1, Temp)
-	if (PlayerStatus[2] == PieceFalling):
-		AddPieceToPlayfieldMemory(2, Temp)
-
-	pass
-
-#----------------------------------------------------------------------------------------
-func DeleteFromPlayfieldAllPlayerPiecesAndDropShadows():
-	for player in range(0, 3):
-		if PlayerStatus[player] == PieceFalling:
-			DeletePieceFromPlayfieldMemory(player, Current)
-
-	if PlayerStatus[1] == PieceFalling:
-		AddPieceToPlayfieldMemory(1, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		AddPieceToPlayfieldMemory(2, Temp)
-	if PlayerStatus[0] == PieceFalling:
-		DeletePieceFromPlayfieldMemory(0, DropShadow)
-
-	if PlayerStatus[1] == PieceFalling:  DeletePieceFromPlayfieldMemory(1, Current)
-	if PlayerStatus[2] == PieceFalling:  DeletePieceFromPlayfieldMemory(2, Current)
-
-	if PlayerStatus[0] == PieceFalling:
-		AddPieceToPlayfieldMemory(0, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		AddPieceToPlayfieldMemory(2, Temp)
-	if PlayerStatus[1] == PieceFalling:
-		DeletePieceFromPlayfieldMemory(1, DropShadow)
-
-	if PlayerStatus[0] == PieceFalling: DeletePieceFromPlayfieldMemory(0, Current)
-	if PlayerStatus[2] == PieceFalling:  DeletePieceFromPlayfieldMemory(2, Current)
-
-	if PlayerStatus[0] == PieceFalling:
-		AddPieceToPlayfieldMemory(0, Temp)
-	if PlayerStatus[1] == PieceFalling:
-		AddPieceToPlayfieldMemory(1, Temp)
-	if PlayerStatus[2] == PieceFalling:
-		DeletePieceFromPlayfieldMemory(2, DropShadow)
-
-	if PlayerStatus[0] == PieceFalling:  DeletePieceFromPlayfieldMemory(0, Current)
-	if PlayerStatus[1] == PieceFalling:  DeletePieceFromPlayfieldMemory(1, Current)
-
-	if PlayerStatus[0] == PieceFalling:  DeletePieceFromPlayfieldMemory(0, Current)
-	if PlayerStatus[1] == PieceFalling:  DeletePieceFromPlayfieldMemory(1, Current)
-	if PlayerStatus[2] == PieceFalling:  DeletePieceFromPlayfieldMemory(2, Current)
-
-	pass
-
-#----------------------------------------------------------------------------------------
-# /\/\________.__  _____  __    ________   _____    _________.__       .__     __ /\/\
-# )/)/  _____/|__|/ ____\/  |_  \_____  \_/ ____\  /   _____/|__| ____ |  |___/  |)/)/
-#   /   \  ___|  \   __\\   __\  /   |   \   __\   \_____  \ |  |/ ___\|  |  \   __\  
-#   \    \_\  \  ||  |   |  |   /    |    \  |     /        \|  / /_/  >   Y  \  |    
-#    \______  /__||__|   |__|   \_______  /__|    /_______  /|__\___  /|___|  /__|    
-#           \/                          \/                \/   /_____/      \/v2.0
-#
-# Cooperative Puzzle Artificial Intelligence A.I. By "JeZxLee" & "flairetic"
-#
-# Single - 100%
-# Multi - Not 100%
-
-func ComputeComputerPlayerMove(player):
-	var notReady = false
-	for index in range(0, 3):
-		if (PlayerStatus[index] != PieceFalling and PlayerStatus[index] != GameOver):
-			notReady = true
-
-	if (notReady == true):  return
-
-	DeleteCurrentPieceFromPlayfieldMemory(player)
-
-	if (CPUComputedBestMove[player] == false):
-		var TEMP_BreakFromDoubleForLoop
-
-		var TEMP_PieceRotation
-		var TEMP_PiecePlayfieldX
-		var TEMP_PiecePlayfieldY
-
-		for posX in range (0, 32):
-			for rot in range (1, MaxRotationArray[Piece[player]]+1):
-				MovePieceHeight[player][posX][rot] = 0.0
-				MoveTrappedHoles[player][posX][rot] = 99999.0
-				MoveOneBlockCavernHoles[player][posX][rot] = 99999.0
-				MovePlayfieldBoxEdges[player][posX][rot] = 99999.0
-				MoveCompletedLines[player][posX][rot] = 0.0
-				MovePieceCollision[player][posX][rot] = true
-
-#		print("-----------------------------------------------------------------------------------")
-#-- Compute, prioritize, & store all player moves ------------------------------
-		var left = -1
-		var right = 1
-		var done = 0
-		var direction = left
-		var testLimitX
-		var testStepX
-
-		while (direction != done):
-			if (direction == left):
-				testLimitX = -1
-				testStepX = -1
-			elif (direction == right):
-				testLimitX = 32
-				testStepX = 1
-
-			TEMP_BreakFromDoubleForLoop = false
-			for NewCPUPieceTestX in range (PiecePlayfieldX[player], testLimitX, testStepX):
-				if (TEMP_BreakFromDoubleForLoop == false):
-					for NewCPURotationTest in range (1, MaxRotationArray[Piece[player]]+1):
-#						print("Player="+str(player)+" /TestX="+str(NewCPUPieceTestX)+" /TestRot="+str(NewCPURotationTest))
-
-						TEMP_PieceRotation = PieceRotation[player]
-						TEMP_PiecePlayfieldX = PiecePlayfieldX[player]
-						TEMP_PiecePlayfieldY = PiecePlayfieldY[player]
-
-						PiecePlayfieldX[player] = NewCPUPieceTestX
-						PieceRotation[player] = NewCPURotationTest
-
-						MovePieceCollision[player][NewCPUPieceTestX][NewCPURotationTest] = false
-						if (PieceCollision(player) != CollisionWithPiece):
-							var TEMP_BreakFromForLoop = false
-							for posY in range(PiecePlayfieldY[player], 23):
-								if (TEMP_BreakFromForLoop == false):
-									PiecePlayfieldY[player] = posY
-									if ( PieceCollision(player) == CollisionWithPiece ):
-										MovePieceCollision[player][NewCPUPieceTestX][NewCPURotationTest] = true
-										PieceRotation[player] = TEMP_PieceRotation
-										PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
-										PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
-										TEMP_BreakFromForLoop = true
-#												TEMP_BreakFromDoubleForLoop = true
-#										print("Player="+str(player)+" - Piece to piece downward collision! - posY="+str(posY))
-									elif ( PieceCollision(player) == CollisionWithPlayfield ):
-										PiecePlayfieldY[player] = (posY-1)
-										MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest] = PiecePlayfieldY[player]
-										TEMP_BreakFromForLoop = true
-
-										AddCurrentPieceToPlayfieldMemory(player)
-
-										MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest] = 0
-										for posX in range(2, 32):
-											var numberOfEmpties = 0
-											for posYtwo in range(22, 4, -1):
-												if (Playfield[posX][posYtwo] == 0):
-													numberOfEmpties+=1
-												elif (Playfield[posX][posYtwo] > 30 && Playfield[posX][posYtwo] < 40):
-													MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest]+=numberOfEmpties
-													numberOfEmpties = 0
-
-										MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest] = 0
-										for posYthree in range(5, 23):
-											for posX in range(2, 32):
-												if ( (Playfield[posX][posYthree] > 30 && Playfield[posX][posYthree] < 40) || (Playfield[posX][posYthree] > 1000 && Playfield[posX][posYthree] < 1010) || Playfield[posX][posYthree] == 255 ):
-													if (Playfield[posX][(posYthree-1)] == 0):
-														MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-													if (Playfield[posX][(posYthree+1)] == 0):
-														MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-													if (Playfield[(posX-1)][posYthree] == 0):
-														MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-													if (Playfield[(posX+1)][posYthree] == 0):
-														MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-										MoveCompletedLines[player][NewCPUPieceTestX][NewCPURotationTest] = 0
-										for y in range(4, 24):
-											var boxTotal = 0
-											for x in range (2, 32):
-												if ( (Playfield[x][y] > 30 && Playfield[x][y] < 40) || (Playfield[x][y] > 1000 && Playfield[x][y] < 1010) ):
-													boxTotal+=1
-
-											if (boxTotal == 30):
-												MoveCompletedLines[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-										MoveOneBlockCavernHoles[player][NewCPUPieceTestX][NewCPURotationTest] = 0
-										for posYfour in range(5, 23):
-											for posX in range(2, 32):
-												if (Playfield[posX][posYfour] == 0 && Playfield[(posX-1)][posYfour] != 0 && Playfield[(posX+1)][posYfour] != 0):
-													MoveOneBlockCavernHoles[player][NewCPUPieceTestX][NewCPURotationTest]+=1
-
-										DeleteCurrentPieceFromPlayfieldMemory(player)
-										PieceRotation[player] = TEMP_PieceRotation
-										PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
-										PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
-
-#										print("X="+str(NewCPUPieceTestX)+" /Rot="+str(NewCPURotationTest)+" /Height="+str(MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest])+" /Trap="+str(MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest])+" /Edges="+str(MovePlayfieldBoxEdges[player][NewCPUPieceTestX][NewCPURotationTest])+" /CompLines="+str(MoveCompletedLines[player][NewCPUPieceTestX][NewCPURotationTest]))
-						else:
-#							print("Player="+str(player)+" - Piece to piece collision (left/right)!")
-
-							if (direction == left):
-								CPUPlayerForcedDirection[player] = CPUForcedRight
-							elif (direction == right):
-								CPUPlayerForcedDirection[player] = CPUForcedLeft
-
-							MovePieceCollision[player][NewCPUPieceTestX][NewCPURotationTest] = true
-							PieceRotation[player] = TEMP_PieceRotation
-							PiecePlayfieldX[player] = TEMP_PiecePlayfieldX
-							PiecePlayfieldY[player] = TEMP_PiecePlayfieldY
-							
-							TEMP_BreakFromDoubleForLoop = true
-
-			if (direction == left):
-				direction = right
-			else:
-				direction = done
-
-#-- Choose best move & rotation in either left or right direction ----------------------------------
-		var TEMP_BestValue = 9999999.0
-		for posX in range (0, 32):
-			for rot in range (1, MaxRotationArray[Piece[player]]+1):
-				if (MovePieceCollision[player][posX][rot] == false):
-					MovePieceHeight[player][posX][rot]+=MoveCompletedLines[player][posX][rot]
-
-					var testValue
-					testValue = ( (3.0*MoveTrappedHoles[player][posX][rot])
-					+(1.0*MoveOneBlockCavernHoles[player][posX][rot])
-					+(1.0*MovePlayfieldBoxEdges[player][posX][rot])
-					-(1.0*MovePieceHeight[player][posX][rot])
-					-(1000000.0*MoveCompletedLines[player][posX][rot]) )
-
-#					print("posX="+str(posX)+" /rot="+str(rot)+" /testValue="+str(testValue))
-
-					if (testValue <= TEMP_BestValue):
-						TEMP_BestValue = testValue
-						BestMoveX[player] = posX
-						BestRotation[player] = rot
-
-		CPUComputedBestMove[player] = true
-		MovedToBestMove[player] = false
-
-#		print("************* BestMoveX="+str(BestMoveX[player])+" /BestRot="+str(BestRotation[player]))
-
-#-- Rotate & move falling piece to best ------------------------------------------------------------
-	elif (CPUComputedBestMove[player] == true):
-		if (MovedToBestMove[player] == false):
-			if (PieceRotation[player] < BestRotation[player]):
-				var _warnErase = RotatePieceClockwise(player)
-			elif (PieceRotation[player] > BestRotation[player]):
-				var _warnErase = RotatePieceCounterClockwise(player)
-
-			if (BestMoveX[player] < PiecePlayfieldX[player]):
-				MovePieceLeft(player)
-			elif (BestMoveX[player] > PiecePlayfieldX[player]):
-				MovePieceRight(player)
-			else:
-				MovedToBestMove[player] = true
-		elif (MovedToBestMove[player] == true):
-				MovePieceDown(player, true)
-
-	if (PieceCollision(player) == CollisionNotTrue):  AddCurrentPieceToPlayfieldMemory(player)
-
-	pass
-
-#   /\/\________.__  _____  __    ________   _____    _________.__       .__     __ /\/\
-#   )/)/  _____/|__|/ ____\/  |_  \_____  \_/ ____\  /   _____/|__| ____ |  |___/  |)/)/
-#     /   \  ___|  \   __\\   __\  /   |   \   __\   \_____  \ |  |/ ___\|  |  \   __\  
-#     \    \_\  \  ||  |   |  |   /    |    \  |     /        \|  / /_/  >   Y  \  |    
-#      \______  /__||__|   |__|   \_______  /__|    /_______  /|__\___  /|___|  /__|    
-#             \/                          \/                \/   /_____/      \/v2.0
-#
-#              Cooperative Puzzle Artificial Intelligence A.I. By "JeZxLee" & "flairetic"
-
-#----------------------------------------------------------------------------------------
 func RunPuzzleGameCore():
 	if PAUSEgame == false:
 		CheckForNewPlayers()
 
-		if (LogicCore.SecretCodeCombined == 2778 or LogicCore.SecretCodeCombined == 2779):
-			PlayerStatus[0] = GameOver
-			PlayerStatus[2] = GameOver
+		PlayerStatus[0] = GameOver
+		PlayerStatus[2] = GameOver
 
 		for player in range(0, 3):
 			Player = player
 
-			if (DoAnyPlayersHaveCompletedLine() == false and ThereAreCompletedLines() == false):
+			if (DoAnyPlayersHaveCompletedLine() == false):
 				if PlayerStatus[0] == PieceFalling:
 					if player != 0:
-						AddCurrentPieceToPlayfieldMemory(0)
+						AddPieceToPlayfieldMemory(0, Temp)
 				if PlayerStatus[1] == PieceFalling:
 					if player != 1:
-						AddCurrentPieceToPlayfieldMemory(1)
+						AddPieceToPlayfieldMemory(1, Temp)
 				if PlayerStatus[2] == PieceFalling:
 					if player != 2:
-						AddCurrentPieceToPlayfieldMemory(2)
+						AddPieceToPlayfieldMemory(2, Temp)
 
 				if PlayerStatus[player] != GameOver:
 					if SecretCodeCombined != 8888 && SecretCodeCombined != 8889 && SecretCodeCombined != 3777:
@@ -2047,17 +1874,15 @@ func RunPuzzleGameCore():
 					if PlayerStatus[player] == NewPieceDropping:
 						DrawEverything = 1
 						PieceMoved = 1
-
+						
 						if PiecePlayfieldY[player] < PieceDropStartHeight[ Piece[player] ]:
-							DeleteCurrentPieceFromPlayfieldMemory(player)
 							if (PieceCollisionDown(player) != CollisionWithPiece):
 								MovePieceDown(player, true)
-
-							AddCurrentPieceToPlayfieldMemory(player)
+								AddPieceToPlayfieldMemory(player, Current)
 						else:
 							AddPieceToPlayfieldMemory(player, Next)
 							PlayerStatus[player] = PieceFalling
-					elif PlayerStatus[player] == PieceFalling:
+					elif (PlayerStatus[player] == PieceFalling and DoAnyPlayersHaveCompletedLine() == false):
 						ProcessPieceFall(player)
 
 						if (PlayerInput[player] == InputCore.InputCPU && AllowComputerPlayers > 0):
@@ -2071,18 +1896,18 @@ func RunPuzzleGameCore():
 						elif (PlayerInput[player] == InputCore.InputTouchTwo):
 							GetHumanPlayerTouchTwoMoves(player)
 
-				if (DoAnyPlayersHaveCompletedLine() == false):
-					if PlayerStatus[0] == PieceFalling:
-						if player != 0:
-							DeleteCurrentPieceFromPlayfieldMemory(0)
-					if PlayerStatus[1] == PieceFalling:
-						if player != 1:
-							DeleteCurrentPieceFromPlayfieldMemory(1)
-					if PlayerStatus[2] == PieceFalling:
-						if player != 2:
-							DeleteCurrentPieceFromPlayfieldMemory(2)
+			if (DoAnyPlayersHaveCompletedLine() == false):
+				if PlayerStatus[0] == PieceFalling:
+					if player != 0:
+						DeletePieceFromPlayfieldMemory(0, Current)
+				if PlayerStatus[1] == PieceFalling:
+					if player != 1:
+						DeletePieceFromPlayfieldMemory(1, Current)
+				if PlayerStatus[2] == PieceFalling:
+					if player != 2:
+						DeletePieceFromPlayfieldMemory(2, Current)
 
-#				AddIncompleteLineToBottom(player)
+				AddIncompleteLineToBottom(player)
 
 				CheckForLevelAdvance()
 
@@ -2093,8 +1918,6 @@ func RunPuzzleGameCore():
 				elif (PlayerStatus[player] == ClearingCompletedLines):
 					ClearCompletedLines(player)
 
-#	ComputeAllComputerPlayersMoves()
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -2102,9 +1925,9 @@ func _ready():
 	SecretCode.append(2)
 	SecretCode.append(7)
 	SecretCode.append(7)
-	SecretCode.append(9)#7)
+	SecretCode.append(7)
 	
-	LogicCore.SecretCodeCombined = 2779#7
+	LogicCore.SecretCodeCombined = 2777
 
 	InitializePieceData()
 

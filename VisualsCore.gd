@@ -110,7 +110,7 @@ func _ready():
 	for _index in range(0, 10):
 		FramesPerSecondArray.append(0)
 
-	for _index in range(0, 20000):
+	for _index in range(0, 20001):
 		Sprites.ci_rid.append(-1)
 		Sprites.ci_rid[_index] = RenderingServer.canvas_item_create()
 		RenderingServer.canvas_item_set_parent(Sprites.ci_rid[_index], get_canvas_item())
@@ -374,7 +374,10 @@ func _ready():
 	Sprites.SpriteImage[19999] = load("res://media/images/backgrounds/FadingBlackBG.png")
 	Sprites.SpriteActive[19999] = true
 
-	for index in range(0, 20000):
+	Sprites.SpriteImage[20000] = load("res://media/images/playing/TS3_G4_Last_AI_Bug-01.png")
+	Sprites.SpriteActive[20000] = true
+
+	for index in range(0, 20001):
 		if Sprites.SpriteActive[index] == true:
 			var sprite_size = Sprites.SpriteImage[index].get_size()
 			Sprites.SpriteImageWidth[index] = sprite_size.x
@@ -411,6 +414,8 @@ func _ready():
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 250)
 			elif (index == 19980):
 				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 100)
+			elif (index == 20000):
+				RenderingServer.canvas_item_set_draw_index(Sprites.ci_rid[index], 600)
 
 	FontTTF.append(-1)
 	FontTTF[0] = load("res://media/fonts/Font_01.ttf")
@@ -471,7 +476,7 @@ func SetScreenStretchMode():
 #                             Godot Version 3.5 To 4.0 Beta 2+ Conversion By: "flairetic"
 #----------------------------------------------------------------------------------------
 func MoveAllActiveSpritesOffScreen():
-	for index in range(1, 20000):
+	for index in range(1, 20001):
 		if Sprites.SpriteActive[index] == true:
 			var sprite_size = Sprites.SpriteImage[index].get_size()
 			RenderingServer.canvas_item_set_transform(Sprites.ci_rid[index], Transform2D().translated(Vector2(-99999 - sprite_size.x / 2.0, -99999 - sprite_size.y / 2.0)))
@@ -652,7 +657,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
-	AddAboutScreenText("Version 4.0 Beta 6+", 1.0)
+	AddAboutScreenText("Version 4.0 Beta 6", 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
@@ -669,9 +674,10 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Project Directed By:", 0.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
-	AddAboutScreenText("Godot 2-D Game Engine Framework:", 0.0)
+	AddAboutScreenText("Godot 4.x 2-D Game Engine Framework:", 0.0)
 	AddAboutScreenText("The ''Grand National GNX'' v2 Engine By:", 1.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
+	AddAboutScreenText("''flairetic''", 1.0)
 
 	AddAboutScreenText("Graphics Core(Texts/Sprites) Ported & Turbocharged By:", 0.0)
 	AddAboutScreenText("''flairetic''", 1.0)
@@ -693,10 +699,12 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''JeZxLee''", 1.0)
 	AddAboutScreenText("[Original Gameboy Version]", 1.0)
 
-	AddAboutScreenText("''Gift Of Sight'' Artificial Intelligence Programmer:", 0.0)
+	AddAboutScreenText("''Gift Of Sight'' v2 Artificial Intelligence Programmers:", 0.0)
+	AddAboutScreenText("The 1st 95% By:", 1.0)
 	AddAboutScreenText("''JeZxLee''", 1.0)
+	AddAboutScreenText("The Critical Last 5% By:", 1.0)
 	AddAboutScreenText("''flairetic''", 1.0)
-	AddAboutScreenText("[400,000+ Average Lines Per Game!]", 1.0)
+#	AddAboutScreenText("[400,000+ Average Lines Per Game!]", 1.0)
 
 	AddAboutScreenText("Support Game Programmers:", 0.0)
 	AddAboutScreenText("''flairetic''", 1.0)
@@ -723,57 +731,57 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("[www.YouTube.com]", 1.0)
 
 	AddAboutScreenText("Title Music:", 0.0)
-	AddAboutScreenText("Farewell by MaxKoMusic | https://maxkomusic.com/", 1.0)
+	AddAboutScreenText("''Farewell'' by MaxKoMusic | https://maxkomusic.com/", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Creative Commons Attribution-ShareAlike 3.0 Unported", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by-sa/3.0/deed.en_US", 1.0)
 
 	AddAboutScreenText("Playing Level # 1 Music:", 0.0)
-	AddAboutScreenText("Spirit by Alexander Nakarada | https://www.serpentsoundstudios.com", 1.0)
+	AddAboutScreenText("''Spirit'' by Alexander Nakarada | https://www.serpentsoundstudios.com", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Attribution 4.0 International [CC BY 4.0]", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by/4.0/", 1.0)
 
 	AddAboutScreenText("Playing Level # 2 Music:", 0.0)
-	AddAboutScreenText("You're Welcome [Instrumental] by RYYZN", 1.0)
+	AddAboutScreenText("''You're Welcome [Instrumental]'' by RYYZN", 1.0)
 	AddAboutScreenText("Music promoted by https://www.youtube.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 3 Music:", 0.0)
-	AddAboutScreenText("Voyage by LEMMiNO", 1.0)
+	AddAboutScreenText("''Voyage'' by LEMMiNO", 1.0)
 	AddAboutScreenText("Music promoted by https://www.youtube.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 4 Music:", 0.0)
-	AddAboutScreenText("Deja Vu by RYYZN", 1.0)
+	AddAboutScreenText("''Deja Vu'' by RYYZN", 1.0)
 	AddAboutScreenText("Music promoted by https://www.youtube.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 5 Music:", 0.0)
-	AddAboutScreenText("Dragon Slayer by Makai Symphony | https://soundcloud.com/makai-symphony", 1.0)
+	AddAboutScreenText("''Dragon Slayer'' by Makai Symphony | https://soundcloud.com/makai-symphony", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Creative Commons Attribution-ShareAlike 3.0 Unported", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by-sa/3.0/deed.en_US", 1.0)
 
 	AddAboutScreenText("Playing Level # 6 Music:", 0.0)
-	AddAboutScreenText("Eyes_and_See by PEOPLE OF THE PARALLEL", 1.0)
+	AddAboutScreenText("''Eyes_and_See'' by PEOPLE OF THE PARALLEL", 1.0)
 	AddAboutScreenText("Music promoted by https://www.jamendo.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 7 Music:", 0.0)
-	AddAboutScreenText("My Heart Blows Up [Explosions] by ANTON LEUBA", 1.0)
+	AddAboutScreenText("''My Heart Blows Up [Explosions]'' by ANTON LEUBA", 1.0)
 	AddAboutScreenText("Music promoted by https://www.jamendo.com", 1.0)
 
 	AddAboutScreenText("Playing Level # 8 Music:", 0.0)
-	AddAboutScreenText("Absolution by Scott Buckley | https://soundcloud.com/scottbuckley", 1.0)
+	AddAboutScreenText("''Absolution'' by Scott Buckley | https://soundcloud.com/scottbuckley", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Attribution 4.0 International [CC BY 4.0]", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by/4.0/", 1.0)
 
 	AddAboutScreenText("Playing Level # 9 Music:", 0.0)
-	AddAboutScreenText("Warrior by yoitrax | https://soundcloud.com/yoitrax", 1.0)
+	AddAboutScreenText("''Warrior'' by yoitrax | https://soundcloud.com/yoitrax", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Creative Commons Attribution 3.0 Unported License", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by/3.0/deed.en_US", 1.0)
 
 	AddAboutScreenText("Won Music:", 0.0)
-	AddAboutScreenText("UPBEAT 2 by Aries Beats | https://soundcloud.com/aries4rce", 1.0)
+	AddAboutScreenText("''UPBEAT 2'' by Aries Beats | https://soundcloud.com/aries4rce", 1.0)
 	AddAboutScreenText("Music promoted by https://www.free-stock-music.com", 1.0)
 	AddAboutScreenText("Creative Commons Attribution-ShareAlike 3.0 Unported", 1.0)
 	AddAboutScreenText("https://creativecommons.org/licenses/by-sa/3.0/deed.en_US", 1.0)
@@ -893,6 +901,8 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Valedict''", 1.0)
 	AddAboutScreenText("''Aliencodex''", 1.0)
 	AddAboutScreenText("''leonardus''", 1.0)
+	AddAboutScreenText("''Donitz''", 1.0)
+	AddAboutScreenText("''furrykef''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
