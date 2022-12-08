@@ -903,6 +903,11 @@ func CheckForCompletedLines(player):
 
 	AddPieceToPlayfieldMemory(player, Fallen)
 
+	if player == 0:  PiecePlayfieldX[player] = 5
+	elif player == 1:  PiecePlayfieldX[player] = 15
+	elif player == 2:  PiecePlayfieldX[player] = 25
+	PiecePlayfieldY[player] = 0
+
 	for y in range(4, 24):
 		var boxTotal = 0
 
@@ -945,10 +950,8 @@ func CheckForCompletedLines(player):
 func MovePieceDown(player, _force):
 	if (InputCore.DelayAllUserInput > -1):
 		return
-	
+
 	PieceMoved = 1
-	
-	DeletePieceFromPlayfieldMemory(player, Current)
 
 	PiecePlayfieldY[player]+=1
 
@@ -1201,7 +1204,7 @@ func SetupForNewGame():
 		for y in range(20, 24):
 			Playfield[6+7][y] = 0
 	elif (SecretCodeCombined == 2778):
-		for x in range(2, 30):#31):
+		for x in range(4, 30):#31):
 			for y in range(20, 24):
 				Playfield[x][y] = 30 + ( (randi() % 7) + 1 )
 
@@ -1824,6 +1827,10 @@ func ComputeComputerPlayerMove(player):
 
 	if (notReady == true):  return
 
+#	var pieceLanded = false
+
+#	if (PiecePlayfieldY[player] < PieceDropStartHeight[Piece[player]]):  return
+
 	DeleteCurrentPieceFromPlayfieldMemory(player)
 
 	if (CPUComputedBestMove[player] == false):
@@ -1853,10 +1860,10 @@ func ComputeComputerPlayerMove(player):
 
 		while (direction != done):
 			if (direction == left):
-				testLimitX = -1
+				testLimitX = 0
 				testStepX = -1
 			elif (direction == right):
-				testLimitX = 32
+				testLimitX = 31
 				testStepX = 1
 
 			TEMP_BreakFromDoubleForLoop = false
@@ -1996,15 +2003,21 @@ func ComputeComputerPlayerMove(player):
 				var _warnErase = RotatePieceCounterClockwise(player)
 
 			if (BestMoveX[player] < PiecePlayfieldX[player]):
-				MovePieceLeft(player)
+				if (PieceCollisionLeft(player) == CollisionNotTrue):  MovePieceLeft(player)
 			elif (BestMoveX[player] > PiecePlayfieldX[player]):
-				MovePieceRight(player)
+				if (PieceCollisionRight(player) == CollisionNotTrue):  MovePieceRight(player)
 			else:
 				MovedToBestMove[player] = true
 		elif (MovedToBestMove[player] == true):
 				MovePieceDown(player, true)
+#					pieceLanded = true
 
-	if (PieceCollision(player) == CollisionNotTrue):  AddCurrentPieceToPlayfieldMemory(player)
+	if (PiecePlayfieldY[player] != 0):
+		if (PieceCollision(player) == CollisionNotTrue):
+			AddCurrentPieceToPlayfieldMemory(player)
+
+#	if (PieceCollision(player) != CollisionNotTrue):
+#		print("SOMETHING WRONG HERE??? - Player="+str(player)+" /X="+str(PiecePlayfieldX[player])+" /Y="+str(PiecePlayfieldY[player])+" /Rot="+str(PieceRotation[player]))
 
 	pass
 
