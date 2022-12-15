@@ -143,8 +143,8 @@ func _ready():
 	Sprites.SpriteImage[13] = load("res://media/images/gui/MoreFreeGames.png")
 	Sprites.SpriteActive[13] = true
 
-	Sprites.SpriteImage[14] = load("res://media/images/gui/SourceCode.png")
-	Sprites.SpriteActive[14] = true
+	Sprites.SpriteImage[15] = load("res://media/images/gui/Floppy_Disk.png")
+	Sprites.SpriteActive[15] = true
 
 	Sprites.SpriteImage[20] = load("res://media/images/logos/Logo.png")
 	Sprites.SpriteActive[20] = true
@@ -657,7 +657,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Made With 100% FREE:", 0.0)
 	AddAboutScreenText("''Godot Game Engine''", 1.0)
-	AddAboutScreenText("Version 4.0 Beta 6", 1.0)
+	AddAboutScreenText(DataCore.GODOT_VERSION, 1.0)
 	AddAboutScreenText("[www.GodotEngine.org]", 1.0)
 
 	AddAboutScreenText("''Godot Game Engine'' Recommended By:", 0.0)
@@ -903,6 +903,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''leonardus''", 1.0)
 	AddAboutScreenText("''Donitz''", 1.0)
 	AddAboutScreenText("''furrykef''", 1.0)
+	AddAboutScreenText("''bengtsts[m]''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)

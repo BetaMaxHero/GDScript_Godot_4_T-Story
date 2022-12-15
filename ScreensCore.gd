@@ -210,7 +210,7 @@ func DisplayGodotScreen():
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Version 4.0 Beta 6", 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, DataCore.GODOT_VERSION, 445+10, 185+20, 0, 23, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.9, 0.9, 0.9)
 
 		ScreenDisplayTimer = (200*2)
 
@@ -258,7 +258,7 @@ func DisplayFASScreen():
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2.0, 16+(30*8), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "To Do List:", 0, 2+(30*9), 1, 23, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE?] Perfect single player game [DONE?] -", 0, 2+(30*10), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Perfect single player game [DONE!] -", 0, 2+(30*10), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Level progression [DONE!] -", 0, 2+(30*11), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE!] Cut scenes [DONE!] -", 0, 2+(30*12), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- [DONE?] Perfect multi player game [DONE?] -", 0, 2+(30*13), 1, 23, 1.0, 1.0, 0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 0.0)
@@ -323,6 +323,9 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2.0, 194+35+20, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
+		InterfaceCore.CreateIcon( 15, 100, (VisualsCore.ScreenHeight-100-70), " " )
+		RenderingServer.canvas_item_set_modulate(VisualsCore.Sprites.ci_rid[15], Color(1.0, 1.0, 1.0, 1.0))
+
 		if (ItchBuild == false):
 			if (OperatingSys == OSAndroid):
 				InterfaceCore.CreateIcon( 116, (VisualsCore.ScreenWidth/2.0)+345, (VisualsCore.ScreenHeight/2.0), " " )
@@ -369,10 +372,10 @@ func DisplayTitleScreen():
 			buttonY+=buttonOffsetY
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2.0, 602-15, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 - ''BetaMax Heroes''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Copyright 2023 By Team ''www.BetaMaxHeroes.org''", 0, 640-19-4, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-125, VisualsCore.ScreenHeight-50+23, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", VisualsCore.ScreenWidth-112-119, VisualsCore.ScreenHeight-50+11, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawSprite(24, VisualsCore.ScreenWidth-125, VisualsCore.ScreenHeight-50+23-55, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", VisualsCore.ScreenWidth-112-119, VisualsCore.ScreenHeight-50+11-55, 0, 13, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 
@@ -391,13 +394,16 @@ func DisplayTitleScreen():
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 
-#	var _value
+	var _value
 #	if (ItchBuild == false):
-#		if InterfaceCore.ThisIconWasPressed(1, -1) == true:
-#			if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
-#				_value = OS.shell_open("https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory")
-#			elif OperatingSys == OSHTMLFive:
-#				JavaScript.eval("window.location.replace('https://play.google.com/store/apps/details?id=org.fallenangelsoftware.tstory');")
+	if InterfaceCore.ThisIconWasPressed(1, -1) == true:
+#		print("Icon pressed?")
+		if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
+#			print("URL?")
+			_value = OS.shell_open("https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story")
+		elif OperatingSys == OSHTMLFive:
+			JavaScriptBridge.eval("window.location.replace('https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story');")
+
 #		if InterfaceCore.ThisIconWasPressed(2, -1) == true:
 #			if OperatingSys == OSAndroid:
 #				_value = OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
@@ -1582,8 +1588,10 @@ func DisplayPlayingGameScreen():
 			Engine.physics_ticks_per_second = 999999 # SHOW MAXIMUM FRAMES PER SECOND ON THIS PLATFORM
 		elif (LogicCore.SecretCodeCombined == 2776):
 			Engine.physics_ticks_per_second = 5
-		elif (LogicCore.SecretCodeCombined == 2779):
+		elif (LogicCore.SecretCodeCombined == 2779 or LogicCore.SecretCodeCombined == 2772):
 			Engine.physics_ticks_per_second = 999
+		elif (LogicCore.SecretCodeCombined == 2771):
+			Engine.physics_ticks_per_second = 1
 
 		RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
@@ -1658,6 +1666,7 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
 		LogicCore.PauseWasJustPressed = false
 
+#	if (LogicCore.DoAnyPlayersHaveCompletedLine() == false and LogicCore.ThereAreCompletedLines() == false):
 	LogicCore.AddToPlayfieldAllPlayerPiecesAndDropShadows()
 
 	var boxSizeHalf = (VisualsCore.Sprites.SpriteImageWidth[10000] / 2)
@@ -1758,6 +1767,7 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(19980, VisualsCore.ScreenWidth/2.0, VisualsCore.ScreenHeight/2.0, 0.5, 0.5, 0, 1.0, 1.0, 1.0, VisualsCore.KeyboardControlsAlphaTimer)
 		VisualsCore.KeyboardControlsAlphaTimer-=0.015
 
+#	if (LogicCore.DoAnyPlayersHaveCompletedLine() == false and LogicCore.ThereAreCompletedLines() == false):
 	LogicCore.DeleteFromPlayfieldAllPlayerPiecesAndDropShadows()
 
 	var iconIndex = 4

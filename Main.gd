@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------------------------
 #                              Cross-Platform / M.I.T. Open-Source
-#             "Grand National GNX" v2 Godot Engine 4.0 Beta 6 2D Video Game Framework
+#             "Grand National GNX" v2 Godot Engine 4.0 Beta 8 2D Video Game Framework
 # ------------------------------------------------------------------------------------------------
 #                                 "Fight To Win, Win For Love!"
 #  ___________     __         .__  _________ __                         ____ ___________  _   /\TM
@@ -29,14 +29,14 @@
 #                                                      TM
 #                                      "TetriStory 110%"
 #                                 @>-/---------- ---------\-<@
-#                                 Version 3.0.0.21 Beta 0.95%
+#                                 Version 3.0.0.22 Beta 0.99%
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #
 #                            (C)opyright 2023 - Team "BetaMax Heroes"
 # ------------------------------------------------------------------------------------------------
 
-#- [DONE?] Perfect single player game [DONE?] -
+#- [DONE!] Perfect single player game [DONE!] -
 #- [DONE!] Level progression [DONE!] -
 #- [DONE!] Cut scenes [DONE!] -
 #- [DONE?] Perfect multi player game [DONE?] -
