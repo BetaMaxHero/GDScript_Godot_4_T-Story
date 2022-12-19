@@ -647,6 +647,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Copyright 2023 By:", 1.0)
 	AddAboutScreenText("Team ''BetaMax Heroes''", 1.0)
+	AddAboutScreenText("[www.BetaMaxHeroes.org]", 1.0)
 
 	AddAboutScreenText("Original Concept By:", 0.0)
 	AddAboutScreenText("Alexey Pajitnov", 1.0)

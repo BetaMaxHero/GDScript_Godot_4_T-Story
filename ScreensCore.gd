@@ -402,7 +402,8 @@ func DisplayTitleScreen():
 #			print("URL?")
 			_value = OS.shell_open("https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story")
 		elif OperatingSys == OSHTMLFive:
-			JavaScriptBridge.eval("window.location.replace('https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story');")
+#			JavaScriptBridge.eval("window.location.replace('https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story');")
+			JavaScriptBridge.eval("""window.open('https://github.com/BetaMaxHero/GDScript_Godot_4_T-Story', '_blank').focus();""")
 
 #		if InterfaceCore.ThisIconWasPressed(2, -1) == true:
 #			if OperatingSys == OSAndroid:
@@ -438,11 +439,11 @@ func DisplayTitleScreen():
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(5) == true:
 		DataCore.SaveOptionsAndHighScores()
-#		if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
-		get_tree().quit()
-#		elif OperatingSys == OSHTMLFive:
-#			JavaScript.eval("window.location.replace('https://fallenangelsoftware.com');")
-
+		if OperatingSys == OSDesktop || OperatingSys == OSAndroid:
+			get_tree().quit()
+		elif OperatingSys == OSHTMLFive:
+			#JavaScriptBridge.eval("window.location.replace('https://betamaxheroes.org');")
+			JavaScriptBridge.eval("""window.open('https://betamaxheroes.org', '_self').focus();""")
 	if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
 		if InterfaceCore.ThisButtonWasPressed(6) == true:
 			ScreenToDisplayNext = MusicTestScreen
@@ -1654,8 +1655,8 @@ func DisplayPlayingGameScreen():
 		if (LogicCore.PlayersCanJoinIn == true):
 			InterfaceCore.CreateIcon(119, VisualsCore.ScreenWidth-59, 147+90+92+93, " ")
 
-		if (LogicCore.SecretCodeCombined == 2778):
-			VisualsCore.DrawSprite(20000, 770, 305, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.75)
+#		if (LogicCore.SecretCodeCombined == 2778):
+#			VisualsCore.DrawSprite(20000, 770, 305, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.75)
 
 	LogicCore.RunPuzzleGameCore()
 
@@ -1663,7 +1664,7 @@ func DisplayPlayingGameScreen():
 		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0)-9999, (VisualsCore.ScreenHeight/2.0)-9999, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		LogicCore.PauseWasJustPressed = false
 	if (LogicCore.PAUSEgame == true and LogicCore.PauseWasJustPressed == true):
-		VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
+		if (LogicCore.SecretCodeCombined != 2778):  VisualsCore.DrawSprite(135, (VisualsCore.ScreenWidth/2.0), (VisualsCore.ScreenHeight/2.0), 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.85)
 		LogicCore.PauseWasJustPressed = false
 
 #	if (LogicCore.DoAnyPlayersHaveCompletedLine() == false and LogicCore.ThereAreCompletedLines() == false):

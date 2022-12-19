@@ -29,7 +29,12 @@
 #                                                      TM
 #                                      "TetriStory 110%"
 #                                 @>-/---------- ---------\-<@
-#                                 Version 3.0.0.22 Beta 0.99%
+#                                   Version 3.0.0.23 Beta 1
+#                                   ____       __           ___
+#                                  / __ )___  / /_____ _   <  /
+#                                 / __  / _ \/ __/ __ `/   / / 
+#                                / /_/ /  __/ /_/ /_/ /   / /  
+#                               /_____/\___/\__/\__,_/   /_/                            
 #
 #          HTML5 Enabled Desktop/Laptop Internet Browsers & Android Smartphones/Tablets
 #

@@ -25,7 +25,7 @@ var HighScoreScore = []
 var PlayerWithHighestScore
 var NewHighScoreRank
 
-const FILE_NAME = "user://TetriStory-3_0_0_22s-game-data.json"
+const FILE_NAME = "user://TetriStory-3_0_0_23a-game-data.json"
 const GODOT_VERSION = "Version 4.0 Beta 8+"
 
 #----------------------------------------------------------------------------------------

@@ -18,7 +18,7 @@
 # "LogicCore.gd"
 extends Node2D
 
-var Version = "Version 3.0.0.22 - Beta 0.99% [Godot "+DataCore.GODOT_VERSION+"]"
+var Version = "Version 3.0.0.23 - Beta 1 [Godot "+DataCore.GODOT_VERSION+"]"
 
 const ChildMode				= 0
 const TeenMode				= 1
@@ -1701,6 +1701,24 @@ func ComputeComputerPlayerMove(player):
 											else:
 												print("THOUGHT FAIL? - Player="+str(player)+" /TestX="+str(NewCPUPieceTestX)+" /TestRot="+str(NewCPURotationTest)+" /posY="+str(posY))
 
+
+
+
+
+#											MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest] = 0
+#											for posX in range(2, 32):
+#												for posYtwo in range(5, 24):
+#													if (Playfield[posX][posYtwo] != 0 and Playfield[posX][posYtwo] != 255):
+#														MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest] += posYtwo
+#														posYtwo = 999
+
+
+											print("Player="+str(player)+" /TestX="+str(NewCPUPieceTestX)+" /TestRot="+str(NewCPURotationTest)+" /MovePieceHeight="+str(MovePieceHeight[player][NewCPUPieceTestX][NewCPURotationTest]))
+
+
+
+
+
 											MoveTrappedHoles[player][NewCPUPieceTestX][NewCPURotationTest] = 0
 											for posX in range(2, 32):
 												var numberOfEmpties = 0
@@ -1787,7 +1805,7 @@ func ComputeComputerPlayerMove(player):
 		for posX in range (0, 31):
 			for rot in range (1, MaxRotationArray[Piece[player]]+1):
 				if (MovePieceCollision[player][posX][rot] == false):
-					MovePieceHeight[player][posX][rot]+=MoveCompletedLines[player][posX][rot]
+#					MovePieceHeight[player][posX][rot]+=MoveCompletedLines[player][posX][rot]
 
 					var testValue
 					testValue = ( (3.0*MoveTrappedHoles[player][posX][rot])
