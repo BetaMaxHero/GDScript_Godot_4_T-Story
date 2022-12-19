@@ -3,6 +3,4 @@
 
 ![Development Screenshot](image.png)
 
-(NOT Working) https://betamaxhero.itch.io/gdscript-godot-4-t-story
-
-(Working) https://www.newgrounds.com/projects/games/1946017/preview
+https://betamaxheroes.org/
