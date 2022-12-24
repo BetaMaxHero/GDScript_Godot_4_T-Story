@@ -1,4 +1,4 @@
-# Copyright 2023 Team "BetaMax Heroes"
+# Copyright 2023 Team "www.BetaMaxHeroes.org"
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -57,7 +57,7 @@
 # - Created 10 second average Frames Per Second calculated display
 # - Fixed drop shadow(s) when adding an incomplete line to the bottom of playfield
 # - Fixed game controllers - d-pad does not work on HTML5 yet(use left analog stick)
-# - Fixed false game overs when playinghttps://github.com/BetaMaxHero/C_PlusPlus_SDL2_T-Crisis_4
+# - Fixed false game overs when playing
 # - Fixed infrequent incorrect placement of text
 # - Fixed missing Act 9 cutscene images
 # - Fixed crash in new high score name input screen
